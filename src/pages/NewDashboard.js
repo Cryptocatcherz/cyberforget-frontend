@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../hooks/useAuthUtils";
 import useSubscription from '../hooks/useSubscription';
+import PremiumDashboard from './PremiumDashboard';
 import './NewDashboard.css';
 
 const NewDashboard = () => {
@@ -79,33 +80,7 @@ const NewDashboard = () => {
 
     // Show premium dashboard for trial/premium users
     if (isTrial || isPremium || daysRemaining > 0) {
-        return (
-            <div className="new-dashboard premium-dashboard">
-                <div className="dashboard-container">
-                    <div className="dashboard-header">
-                        <h1>CyberForget Protection Center</h1>
-                        <p>Advanced AI-powered data broker removal service with 24/7 automated monitoring</p>
-                    </div>
-
-                    {/* Premium user gets full functional dashboard */}
-                    <div className="features-grid premium-active">
-                        {features.map((feature) => (
-                            <div key={feature.id} className="feature-card active">
-                                <div className="feature-header">
-                                    <div className="feature-icon">{feature.icon}</div>
-                                    <div className="feature-status active">ACTIVE</div>
-                                </div>
-                                <h3>{feature.title}</h3>
-                                <p>{feature.description}</p>
-                                <div className="toggle-switch active">
-                                    <div className="toggle-slider active"></div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        );
+        return <PremiumDashboard />;
     }
 
     // Free user dashboard with interactive toggles
