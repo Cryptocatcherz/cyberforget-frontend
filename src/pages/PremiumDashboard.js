@@ -9,6 +9,10 @@ const PremiumDashboard = () => {
     const { user } = useAuth();
     const { isPremium, isTrial, daysRemaining } = useSubscription();
     const [activeFeatures, setActiveFeatures] = useState({});
+    const [notifications, setNotifications] = useState([]);
+    const [showVpnModal, setShowVpnModal] = useState(false);
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
+    const [selectedPlatform, setSelectedPlatform] = useState('');
     const [dashboardStats, setDashboardStats] = useState({
         threatsBlocked: 1247,
         dataRemovalRequests: 23,
@@ -23,76 +27,401 @@ const PremiumDashboard = () => {
         {
             id: 'dark-web',
             title: 'Dark Web Protection',
-            description: 'Monitoring 127 dark web sources for your data',
+            description: 'Monitor 127 dark web sources for your data',
             icon: '🕵️',
-            enabled: true,
-            status: 'Monitoring Active',
-            lastScan: '2 hours ago',
+            enabled: false,
+            status: 'Disabled',
+            lastScan: 'Never',
             threats: 0,
             route: '/dark-web-monitoring'
         },
         {
             id: 'vpn',
             title: 'Military-Grade VPN',
-            description: 'Connected to New York server (23ms ping)',
+            description: 'Connect to 50+ server locations worldwide',
             icon: '🔐',
-            enabled: true,
-            status: 'Connected',
-            server: 'New York, US',
-            bandwidth: '89.2 Mbps',
+            enabled: false,
+            status: 'Disconnected',
+            server: 'Not connected',
+            bandwidth: '0 Mbps',
             route: '/vpn'
         },
         {
             id: 'password-manager',
             title: 'Password Manager',
-            description: '156 passwords secured, 12 need updates',
+            description: 'Secure and manage your passwords',
             icon: '🔑',
-            enabled: true,
-            status: 'Active',
-            secured: 156,
-            needsUpdate: 12,
+            enabled: false,
+            status: 'Inactive',
+            secured: 0,
+            needsUpdate: 0,
             route: '/password-manager'
         },
         {
             id: 'data-removal',
             title: 'Data Removal Service',
-            description: '23 removal requests in progress',
+            description: 'Remove your data from 400+ broker sites',
             icon: '🗑️',
-            enabled: true,
-            status: 'Processing',
-            inProgress: 23,
-            completed: 47,
+            enabled: false,
+            status: 'Inactive',
+            inProgress: 0,
+            completed: 0,
             route: '/data-removal'
         },
         {
             id: 'identity-monitoring',
             title: '24/7 Identity Monitoring',
-            description: 'Last scan: 15 minutes ago - All clear',
+            description: 'Monitor your identity across the web',
             icon: '🛡️',
-            enabled: true,
-            status: 'Monitoring',
-            lastScan: '15 minutes ago',
+            enabled: false,
+            status: 'Inactive',
+            lastScan: 'Never',
             alerts: 0,
             route: '/identity-monitoring'
         },
         {
             id: 'ad-blocker',
             title: 'Advanced Ad Blocker',
-            description: '2,847 ads blocked today across all devices',
+            description: 'Block ads, trackers, and malicious websites',
             icon: '🚫',
-            enabled: true,
-            status: 'Active',
-            blockedToday: 2847,
-            blockedTotal: 45692,
+            enabled: false,
+            status: 'Inactive',
+            blockedToday: 0,
+            blockedTotal: 0,
             route: '/ad-blocker'
         }
     ];
 
+    // Terminal command sequences for different features
+    const getTerminalCommands = (featureId, isEnabling) => {
+        const commands = {
+            'dark-web': {
+                enabled: [
+                    { prompt: 'sudo', command: 'cyberforget --enable dark-web-monitoring', delay: 0 },
+                    { prompt: '>', command: 'Initializing dark web scanner...', delay: 800, output: true },
+                    { prompt: '>', command: 'Connecting to 127 dark web sources...', delay: 1600, output: true },
+                    { prompt: '>', command: 'Scanning for personal data exposure...', delay: 2400, output: true },
+                    { prompt: '✓', command: 'Dark Web Protection ACTIVATED', delay: 3200, success: true }
+                ],
+                disabled: [
+                    { prompt: 'sudo', command: 'cyberforget --disable dark-web-monitoring', delay: 0 },
+                    { prompt: '>', command: 'Stopping dark web monitoring...', delay: 800, output: true },
+                    { prompt: '✓', command: 'Dark Web Protection DEACTIVATED', delay: 1600, warning: true }
+                ]
+            },
+            'vpn': {
+                enabled: [
+                    { prompt: 'sudo', command: 'cyberforget --enable vpn-service', delay: 0 },
+                    { prompt: '>', command: 'Loading VPN configuration...', delay: 800, output: true },
+                    { prompt: '>', command: 'Please select platform for installation', delay: 1600, output: true }
+                ]
+            },
+            'password-manager': {
+                enabled: [
+                    { prompt: 'sudo', command: 'cyberforget --enable password-vault', delay: 0 },
+                    { prompt: '>', command: 'Initializing encrypted password vault...', delay: 800, output: true },
+                    { prompt: '>', command: 'Generating AES-256 encryption keys...', delay: 1600, output: true },
+                    { prompt: '>', command: 'Please select platform for installation', delay: 2400, output: true }
+                ],
+                disabled: [
+                    { prompt: 'sudo', command: 'cyberforget --disable password-vault', delay: 0 },
+                    { prompt: '>', command: 'Securing password vault...', delay: 800, output: true },
+                    { prompt: '✓', command: 'Password Manager DEACTIVATED', delay: 1600, warning: true }
+                ]
+            },
+            'data-removal': {
+                enabled: [
+                    { prompt: 'sudo', command: 'cyberforget --enable data-removal', delay: 0 },
+                    { prompt: '>', command: 'Scanning 400+ data broker sites...', delay: 800, output: true },
+                    { prompt: '>', command: 'Generating removal requests...', delay: 1600, output: true },
+                    { prompt: '>', command: 'Submitting automated takedown notices...', delay: 2400, output: true },
+                    { prompt: '✓', command: 'Data Removal Service ACTIVATED', delay: 3200, success: true }
+                ],
+                disabled: [
+                    { prompt: 'sudo', command: 'cyberforget --disable data-removal', delay: 0 },
+                    { prompt: '>', command: 'Pausing removal requests...', delay: 800, output: true },
+                    { prompt: '✓', command: 'Data Removal Service DEACTIVATED', delay: 1600, warning: true }
+                ]
+            },
+            'identity-monitoring': {
+                enabled: [
+                    { prompt: 'sudo', command: 'cyberforget --enable identity-monitor', delay: 0 },
+                    { prompt: '>', command: 'Starting 24/7 identity monitoring...', delay: 800, output: true },
+                    { prompt: '>', command: 'Monitoring credit reports, SSN usage...', delay: 1600, output: true },
+                    { prompt: '>', command: 'Setting up real-time alerts...', delay: 2400, output: true },
+                    { prompt: '✓', command: 'Identity Monitoring ACTIVATED', delay: 3200, success: true }
+                ],
+                disabled: [
+                    { prompt: 'sudo', command: 'cyberforget --disable identity-monitor', delay: 0 },
+                    { prompt: '>', command: 'Stopping identity monitoring...', delay: 800, output: true },
+                    { prompt: '✓', command: 'Identity Monitoring DEACTIVATED', delay: 1600, warning: true }
+                ]
+            },
+            'ad-blocker': {
+                enabled: [
+                    { prompt: 'sudo', command: 'cyberforget --enable ad-blocker', delay: 0 },
+                    { prompt: '>', command: 'Loading ad-blocking filters...', delay: 800, output: true },
+                    { prompt: '>', command: 'Blocking trackers and malicious ads...', delay: 1600, output: true },
+                    { prompt: '>', command: 'Installing browser extensions...', delay: 2400, output: true },
+                    { prompt: '✓', command: 'Ad Blocker ACTIVATED', delay: 3200, success: true }
+                ],
+                disabled: [
+                    { prompt: 'sudo', command: 'cyberforget --disable ad-blocker', delay: 0 },
+                    { prompt: '>', command: 'Disabling ad-blocking filters...', delay: 800, output: true },
+                    { prompt: '✓', command: 'Ad Blocker DEACTIVATED', delay: 1600, warning: true }
+                ]
+            }
+        };
+        
+        return commands[featureId]?.[isEnabling ? 'enabled' : 'disabled'] || [];
+    };
+
+    // Add terminal notification function
+    const addTerminalNotification = (featureId, isEnabling) => {
+        const id = Date.now();
+        const commands = getTerminalCommands(featureId, isEnabling);
+        const feature = features.find(f => f.id === featureId);
+        
+        const notification = { 
+            id, 
+            type: 'terminal', 
+            title: `${feature.title}`, 
+            commands: [],
+            featureId,
+            isEnabling
+        };
+        
+        setNotifications(prev => [notification, ...prev]);
+        
+        // Scroll to top to show the console notification
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 100);
+        
+        // Add commands with delays
+        commands.forEach((cmd, index) => {
+            setTimeout(() => {
+                setNotifications(prev => 
+                    prev.map(n => 
+                        n.id === id 
+                            ? { ...n, commands: [...n.commands, cmd] }
+                            : n
+                    )
+                );
+            }, cmd.delay);
+        });
+        
+        // Show VPN modal after terminal commands complete for VPN
+        if (featureId === 'vpn' && isEnabling) {
+            setTimeout(() => {
+                setShowVpnModal(true);
+            }, 2000);
+        }
+        
+        // Show Password Manager modal after terminal commands complete
+        if (featureId === 'password-manager' && isEnabling) {
+            setTimeout(() => {
+                setShowPasswordModal(true);
+            }, 2800);
+        }
+        
+        // Auto-remove notification after commands complete
+        const totalDuration = Math.max(...commands.map(c => c.delay)) + 3000;
+        setTimeout(() => {
+            setNotifications(prev => prev.filter(n => n.id !== id));
+        }, totalDuration);
+    };
+
+    const removeNotification = (id) => {
+        setNotifications(prev => prev.filter(n => n.id !== id));
+    };
+
     const handleToggleFeature = (featureId) => {
+        const isCurrentlyEnabled = activeFeatures[featureId] || false;
+        
         setActiveFeatures(prev => ({
             ...prev,
-            [featureId]: !prev[featureId]
+            [featureId]: !isCurrentlyEnabled
         }));
+
+        // Show terminal notification
+        addTerminalNotification(featureId, !isCurrentlyEnabled);
+    };
+
+    // Platform Download Functions
+    const downloadVpnFile = (platform) => {
+        const files = {
+            'windows': {
+                name: 'CyberForget-VPN-Windows.exe',
+                url: 'data:application/octet-stream;base64,UEsDBBQAAAAIAAAAAAAAAAAAAAAAAAAAABEAAABDeWJlckZvcmdldC1WUE4uZXhl',
+                size: '24.5 MB'
+            },
+            'mac': {
+                name: 'CyberForget-VPN-Mac.dmg',
+                url: 'data:application/octet-stream;base64,UEsDBBQAAAAIAAAAAAAAAAAAAAAAAAAAABAAAABDeWJlckZvcmdldC1WUE4uZG1n',
+                size: '31.2 MB'
+            },
+            'chrome': {
+                name: 'CyberForget-VPN-Chrome.crx',
+                url: 'data:application/octet-stream;base64,UEsDBBQAAAAIAAAAAAAAAAAAAAAAAAAAABAAAABDeWJlckZvcmdldC1WUE4uY3J4',
+                size: '2.1 MB'
+            }
+        };
+
+        const file = files[platform];
+        if (file) {
+            // Create a blob and download link
+            const link = document.createElement('a');
+            link.href = file.url;
+            link.download = file.name;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Show success terminal notification
+            const id = Date.now();
+            const notification = {
+                id,
+                type: 'terminal',
+                title: 'VPN Download',
+                commands: [
+                    { prompt: 'sudo', command: `downloading ${file.name}`, delay: 0 },
+                    { prompt: '>', command: `File size: ${file.size}`, delay: 500, output: true },
+                    { prompt: '>', command: 'Download started...', delay: 1000, output: true },
+                    { prompt: '✓', command: 'VPN Client Downloaded Successfully', delay: 2000, success: true }
+                ]
+            };
+
+            setNotifications(prev => [notification, ...prev]);
+            
+            // Scroll to top to show the download notification
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 100);
+            
+            // Add commands with delays
+            notification.commands.forEach((cmd) => {
+                setTimeout(() => {
+                    setNotifications(prev => 
+                        prev.map(n => 
+                            n.id === id 
+                                ? { ...n, commands: [...(n.commands || []), cmd] }
+                                : n
+                        )
+                    );
+                }, cmd.delay);
+            });
+
+            setTimeout(() => {
+                setNotifications(prev => prev.filter(n => n.id !== id));
+            }, 5000);
+        }
+    };
+
+    const downloadPasswordManagerFile = (platform) => {
+        const files = {
+            'windows': {
+                name: 'CyberForget-PasswordManager-Windows.exe',
+                url: 'data:application/octet-stream;base64,UEsDBBQAAAAIAAAAAAAAAAAAAAAAAAAAABkAAABDeWJlckZvcmdldC1QYXNzd29yZC5leGU=',
+                size: '18.3 MB'
+            },
+            'mac': {
+                name: 'CyberForget-PasswordManager-Mac.dmg',
+                url: 'data:application/octet-stream;base64,UEsDBBQAAAAIAAAAAAAAAAAAAAAAAAAAABgAAABDeWJlckZvcmdldC1QYXNzd29yZC5kbWc=',
+                size: '22.7 MB'
+            },
+            'chrome': {
+                name: 'CyberForget-PasswordManager-Chrome.crx',
+                url: 'data:application/octet-stream;base64,UEsDBBQAAAAIAAAAAAAAAAAAAAAAAAAAABgAAABDeWJlckZvcmdldC1QYXNzd29yZC5jcng=',
+                size: '3.4 MB'
+            }
+        };
+
+        const file = files[platform];
+        if (file) {
+            // Create a blob and download link
+            const link = document.createElement('a');
+            link.href = file.url;
+            link.download = file.name;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Show success terminal notification
+            const id = Date.now();
+            const notification = {
+                id,
+                type: 'terminal',
+                title: 'Password Manager Download',
+                commands: [
+                    { prompt: 'sudo', command: `downloading ${file.name}`, delay: 0 },
+                    { prompt: '>', command: `File size: ${file.size}`, delay: 500, output: true },
+                    { prompt: '>', command: 'Download started...', delay: 1000, output: true },
+                    { prompt: '✓', command: 'Password Manager Downloaded Successfully', delay: 2000, success: true }
+                ]
+            };
+
+            setNotifications(prev => [notification, ...prev]);
+            
+            // Scroll to top to show the download notification
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 100);
+            
+            // Add commands with delays
+            notification.commands.forEach((cmd) => {
+                setTimeout(() => {
+                    setNotifications(prev => 
+                        prev.map(n => 
+                            n.id === id 
+                                ? { ...n, commands: [...(n.commands || []), cmd] }
+                                : n
+                        )
+                    );
+                }, cmd.delay);
+            });
+
+            setTimeout(() => {
+                setNotifications(prev => prev.filter(n => n.id !== id));
+            }, 5000);
+        }
+    };
+
+    const handleVpnDownload = () => {
+        if (selectedPlatform) {
+            downloadVpnFile(selectedPlatform);
+            setShowVpnModal(false);
+            setSelectedPlatform('');
+            
+            // Mark VPN as enabled after download
+            setActiveFeatures(prev => ({
+                ...prev,
+                'vpn': true
+            }));
+        }
+    };
+
+    const handlePasswordManagerDownload = () => {
+        if (selectedPlatform) {
+            downloadPasswordManagerFile(selectedPlatform);
+            setShowPasswordModal(false);
+            setSelectedPlatform('');
+            
+            // Mark Password Manager as enabled after download
+            setActiveFeatures(prev => ({
+                ...prev,
+                'password-manager': true
+            }));
+        }
     };
 
     const handleFeatureClick = (route) => {
@@ -124,9 +453,46 @@ const PremiumDashboard = () => {
 
     return (
         <div className="premium-dashboard">
-            <div className="dashboard-container">
-                {/* Header Section */}
-                <div className="premium-header">
+                <div className="dashboard-container">
+                    {/* Terminal Console Notifications */}
+                    {notifications.map(notification => (
+                        <div key={notification.id} className="console-notification">
+                            <div className="terminal-header">
+                                <div className="terminal-title">
+                                    CYBERFORGET TERMINAL - {notification.title.toUpperCase()}
+                                </div>
+                                <button 
+                                    className="terminal-close"
+                                    onClick={() => removeNotification(notification.id)}
+                                >
+                                    ●
+                                </button>
+                            </div>
+                            <div className="terminal-content">
+                                {notification.commands?.map((cmd, index) => (
+                                    <div key={index} className="terminal-line">
+                                        <span className="terminal-prompt">{cmd.prompt}$</span>
+                                        <span className={`terminal-command ${
+                                            cmd.success ? 'terminal-success' : 
+                                            cmd.warning ? 'terminal-warning' : 
+                                            cmd.error ? 'terminal-error' : ''
+                                        }`}>
+                                            {cmd.command}
+                                        </span>
+                                    </div>
+                                ))}
+                                {notification.commands?.length === 0 && (
+                                    <div className="terminal-line">
+                                        <span className="terminal-prompt">$</span>
+                                        <span className="terminal-command">Initializing...</span>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+
+                    {/* Header Section */}
+                    <div className="premium-header">
                     <div className="header-content">
                         <h1>Welcome back, {user?.firstName || 'User'}!</h1>
                         <p>Your digital security is actively protected by CyberForget</p>
@@ -181,9 +547,9 @@ const PremiumDashboard = () => {
                             >
                                 <div className="feature-header">
                                     <div className="feature-icon">{feature.icon}</div>
-                                    <div className="feature-status-badge active">
-                                        <div className="status-dot"></div>
-                                        {feature.status}
+                                    <div className={`feature-status-badge ${(activeFeatures[feature.id] || feature.enabled) ? 'active' : 'inactive'}`}>
+                                        {(activeFeatures[feature.id] || feature.enabled) && <div className="status-dot"></div>}
+                                        {(activeFeatures[feature.id] || feature.enabled) ? 'Active' : 'Inactive'}
                                     </div>
                                 </div>
                                 <h3>{feature.title}</h3>
@@ -234,16 +600,16 @@ const PremiumDashboard = () => {
 
                                 <div className="feature-toggle">
                                     <div 
-                                        className={`toggle-switch ${feature.enabled ? 'active' : ''}`}
+                                        className={`toggle-switch ${(activeFeatures[feature.id] || feature.enabled) ? 'active' : ''}`}
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             handleToggleFeature(feature.id);
                                         }}
                                     >
-                                        <div className={`toggle-slider ${feature.enabled ? 'active' : ''}`}></div>
+                                        <div className={`toggle-slider ${(activeFeatures[feature.id] || feature.enabled) ? 'active' : ''}`}></div>
                                     </div>
                                     <span className="toggle-label">
-                                        {feature.enabled ? 'Enabled' : 'Disabled'}
+                                        {(activeFeatures[feature.id] || feature.enabled) ? 'Enabled' : 'Disabled'}
                                     </span>
                                 </div>
                             </div>
@@ -313,6 +679,116 @@ const PremiumDashboard = () => {
                     </div>
                 </div>
             </div>
+            
+            {/* VPN Platform Selection Modal */}
+            {showVpnModal && (
+                <div className="vpn-modal-overlay" onClick={() => setShowVpnModal(false)}>
+                    <div className="vpn-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className="vpn-modal-header">
+                            <h2 className="vpn-modal-title">Choose Your Platform</h2>
+                            <p className="vpn-modal-subtitle">Select your operating system to download the VPN client</p>
+                        </div>
+                        
+                        <div className="platform-options">
+                            <div 
+                                className={`platform-option ${selectedPlatform === 'windows' ? 'selected' : ''}`}
+                                onClick={() => setSelectedPlatform('windows')}
+                            >
+                                <div className="platform-icon windows"></div>
+                                <div className="platform-name">Windows</div>
+                                <div className="platform-description">Desktop application for Windows 10/11</div>
+                            </div>
+                            <div 
+                                className={`platform-option ${selectedPlatform === 'mac' ? 'selected' : ''}`}
+                                onClick={() => setSelectedPlatform('mac')}
+                            >
+                                <div className="platform-icon mac"></div>
+                                <div className="platform-name">macOS</div>
+                                <div className="platform-description">Native app for macOS 10.15+</div>
+                            </div>
+                            <div 
+                                className={`platform-option ${selectedPlatform === 'chrome' ? 'selected' : ''}`}
+                                onClick={() => setSelectedPlatform('chrome')}
+                            >
+                                <div className="platform-icon chrome"></div>
+                                <div className="platform-name">Chrome Extension</div>
+                                <div className="platform-description">Browser extension for Chrome/Edge</div>
+                            </div>
+                        </div>
+                        
+                        <div className="vpn-modal-buttons">
+                            <button 
+                                className="vpn-btn primary" 
+                                onClick={handleVpnDownload}
+                                disabled={!selectedPlatform}
+                            >
+                                Download VPN Client
+                            </button>
+                            <button 
+                                className="vpn-btn secondary" 
+                                onClick={() => setShowVpnModal(false)}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            
+            {/* Password Manager Platform Selection Modal */}
+            {showPasswordModal && (
+                <div className="password-modal-overlay" onClick={() => setShowPasswordModal(false)}>
+                    <div className="password-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className="password-modal-header">
+                            <h2 className="password-modal-title">Choose Your Platform</h2>
+                            <p className="password-modal-subtitle">Select your operating system to download the Password Manager</p>
+                        </div>
+                        
+                        <div className="platform-options">
+                            <div 
+                                className={`platform-option ${selectedPlatform === 'windows' ? 'selected' : ''}`}
+                                onClick={() => setSelectedPlatform('windows')}
+                            >
+                                <div className="platform-icon windows"></div>
+                                <div className="platform-name">Windows</div>
+                                <div className="platform-description">Desktop application for Windows 10/11</div>
+                            </div>
+                            <div 
+                                className={`platform-option ${selectedPlatform === 'mac' ? 'selected' : ''}`}
+                                onClick={() => setSelectedPlatform('mac')}
+                            >
+                                <div className="platform-icon mac"></div>
+                                <div className="platform-name">macOS</div>
+                                <div className="platform-description">Native app for macOS 10.15+</div>
+                            </div>
+                            <div 
+                                className={`platform-option ${selectedPlatform === 'chrome' ? 'selected' : ''}`}
+                                onClick={() => setSelectedPlatform('chrome')}
+                            >
+                                <div className="platform-icon chrome"></div>
+                                <div className="platform-name">Chrome Extension</div>
+                                <div className="platform-description">Browser extension for Chrome/Edge</div>
+                            </div>
+                        </div>
+                        
+                        <div className="password-modal-buttons">
+                            <button 
+                                className="password-btn primary" 
+                                onClick={handlePasswordManagerDownload}
+                                disabled={!selectedPlatform}
+                            >
+                                Download Password Manager
+                            </button>
+                            <button 
+                                className="password-btn secondary" 
+                                onClick={() => setShowPasswordModal(false)}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -81,6 +81,9 @@ const NewDashboard = () => {
         navigate('/pricing');
     };
 
+    // Debug logging
+    console.log('NewDashboard Debug:', { isTrial, isPremium, daysRemaining, shouldShowPaywall });
+
     // Show premium dashboard for trial/premium users
     if (isTrial || isPremium || daysRemaining > 0 /* || DEBUG_FORCE_PREMIUM */) {
         return <PremiumDashboard />;
@@ -88,16 +91,20 @@ const NewDashboard = () => {
 
     // Free user dashboard with interactive toggles
     return (
-        <div className="new-dashboard free-dashboard">
+        <div className="new-dashboard free-dashboard" data-debug="newdashboard-instance">
             <div className="dashboard-container">
                 {/* Hero Section */}
                 <div className="dashboard-header">
-                    <div className="hero-badge">🚀 5-Day Free Trial</div>
-                    <h1>Unlock Your Complete Cyber Security Suite</h1>
-                    <p>Protect your digital identity with military-grade security tools used by 2.3M+ users worldwide</p>
-                    <button className="cta-button primary" onClick={handleStartTrial}>
-                        Start Free Trial - No Credit Card Required
-                    </button>
+                    <div className="hero-content-left">
+                        <div className="hero-badge">🚀 5-Day Free Trial</div>
+                        <h1>Unlock Your Complete Cyber Security Suite</h1>
+                    </div>
+                    <div className="hero-content-right">
+                        <p>Protect your digital identity with military-grade security tools used by 2.3M+ users worldwide</p>
+                        <button className="cta-button primary" onClick={handleStartTrial}>
+                            Start Free Trial - No Credit Card Required
+                        </button>
+                    </div>
                 </div>
 
                 {/* Interactive Feature Toggles */}

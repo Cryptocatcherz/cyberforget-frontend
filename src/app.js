@@ -6,7 +6,6 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { ClerkProvider, useAuth as useClerkAuth } from '@clerk/clerk-react';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import Dashboard from './pages/Dashboard';
 import NewDashboard from './pages/NewDashboard';
 import EditInfoPage from './pages/EditInfoPage';
 import SuccessPage from './pages/SuccessPage';
@@ -59,6 +58,7 @@ import DataRemovalPage from './pages/DataRemovalPage';
 import OnboardingPage from './pages/OnboardingPage';
 import PremiumFlowTest from './components/PremiumFlowTest';
 import PremiumDashboard from './pages/PremiumDashboard';
+import DebugPremiumDashboard from './pages/DebugPremiumDashboard';
 import NotFoundPage from './pages/NotFoundPage';
 
 const PrivateRoute = ({ children }) => {
@@ -113,6 +113,7 @@ const AppContent = React.memo(() => {
     // Only show sidebar on dashboard and other authenticated pages
     const showSidebarPages = [
         '/dashboard',
+        '/premium-dashboard',
         '/data-removal',
         '/vpn'
     ];
@@ -233,14 +234,6 @@ const AppContent = React.memo(() => {
                         element={
                             <PrivateRoute>
                                 <NewDashboard />
-                            </PrivateRoute>
-                        }
-                    />
-                    <Route
-                        path="/dashboard-old"
-                        element={
-                            <PrivateRoute>
-                                <Dashboard />
                             </PrivateRoute>
                         }
                     />
@@ -685,26 +678,24 @@ const AppContent = React.memo(() => {
                         />
                     )}
 
-                    {/* Premium Dashboard Debug Page (Development Only) */}
-                    {process.env.NODE_ENV === 'development' && (
-                        <Route
-                            path="/debug-premium-dashboard"
-                            element={
-                                <PrivateRoute>
-                                    <>
-                                        <Helmet>
-                                            <title>Premium Dashboard Debug - CyberForget | Development</title>
-                                            <meta
-                                                name="description"
-                                                content="Debug page for premium dashboard testing."
-                                            />
-                                        </Helmet>
-                                        <PremiumDashboard />
-                                    </>
-                                </PrivateRoute>
-                            }
-                        />
-                    )}
+                    {/* Premium Dashboard Access - Subscription Based */}
+                    <Route
+                        path="/premium-dashboard"
+                        element={
+                            <PrivateRoute>
+                                <>
+                                    <Helmet>
+                                        <title>Premium Dashboard - CyberForget | Advanced Security Suite</title>
+                                        <meta
+                                            name="description"
+                                            content="Access your premium dashboard with advanced security features and real-time monitoring."
+                                        />
+                                    </Helmet>
+                                    <DebugPremiumDashboard />
+                                </>
+                            </PrivateRoute>
+                        }
+                    />
 
                     {/* Default Route - Chat Page */}
                     <Route

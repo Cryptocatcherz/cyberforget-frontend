@@ -5,7 +5,7 @@ import HourlyScansComponent from '../components/HourlyScansComponent';
 import Navbar from '../components/Navbar';
 import MobileNavbar from '../components/MobileNavbar';
 import Sidebar from '../components/Sidebar';
-import './Dashboard.css'; // Reuse dashboard styles
+import './NewDashboard.css'; // Reuse dashboard styles
 
 const HourlyScansTestPage = () => {
   const { user } = useAuth();
