@@ -11,6 +11,9 @@ const NewDashboard = () => {
     const { shouldShowPaywall, isPremium, isTrial, daysRemaining } = useSubscription();
     const [showSignupModal, setShowSignupModal] = useState(false);
     const [activeToggle, setActiveToggle] = useState(null);
+    
+    // DEBUG MODE: Uncomment the line below to force premium dashboard view
+    // const DEBUG_FORCE_PREMIUM = true;
 
     // Feature toggles data
     const features = [
@@ -79,7 +82,7 @@ const NewDashboard = () => {
     };
 
     // Show premium dashboard for trial/premium users
-    if (isTrial || isPremium || daysRemaining > 0) {
+    if (isTrial || isPremium || daysRemaining > 0 /* || DEBUG_FORCE_PREMIUM */) {
         return <PremiumDashboard />;
     }
 

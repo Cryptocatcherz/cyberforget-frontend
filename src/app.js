@@ -58,6 +58,7 @@ import DataRemovalDashboard from './pages/DataRemovalDashboard';
 import DataRemovalPage from './pages/DataRemovalPage';
 import OnboardingPage from './pages/OnboardingPage';
 import PremiumFlowTest from './components/PremiumFlowTest';
+import PremiumDashboard from './pages/PremiumDashboard';
 import NotFoundPage from './pages/NotFoundPage';
 
 const PrivateRoute = ({ children }) => {
@@ -678,6 +679,27 @@ const AppContent = React.memo(() => {
                                         <div style={{ padding: '20px', minHeight: '100vh', background: 'linear-gradient(135deg, #0A0B1E 0%, #1a1d35 50%, #0A0B1E 100%)' }}>
                                             <PremiumFlowTest />
                                         </div>
+                                    </>
+                                </PrivateRoute>
+                            }
+                        />
+                    )}
+
+                    {/* Premium Dashboard Debug Page (Development Only) */}
+                    {process.env.NODE_ENV === 'development' && (
+                        <Route
+                            path="/debug-premium-dashboard"
+                            element={
+                                <PrivateRoute>
+                                    <>
+                                        <Helmet>
+                                            <title>Premium Dashboard Debug - CyberForget | Development</title>
+                                            <meta
+                                                name="description"
+                                                content="Debug page for premium dashboard testing."
+                                            />
+                                        </Helmet>
+                                        <PremiumDashboard />
                                     </>
                                 </PrivateRoute>
                             }
