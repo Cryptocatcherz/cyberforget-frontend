@@ -1,0 +1,72 @@
+.galaxy-button {
+    position: relative;
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    margin: 0.5rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.galaxy-button button,
+.galaxy-button a {
+    background: var(--button-gradient);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.galaxy-button.login button,
+.galaxy-button.login a {
+    background: var(--login-gradient);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    box-shadow: var(--neon-shadow);
+}
+
+.galaxy-button.login button:hover,
+.galaxy-button.login a:hover {
+    background: var(--login-hover);
+    transform: scale(1.05);
+    border-color: rgba(0, 242, 254, 0.6);
+}
+
+.galaxy-button button:hover,
+.galaxy-button a:hover {
+    transform: scale(1.05);
+    box-shadow: var(--neon-shadow);
+}
+
+.galaxy-button .text {
+    position: relative;
+    z-index: 3;
+    opacity: 0.95;
+    transition: opacity 0.3s ease;
+}
+
+.galaxy-button:hover .text {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .galaxy-button {
+        width: 100%;
+        margin: 1vh 0;
+    }
+
+    .galaxy-button button,
+    .galaxy-button a {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,379 @@
+/* Paywall Overlay Styles */
+
+.paywall-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+
+.paywall-children {
+  transition: filter 0.3s ease;
+}
+
+.paywall-children.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.paywall-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 20px;
+}
+
+.paywall-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.paywall-header {
+  margin-bottom: 24px;
+}
+
+.feature-icon {
+  color: #00d4ff;
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.feature-icon-large {
+  color: #00d4ff;
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.paywall-content h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.paywall-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Trial Status */
+.trial-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 20px 0;
+  font-weight: 500;
+}
+
+.trial-status.active {
+  background: rgba(66, 255, 181, 0.1);
+  border: 1px solid rgba(66, 255, 181, 0.3);
+  color: #42ffb5;
+}
+
+.trial-status.expired {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  color: #ff4444;
+}
+
+.trial-status.none {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+}
+
+.trial-icon {
+  font-size: 1rem;
+}
+
+/* Trial Usage */
+.trial-usage {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.usage-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
+}
+
+.usage-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Premium Benefits */
+.premium-benefits {
+  margin: 24px 0;
+  text-align: left;
+}
+
+.premium-benefits h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.crown-icon {
+  color: #ffd700;
+  font-size: 1.2rem;
+}
+
+.premium-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.premium-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.premium-benefits li svg {
+  color: #42ffb5;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* Actions */
+.paywall-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-upgrade-primary {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-upgrade-primary:hover {
+  background: linear-gradient(135deg, #00bfff 0%, #0088bb 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+.btn-upgrade-secondary {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-upgrade-secondary:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Inline Variant */
+.paywall-inline {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.paywall-content-small {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lock-icon {
+  color: #00d4ff;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.paywall-text {
+  flex: 1;
+}
+
+.paywall-text h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.paywall-text p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.upgrade-btn-small {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.upgrade-btn-small:hover {
+  background: linear-gradient(135deg, #00bfff 0%, #0088bb 100%);
+  transform: translateY(-1px);
+}
+
+/* Modal Variant */
+.paywall-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.paywall-modal {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.paywall-modal-content h2 {
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 16px 0 12px 0;
+}
+
+.paywall-modal-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* --- Fix for PremiumModal always centered and above all content --- */
+.premium-modal, .premium-modal-backdrop {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 99999 !important;
+    margin: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    /* Ensure modal is not constrained by parent containers */
+}
+
+/* Remove any accidental container overflow for inline variant */
+.paywall-inline {
+    overflow: visible !important;
+    position: static !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .paywall-overlay {
+    padding: 16px;
+  }
+  
+  .paywall-content {
+    padding: 24px;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+  }
+  
+  .paywall-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .paywall-content p {
+    font-size: 0.95rem;
+  }
+  
+  .paywall-content-small {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .paywall-modal {
+    padding: 24px;
+    margin: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .paywall-actions {
+    gap: 8px;
+  }
+  
+  .btn-upgrade-primary,
+  .btn-upgrade-secondary {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+}

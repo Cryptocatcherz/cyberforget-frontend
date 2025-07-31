@@ -1,0 +1,13 @@
+/* variables.css */
+:root {
+    --primary-color: #1e1e2f;
+    --secondary-color: #2a2a40;
+    --accent-color: #4caf50;
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --muted-text-color: #b0b0b0;
+    --error-color: #ff5252;
+    --success-color: #4caf50;
+    --hover-color: #333344;
+    --border-color: #333;
+}

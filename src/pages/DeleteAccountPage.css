@@ -1,0 +1,905 @@
+.page-container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    color: #ffffff;
+}
+
+.delete-account-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding-top: 80px; /* Account for navbar */
+}
+
+.language-flags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.flag-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flag-button:hover {
+    transform: scale(1.1);
+}
+
+.flag-button.active {
+    background: rgba(216, 255, 96, 0.1);
+    box-shadow: 0 0 10px rgba(216, 255, 96, 0.3);
+}
+
+.flag {
+    font-size: 1.5rem;
+}
+
+.page-header {
+    margin: 15px 0 30px;
+    text-align: center;
+    background: rgba(30, 30, 30, 0.6);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.page-header h1 {
+    font-size: 2.8rem;
+    color: #D8FF60;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+    padding: 0 10px;
+    word-break: break-word;
+    text-shadow: 0 0 20px rgba(216, 255, 96, 0.3);
+}
+
+.difficulty-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #D8FF60;
+    margin: 40px 0 20px;
+}
+
+.service-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 25px;
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 15px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.info-item {
+    flex: 1;
+    min-width: 200px;
+    color: #ffffff;
+}
+
+.info-item strong {
+    color: #D8FF60;
+    margin-right: 8px;
+}
+
+.delete-account-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.delete-account-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #D8FF60;
+    color: #000;
+    padding: 20px 40px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.delete-account-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(216, 255, 96, 0.4);
+    background: #e5ff8a;
+}
+
+.requirements-section, 
+.impact-section {
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.requirements-section h2,
+.impact-section h2 {
+    color: #D8FF60;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(216, 255, 96, 0.3);
+}
+
+.requirements-list,
+.impact-list {
+    list-style: none;
+    padding: 0;
+    color: #ffffff;
+}
+
+.requirements-list li,
+.impact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.requirements-list li:last-child,
+.impact-list li:last-child {
+    border-bottom: none;
+}
+
+.requirement-icon {
+    color: #28a745;
+    margin-top: 4px;
+}
+
+.impact-icon {
+    color: #ffc107;
+    margin-top: 4px;
+}
+
+.data-retention-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.info-card {
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    color: #ffffff;
+}
+
+.info-icon {
+    font-size: 2rem;
+    color: #D8FF60;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    color: #D8FF60;
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+.alternatives-section {
+    margin: 30px 0;
+}
+
+.alternatives-section h2 {
+    color: #D8FF60;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.alternatives-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.alternative-card {
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    color: #ffffff;
+}
+
+.alternative-card:hover {
+    transform: translateY(-5px);
+    background: rgba(216, 255, 96, 0.1);
+    border-color: rgba(216, 255, 96, 0.2);
+}
+
+.faq-section {
+    margin: 30px 0;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.faq-item summary {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-icon {
+    color: #D8FF60;
+}
+
+.faq-item p {
+    padding: 0 20px 20px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.compliance-section {
+    margin: 30px 0;
+}
+
+.compliance-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.compliance-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.compliance-badge.gdpr {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.compliance-badge.ccpa {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.contact-support {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+}
+
+.support-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 40px;
+    background: rgba(216, 255, 96, 0.1);
+    color: #D8FF60;
+    border: 1px solid #D8FF60;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.support-button:hover {
+    background: rgba(216, 255, 96, 0.2);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #D8FF60;
+    text-decoration: none;
+    margin-top: 40px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    transform: translateX(-5px);
+    text-decoration: none;
+    color: #e5ff8a;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    background: rgba(30, 30, 30, 0.6);
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .delete-account-page {
+        padding: 15px;
+        padding-top: 60px;
+    }
+
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .service-info {
+        padding: 20px;
+    }
+
+    .delete-account-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+
+    .requirements-section,
+    .impact-section {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .data-retention-info {
+        gap: 15px;
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        padding: 15px;
+    }
+
+    .alternatives-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .flag {
+        font-size: 1.2rem;
+    }
+    
+    .flag-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Stack the title parts on mobile */
+    h1::before {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.4rem;
+        padding: 0 5px;
+        margin: 5px auto;
+        line-height: 1.3;
+        width: 100%;
+    }
+
+    /* Further adjustments for very long titles */
+    h1[data-long-title="true"] {
+        font-size: 1.3rem;
+    }
+
+    .delete-account-page {
+        margin: 15px auto 10px;
+        padding: 10px;
+    }
+
+    .page-header {
+        margin-bottom: 20px;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+        padding: 0 5px;
+        margin-bottom: 10px;
+    }
+
+    .difficulty-indicator {
+        margin: 10px 0;
+    }
+}
+
+.deletion-steps {
+    margin: 2rem 0;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.deletion-steps h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #D8FF60;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 20px rgba(216, 255, 96, 0.2);
+}
+
+.deletion-steps ol {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: steps;
+}
+
+.deletion-steps li {
+    position: relative;
+    padding: 1rem 1rem 1rem 3rem;
+    margin-bottom: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.deletion-steps li:hover {
+    background: rgba(216, 255, 96, 0.05);
+    transform: translateX(5px);
+    border-color: rgba(216, 255, 96, 0.2);
+    box-shadow: 0 0 15px rgba(216, 255, 96, 0.1);
+}
+
+.deletion-steps li::before {
+    counter-increment: steps;
+    content: counter(steps);
+    position: absolute;
+    left: 1rem;
+    color: #D8FF60;
+    font-weight: 600;
+    font-size: 1rem;
+    background: rgba(216, 255, 96, 0.1);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.deletion-steps li:hover::before {
+    background: rgba(216, 255, 96, 0.15);
+    box-shadow: 0 0 10px rgba(216, 255, 96, 0.2);
+}
+
+.deletion-steps li:last-child {
+    margin-bottom: 0;
+}
+
+.deletion-steps {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.deletion-guide {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.deletion-guide h1 {
+  color: #D8FF60;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.guide-question {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.guide-question,
+.guide-question * {
+  border: none !important;
+  outline: none !important;
+}
+
+.guide-question svg {
+  color: #D8FF60;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  font-size: 1.1rem;
+}
+
+.guide-answer {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-left: 2.2rem;
+  margin-bottom: 3rem;
+  border: none !important;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .deletion-guide {
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+
+  .deletion-guide h1 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .guide-question {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .guide-answer {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .deletion-guide {
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+  }
+
+  .deletion-guide h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .guide-question {
+    font-size: 1rem;
+  }
+
+  .guide-answer {
+    font-size: 0.95rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Target all possible parent containers */
+.faq-section,
+.faq-item,
+.faq-container,
+.deletion-guide,
+.guide-container,
+[class*="faq"],
+[class*="guide"] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Target the specific question container */
+.guide-question,
+.faq-question,
+.question-container {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Target any nested elements */
+.guide-question *,
+.faq-question *,
+.question-container * {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove all interactive states */
+.faq-section,
+.faq-item,
+.deletion-guide,
+.guide-question,
+.guide-answer {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove hover states */
+.faq-section:hover,
+.faq-item:hover,
+.deletion-guide:hover,
+.guide-question:hover {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove focus states */
+.faq-section:focus,
+.faq-item:focus,
+.deletion-guide:focus,
+.guide-question:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove active states */
+.faq-section:active,
+.faq-item:active,
+.deletion-guide:active,
+.guide-question:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove focus-within states */
+.faq-section:focus-within,
+.faq-item:focus-within,
+.deletion-guide:focus-within,
+.guide-question:focus-within {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Target the specific element and all its states */
+button,
+[role="button"],
+.faq-item button,
+.faq-question button,
+.guide-question button,
+.deletion-guide button {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+/* Target any dashed borders specifically */
+*[class*="faq"],
+*[class*="guide"] {
+  border: none !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove dashed borders from all states */
+*:focus,
+*:active,
+*:hover,
+*[class*="faq"]:focus,
+*[class*="faq"]:active,
+*[class*="faq"]:hover,
+*[class*="guide"]:focus,
+*[class*="guide"]:active,
+*[class*="guide"]:hover {
+  border: none !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .delete-account-page {
+    padding: 10px;
+    margin: 30px auto 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding: 0 5px;
+  }
+
+  .service-info {
+    padding: 12px;
+    margin: 12px 0;
+  }
+}
+
+/* Fix for Microsoft Account specific issue */
+@media (max-width: 480px) {
+    .page-header {
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+        line-height: 1.2;
+        padding: 0 5px;
+        margin: 0 0 10px 0;
+        word-break: break-word;
+    }
+
+    .difficulty-indicator {
+        margin: 5px 0;
+    }
+
+    /* Prevent horizontal scroll */
+    .service-info, 
+    .steps-section,
+    .requirements-section,
+    .impact-section {
+        max-width: 100vw;
+        padding: 10px;
+        margin: 10px 0;
+    }
+}
+
+.steps-section {
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.steps-section h2 {
+    color: #D8FF60;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(216, 255, 96, 0.3);
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(40, 40, 40, 0.6);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.step-number {
+    background: #D8FF60;
+    color: #000000;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.step-text {
+    flex: 1;
+    line-height: 1.5;
+    color: #ffffff;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+    .steps-section {
+        padding: 15px;
+        margin: 15px 10px;
+    }
+
+    .step-item {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .step-text {
+        font-size: 14px;
+        line-height: 1.3;
+        padding-top: 3px;
+    }
+
+    .step-number {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+
+    /* Handle long URLs */
+    .step-text a {
+        word-break: break-all;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+        padding: 0 5px;
+    }
+
+    .steps-section {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .step-item {
+        padding: 12px;
+        gap: 10px;
+    }
+}

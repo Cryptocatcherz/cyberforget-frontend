@@ -1,0 +1,5 @@
+
+> frontend-v1@1.0.0 start
+> serve -s build -l 3000
+
+ INFO  Accepting connections at http://localhost:63125

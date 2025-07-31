@@ -1,0 +1,843 @@
+.dashboard-stats-container {
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    background: #1a1a1a;
+    border-radius: 12px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+}
+
+.stat-card {
+    background: #2a2a2a;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.2s;
+    border: 1px solid #333;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-card.scanning {
+    border: 1px solid rgba(0, 204, 255, 0.1);
+    background: linear-gradient(145deg, rgba(42, 42, 42, 0.9), rgba(34, 34, 34, 0.9));
+}
+
+.current-scan-site {
+    color: #4A90E2;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    animation: pulse 2s infinite;
+}
+
+.site-name {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.current-scan-stage {
+    color: rgba(216, 255, 96, 0.8);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+.stage-name {
+    font-weight: 500;
+    color: #4A90E2;
+}
+
+.stat-content h3 {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.stat-subtitle {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.next-scan-info {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #2a2a2a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+}
+
+.next-scan-info .icon {
+    font-size: 1rem;
+}
+
+.progress-container {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #333;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.progress-percentage {
+    color: #00ff9d;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.progress-bar-container {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 204, 255, 0.1);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #00ccff, #00ff9d);
+    height: 100%;
+    transition: width 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: progressGlow 2s infinite;
+}
+
+.scanning-text {
+    color: #00ccff !important;
+    animation: textPulse 2s infinite;
+}
+
+.animate-number {
+    transition: all 0.3s ease;
+}
+
+.progress-label {
+    color: #00ccff;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+@keyframes scanPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes progressGlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(500%); }
+}
+
+@keyframes textPulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.icon.warning {
+    color: #ffcc00;
+}
+
+.icon.data-pulse {
+    color: #00ff9d;
+    animation: dataPulse 3s infinite;
+}
+
+@keyframes dataPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-stats-container {
+        padding: 1rem;
+    }
+
+    .stats-grid {
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+    }
+
+    .stat-content h3 {
+        font-size: 0.85rem;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+    }
+
+    .stat-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .next-scan-info {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .progress-container {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-stats-container {
+        padding: 0.75rem;
+    }
+
+    .stat-card {
+        padding: 0.75rem;
+    }
+
+    .stat-content h3 {
+        font-size: 0.8rem;
+    }
+
+    .stat-value {
+        font-size: 1.25rem;
+    }
+
+    .stat-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .next-scan-info {
+        padding: 0.4rem;
+        font-size: 0.75rem;
+    }
+}
+
+.scan-progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: relative;
+    margin: 10px 0;
+    border: 1px solid rgba(74, 144, 226, 0.1);
+}
+
+.scan-progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #D8FF60;
+    border-radius: 2px;
+    transition: width 0.3s ease-out;
+}
+
+.scan-progress-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(216, 255, 96, 0.5),
+        transparent
+    );
+    animation: glowMove 2s infinite;
+}
+
+.scan-progress-label {
+    color: #4A90E2;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.scan-progress-percentage {
+    color: #4A90E2;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+@keyframes glowMove {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(500%); }
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: #1E1E1E;
+    border: 1px solid rgba(74, 144, 226, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+
+.stat-value {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.stat-description {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.813rem;
+    margin: 5px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4A90E2;
+    transition: width 0.3s ease;
+}
+
+.automated-scan-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.automated-scan-info i {
+    color: #4A90E2;
+    font-size: 1rem;
+    margin-top: 3px;
+}
+
+.scan-info-content {
+    flex: 1;
+}
+
+.scan-info-content span {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.813rem;
+    line-height: 1.4;
+}
+
+.next-scan-countdown {
+    color: #4A90E2;
+    font-size: 0.813rem;
+    margin-top: 4px;
+}
+
+.loading-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4A90E2;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(216, 255, 96, 0.7);
+    }
+    
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(216, 255, 96, 0);
+    }
+    
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(216, 255, 96, 0);
+    }
+}
+
+/* Card variants */
+.stat-card.warning .stat-value {
+    color: #FFB84B;
+}
+
+.stat-card.danger .stat-value {
+    color: #FF4B4B;
+}
+
+.stat-card.info .stat-value {
+    color: #4B9FFF;
+}
+
+/* Threat indicator */
+.threat-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 184, 75, 0.1);
+    border-radius: 6px;
+    color: #FFB84B;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.threat-indicator i {
+    font-size: 0.875rem;
+}
+
+/* Match percentage */
+.match-percentage {
+    color: rgba(255, 75, 75, 0.9);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Value change animation */
+.value-changed {
+    animation: pulse 0.5s ease-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 1200px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+    }
+
+    .automated-scan-info {
+        padding: 0.5rem;
+        margin-top: 0.75rem;
+    }
+
+    .automated-scan-info span {
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .automated-scan-info {
+        padding: 0.5rem;
+        margin-top: 0.75rem;
+    }
+}
+
+/* Dark mode optimization */
+@media (prefers-color-scheme: dark) {
+    .stat-card {
+        background: rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* High contrast optimization */
+@media (prefers-contrast: high) {
+    .stat-value,
+    .stat-icon {
+        opacity: 1;
+    }
+    
+    .stat-description {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .stat-card,
+    .value-changed {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* Stage indicator styles */
+.current-scan-stage {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4A90E2;
+    font-size: 0.8rem;
+    margin-top: 6px;
+    padding: 4px 8px;
+    background: rgba(74, 144, 226, 0.1);
+    border-radius: 4px;
+    border-left: 2px solid #D8FF60;
+}
+
+.stage-icon {
+    font-size: 1rem;
+    animation: stageIconPulse 2s infinite;
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+.stage-name {
+    font-weight: 500;
+    color: #4A90E2;
+}
+
+.stage-duration {
+    color: rgba(216, 255, 96, 0.7);
+    font-size: 0.75rem;
+    margin-left: 4px;
+}
+
+.stage-description {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    margin-top: 4px;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    line-height: 1.3;
+}
+
+.time-remaining {
+    color: #4A90E2;
+    font-size: 0.75rem;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.time-value {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.site-progress {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    margin-top: 4px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+@keyframes stageIconPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Enhanced scanning indicators */
+.stat-card.scanning .current-scan-stage {
+    border-left-color: #00ccff;
+    background: rgba(0, 204, 255, 0.1);
+    animation: stagePulse 3s infinite;
+}
+
+.stat-card.scanning .stage-icon {
+    color: #00ccff;
+}
+
+@keyframes stagePulse {
+    0% { 
+        background: rgba(74, 144, 226, 0.1);
+        border-left-color: #4A90E2;
+    }
+    50% { 
+        background: rgba(0, 204, 255, 0.2);
+        border-left-color: #00ccff;
+    }
+    100% { 
+        background: rgba(74, 144, 226, 0.1);
+        border-left-color: #4A90E2;
+    }
+}
+
+/* Add wrapper styles */
+.dashboard-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* Scan Progress Stages */
+.scan-progress-card {
+    background: #2a2a2a;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.2s;
+    border: 1px solid #333;
+    grid-column: 1 / -1; /* Full width */
+}
+
+.scan-progress-card .stat-title {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.progress-active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.current-stage {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.stage-icon {
+    font-size: 2rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: #00ccff;
+    min-width: 2rem;
+    text-align: center;
+}
+
+.stage-icon.spinning {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.stage-info {
+    flex: 1;
+}
+
+.stage-info strong {
+    color: #ffffff;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.stage-info p {
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.progress-stages {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.stage-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stage-item .stage-icon {
+    font-size: 1.5rem;
+    color: #666;
+    margin-right: 0;
+}
+
+.stage-item strong {
+    color: #ffffff;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.stage-item p {
+    color: #999;
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.ready-status {
+    text-align: center;
+    color: #00ccff;
+    font-weight: 500;
+    padding: 1rem;
+    background: rgba(0, 204, 255, 0.1);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+/* Mobile optimizations for scan progress */
+@media (max-width: 768px) {
+    .scan-progress-card {
+        padding: 1rem;
+    }
+    
+    .current-stage {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .stage-icon {
+        font-size: 1.8rem;
+        margin-right: 0;
+    }
+    
+    .stage-item {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .stage-item .stage-icon {
+        font-size: 1.2rem;
+        min-width: 1.5rem;
+    }
+    
+    .stage-item strong {
+        font-size: 0.9rem;
+    }
+    
+    .stage-item p {
+        font-size: 0.75rem;
+    }
+    
+    .progress-stages {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stage-icon {
+        font-size: 1.5rem;
+    }
+    
+    .stage-item {
+        padding: 0.4rem;
+    }
+    
+    .stage-item .stage-icon {
+        font-size: 1rem;
+        min-width: 1.2rem;
+    }
+    
+    .stage-item strong {
+        font-size: 0.85rem;
+    }
+    
+    .stage-item p {
+        font-size: 0.7rem;
+    }
+}

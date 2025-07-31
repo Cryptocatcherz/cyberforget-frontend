@@ -1,0 +1,164 @@
+.admin-settings {
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0B1E 0%, #1a1d35 50%, #0A0B1E 100%);
+}
+
+.admin-settings .MuiCard-root {
+    background: rgba(30, 30, 30, 0.95) !important;
+    border: 1px solid rgba(66, 255, 181, 0.2) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(10px);
+}
+
+.admin-settings .MuiCardContent-root {
+    padding: 24px !important;
+}
+
+.admin-settings .MuiTypography-h4 {
+    color: #42ffb5 !important;
+    font-weight: 600 !important;
+    margin-bottom: 24px !important;
+}
+
+.admin-settings .MuiTypography-h6 {
+    color: #42ffb5 !important;
+    font-weight: 600 !important;
+    margin-bottom: 16px !important;
+}
+
+.admin-settings .MuiTextField-root {
+    margin-bottom: 16px !important;
+}
+
+.admin-settings .MuiOutlinedInput-root {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.admin-settings .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.23) !important;
+}
+
+.admin-settings .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #42ffb5 !important;
+}
+
+.admin-settings .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #42ffb5 !important;
+}
+
+.admin-settings .MuiInputLabel-root {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.admin-settings .MuiInputLabel-root.Mui-focused {
+    color: #42ffb5 !important;
+}
+
+.admin-settings .MuiButton-contained {
+    background: #42ffb5 !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+}
+
+.admin-settings .MuiButton-contained:hover {
+    background: #00d4aa !important;
+}
+
+.admin-settings .MuiButton-outlined {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: #fff !important;
+}
+
+.admin-settings .MuiButton-outlined:hover {
+    border-color: #42ffb5 !important;
+    color: #42ffb5 !important;
+}
+
+.admin-settings .MuiSwitch-root .MuiSwitch-switchBase.Mui-checked {
+    color: #42ffb5 !important;
+}
+
+.admin-settings .MuiSwitch-root .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+    background-color: #42ffb5 !important;
+}
+
+.admin-settings .MuiSlider-root {
+    color: #42ffb5 !important;
+}
+
+.admin-settings .MuiSlider-thumb {
+    background-color: #42ffb5 !important;
+}
+
+.admin-settings .MuiSlider-track {
+    background-color: #42ffb5 !important;
+}
+
+.admin-settings .MuiSlider-rail {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.admin-settings .MuiAlert-standardError {
+    background-color: rgba(255, 67, 67, 0.1) !important;
+    color: #ff4343 !important;
+    border: 1px solid rgba(255, 67, 67, 0.2) !important;
+}
+
+.admin-settings .MuiAlert-standardSuccess {
+    background-color: rgba(66, 255, 181, 0.1) !important;
+    color: #42ffb5 !important;
+    border: 1px solid rgba(66, 255, 181, 0.2) !important;
+}
+
+.admin-settings .MuiCircularProgress-root {
+    color: #42ffb5 !important;
+}
+
+.admin-settings .MuiListItemText-primary {
+    color: #fff !important;
+}
+
+.admin-settings .MuiListItemText-secondary {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.admin-settings .MuiPaper-root {
+    background: rgba(66, 255, 181, 0.1) !important;
+    border: 1px solid rgba(66, 255, 181, 0.3) !important;
+}
+
+.admin-settings .MuiDialog-paper {
+    background: #1E1E1E !important;
+    color: #fff !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .admin-settings {
+        padding: 12px;
+    }
+
+    .admin-settings .MuiCardContent-root {
+        padding: 16px !important;
+    }
+
+    .admin-settings .MuiTypography-h4 {
+        font-size: 1.5rem !important;
+    }
+
+    .admin-settings .MuiTypography-h6 {
+        font-size: 1.1rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .admin-settings {
+        padding: 8px;
+    }
+
+    .admin-settings .MuiCardContent-root {
+        padding: 12px !important;
+    }
+}

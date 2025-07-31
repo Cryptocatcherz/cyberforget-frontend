@@ -1,0 +1,331 @@
+.automated-scans {
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.auto-scan-control {
+    grid-column: 1 / -1;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(216, 255, 96, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+.control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.control-header h2 {
+    color: #D8FF60;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.status-indicators {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(216, 255, 96, 0.05);
+}
+
+.status-item .label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.status-item .value {
+    font-weight: 500;
+    color: #D8FF60;
+}
+
+.status-item .value.enabled {
+    color: #60FF80;
+}
+
+.status-item .value.disabled {
+    color: #FF6060;
+}
+
+.statistics-card {
+    padding: 20px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(216, 255, 96, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+.statistics-card h3 {
+    color: #D8FF60;
+    margin: 0 0 16px 0;
+    font-size: 1.2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 16px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(216, 255, 96, 0.05);
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #D8FF60;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.current-scan-card {
+    padding: 20px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(216, 255, 96, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+.current-scan-card h3 {
+    color: #D8FF60;
+    margin: 0 0 16px 0;
+    font-size: 1.2rem;
+}
+
+.progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #D8FF60;
+    transition: width 0.3s ease;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.active-users-card {
+    padding: 20px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(216, 255, 96, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+.active-users-card h3 {
+    color: #D8FF60;
+    margin: 0 0 16px 0;
+    font-size: 1.2rem;
+}
+
+.scanning-users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.scanning-user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(216, 255, 96, 0.05);
+}
+
+.user-email {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+.scan-progress {
+    color: #D8FF60;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.activity-log-card {
+    padding: 20px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(216, 255, 96, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+.activity-log-card h3 {
+    color: #D8FF60;
+    margin: 0 0 16px 0;
+    font-size: 1.2rem;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(216, 255, 96, 0.05);
+}
+
+.activity-time {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+}
+
+.activity-action {
+    color: #D8FF60;
+    font-size: 0.9rem;
+}
+
+.error-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 96, 96, 0.1);
+    border: 1px solid rgba(255, 96, 96, 0.2);
+    color: #FF6060;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: slideIn 0.3s ease;
+}
+
+.error-message button {
+    background: none;
+    border: none;
+    color: #FF6060;
+    cursor: pointer;
+    padding: 4px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Scrollbar Styling */
+.scanning-users-list::-webkit-scrollbar,
+.activity-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scanning-users-list::-webkit-scrollbar-track,
+.activity-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.scanning-users-list::-webkit-scrollbar-thumb,
+.activity-list::-webkit-scrollbar-thumb {
+    background: rgba(216, 255, 96, 0.3);
+    border-radius: 3px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .automated-scans {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .auto-scan-control,
+    .statistics-card,
+    .current-scan-card,
+    .active-users-card,
+    .activity-log-card {
+        padding: 16px !important;
+    }
+
+    .control-header h2,
+    .statistics-card h3,
+    .current-scan-card h3,
+    .active-users-card h3,
+    .activity-log-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .stat-value {
+        font-size: 1.2rem;
+    }
+
+    .status-indicators {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .automated-scans {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .auto-scan-control,
+    .statistics-card,
+    .current-scan-card,
+    .active-users-card,
+    .activity-log-card {
+        padding: 12px !important;
+    }
+
+    .control-header h2,
+    .statistics-card h3,
+    .current-scan-card h3,
+    .active-users-card h3,
+    .activity-log-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+} 

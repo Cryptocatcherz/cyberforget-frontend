@@ -1,0 +1,228 @@
+:root {
+    --primary-color: #00D4FF;
+    --accent-color: #42FFB5;
+    --secondary-color: #0A0B1E;
+    --text-color: #FFFFFF;
+    --header-gradient: linear-gradient(135deg, #00D4FF 0%, #42FFB5 100%);
+    --section-bg: rgba(16, 23, 42, 0.98);
+    --section-border: 1px solid rgba(0, 212, 255, 0.18);
+    --section-hover: 0 0 16px 0 rgba(0, 212, 255, 0.18);
+    --input-bg: rgba(10, 11, 30, 0.95);
+    --glow: 0 0 8px 0 #00D4FF;
+}
+
+.tos-page-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0B1E 0%, #10172A 100%);
+    padding-top: 60px;
+    color: var(--text-color);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.tos-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.tos-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+}
+
+.tos-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--header-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.last-updated {
+    color: #7fd7ff;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.tos-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.tos-intro {
+    background: rgba(0, 212, 255, 0.04);
+    border: 1px solid rgba(0, 212, 255, 0.10);
+    border-radius: 12px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.tos-intro p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #b8eaff;
+    margin: 0;
+}
+
+.tos-section {
+    background: var(--section-bg);
+    border: var(--section-border);
+    border-radius: 12px;
+    padding: 30px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    box-shadow: none;
+}
+
+.tos-section:hover {
+    background: rgba(0, 212, 255, 0.04);
+    border-color: #00D4FF;
+    box-shadow: var(--section-hover);
+    transform: translateY(-2px) scale(1.01);
+}
+
+.tos-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.18);
+}
+
+.tos-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #b8eaff;
+    margin: 0;
+}
+
+.tos-section ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style: none;
+}
+
+.tos-section li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #b8eaff;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.tos-section li:last-child {
+    margin-bottom: 0;
+}
+
+.tos-section li::before {
+    content: "•";
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.tos-section strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.tos-section a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.tos-section a:hover {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+    text-shadow: 0 0 6px #42FFB5;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .tos-page-wrapper {
+        padding-top: 80px;
+    }
+
+    .tos-container {
+        padding: 20px 15px;
+    }
+
+    .tos-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+    }
+
+    .tos-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .last-updated {
+        font-size: 0.9rem;
+    }
+
+    .tos-content {
+        gap: 25px;
+    }
+
+    .tos-intro,
+    .tos-section {
+        padding: 20px;
+    }
+
+    .tos-intro p {
+        font-size: 1rem;
+    }
+
+    .tos-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .tos-section p,
+    .tos-section li {
+        font-size: 0.95rem;
+    }
+
+    .tos-section ul {
+        padding-left: 15px;
+    }
+
+    .tos-section li {
+        padding-left: 15px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tos-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .tos-intro,
+    .tos-section {
+        padding: 15px;
+    }
+}
+
+/* Scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.tos-section a:focus {
+    outline: 2px solid #D8FF60;
+    outline-offset: 2px;
+} 

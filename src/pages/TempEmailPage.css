@@ -1,0 +1,658 @@
+/* Temp Email Page Styles */
+.temp-email-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+  color: #ffffff;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header */
+.temp-email-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-top: 60px;
+}
+
+.temp-email-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: #00ffaa;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.logo-accent {
+  color: #00ffaa;
+}
+
+.premium-badge {
+  background: #ffeb3b;
+  color: #000000;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Main Content */
+.temp-email-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Email Display Section */
+.email-display-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.email-display {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.email-address {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  word-break: break-all;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.copy-button {
+  background: #2196f3;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+}
+
+.copy-button:hover {
+  background: #1976d2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+/* Description */
+.email-description {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.email-description p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b3b3b3;
+  margin: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.demo-notice {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 8px;
+  color: #ffc107;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.12) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 18px 24px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  min-height: 58px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.action-btn:hover::before {
+  left: 100%;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.action-btn:active {
+  transform: translateY(-1px);
+  transition: all 0.1s;
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.action-btn:disabled::before {
+  display: none;
+}
+
+/* Copy Button - CyberForget Green */
+.action-btn.copy-btn {
+  background: linear-gradient(135deg, #00ffaa 0%, #00e699 50%, #00cc88 100%) !important;
+  color: #000000 !important;
+  border: 1px solid #00ffaa !important;
+  box-shadow: 0 4px 15px rgba(0, 255, 170, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.action-btn.copy-btn:hover {
+  background: linear-gradient(135deg, #00e699 0%, #00cc88 50%, #00b377 100%) !important;
+  color: #000000 !important;
+  box-shadow: 0 8px 25px rgba(0, 255, 170, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  border-color: #00e699 !important;
+}
+
+.action-btn.copy-btn:focus,
+.action-btn.copy-btn:active {
+  color: #000000 !important;
+}
+
+/* Refresh Button - Cyber Blue */
+.action-btn.refresh-btn {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 50%, #0077aa 100%) !important;
+  color: #000000 !important;
+  border: 1px solid #00d4ff !important;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.action-btn.refresh-btn:hover {
+  background: linear-gradient(135deg, #00b8e6 0%, #0088bb 50%, #006699 100%) !important;
+  color: #000000 !important;
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  border-color: #00b8e6 !important;
+}
+
+.action-btn.refresh-btn:focus,
+.action-btn.refresh-btn:active {
+  color: #000000 !important;
+}
+
+/* Change Button - Cyber Orange */
+.action-btn.change-btn {
+  background: linear-gradient(135deg, #ff9500 0%, #e6820e 50%, #cc7100 100%) !important;
+  color: #000000 !important;
+  border: 1px solid #ff9500 !important;
+  box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.action-btn.change-btn:hover {
+  background: linear-gradient(135deg, #e6820e 0%, #cc7100 50%, #b35f00 100%) !important;
+  color: #000000 !important;
+  box-shadow: 0 8px 25px rgba(255, 149, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  border-color: #e6820e !important;
+}
+
+.action-btn.change-btn:focus,
+.action-btn.change-btn:active {
+  color: #000000 !important;
+}
+
+/* Delete Button - Cyber Red */
+.action-btn.delete-btn {
+  background: linear-gradient(135deg, #ff3366 0%, #e6004d 50%, #cc0044 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #ff3366 !important;
+  box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.action-btn.delete-btn:hover {
+  background: linear-gradient(135deg, #e6004d 0%, #cc0044 50%, #b3003d 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(255, 51, 102, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  border-color: #e6004d !important;
+}
+
+.action-btn.delete-btn:focus,
+.action-btn.delete-btn:active {
+  color: #ffffff !important;
+}
+
+/* Inbox Section */
+.inbox-section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.inbox-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inbox-icon {
+  font-size: 20px;
+  color: #00ffaa;
+}
+
+.inbox-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Empty Inbox */
+.empty-inbox {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666666;
+}
+
+.empty-icon {
+  font-size: 48px;
+  color: #333333;
+  margin-bottom: 16px;
+}
+
+.empty-inbox p {
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  color: #888888;
+}
+
+.empty-inbox span {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Messages List */
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.message-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.message-item.unread {
+  border-left: 4px solid #00ffaa;
+}
+
+.message-sender {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.message-subject {
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.message-preview {
+  color: #b3b3b3;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 2.8em;
+}
+
+.message-time {
+  color: #666666;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #ffffff;
+}
+
+.loading-state .spinning {
+  font-size: 32px;
+  color: #00ffaa;
+  margin-bottom: 16px;
+  animation: spin 1s linear infinite;
+}
+
+.loading-state p {
+  font-size: 16px;
+  margin: 0;
+  color: #b3b3b3;
+}
+
+/* Generate New State */
+.generate-new-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #ffffff;
+}
+
+.generate-new-state .envelope-icon {
+  font-size: 48px;
+  color: #00ffaa;
+  margin-bottom: 20px;
+}
+
+.generate-new-state p {
+  font-size: 16px;
+  margin: 0 0 24px 0;
+  color: #b3b3b3;
+}
+
+.generate-new-btn {
+  background: linear-gradient(45deg, #00ffaa, #00e699);
+  color: #000000;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.generate-new-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 255, 170, 0.3);
+}
+
+/* Message Modal */
+.message-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.message-modal {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message-modal-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  flex: 1;
+  margin-right: 16px;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.message-modal-meta {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.message-modal-meta span {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+.message-modal-meta strong {
+  color: #ffffff;
+}
+
+.message-modal-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 50vh;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.message-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ffffff;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .temp-email-page {
+    padding: 16px;
+  }
+  
+  .temp-email-header {
+    padding-top: 80px;
+    margin-bottom: 30px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+  }
+  
+  .logo-icon {
+    font-size: 24px;
+  }
+  
+  .premium-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+  
+  .email-display {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .email-address {
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .copy-button {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .action-buttons {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .inbox-section {
+    padding: 16px;
+  }
+  
+  .message-modal {
+    margin: 10px;
+    max-height: 90vh;
+  }
+  
+  .message-modal-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .temp-email-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .email-description p {
+    font-size: 13px;
+  }
+  
+  .action-btn {
+    padding: 16px 18px;
+    font-size: 13px;
+    min-height: 52px;
+    letter-spacing: 0.3px;
+  }
+  
+  .message-item {
+    padding: 12px;
+  }
+  
+  .message-modal-header {
+    padding: 16px;
+  }
+  
+  .message-modal-body {
+    padding: 16px;
+  }
+}

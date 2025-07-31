@@ -1,0 +1,450 @@
+/* Enhanced BaseTool CSS - ChatGPT-style security tools */
+
+/* Improved Assessment Progress - ChatGPT-style */
+.assessment-progress {
+  margin: 20px 0;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(66, 255, 181, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.scanning-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.scan-pulse {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(66, 255, 181, 0.2);
+  animation: scanPulse 2s ease-in-out infinite;
+}
+
+@keyframes scanPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.progress-icon {
+  font-size: 20px;
+  color: #42ffb5;
+  z-index: 1;
+}
+
+.progress-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.main-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #42ffb5;
+  margin: 0;
+}
+
+.sub-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #42ffb5, #25d19a);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: progressShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-percentage {
+  font-size: 14px;
+  font-weight: 600;
+  color: #42ffb5;
+  min-width: 40px;
+  text-align: right;
+}
+
+.current-scan-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 8px 0;
+}
+
+.scan-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.scan-dots span {
+  width: 4px;
+  height: 4px;
+  background: #42ffb5;
+  border-radius: 50%;
+  animation: scanDots 1.4s ease-in-out infinite both;
+}
+
+.scan-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.scan-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes scanDots {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.scan-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.scan-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scan-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.scan-item.pending {
+  opacity: 0.5;
+}
+
+.scan-item.active {
+  background: rgba(66, 255, 181, 0.05);
+  border-color: rgba(66, 255, 181, 0.2);
+}
+
+.scan-item.completed {
+  background: rgba(66, 255, 181, 0.1);
+  border-color: rgba(66, 255, 181, 0.3);
+}
+
+.scan-item-icon {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.scan-item.active .scan-item-icon {
+  color: #42ffb5;
+}
+
+.scan-item.completed .scan-item-icon {
+  color: #42ffb5;
+}
+
+.completed-icon {
+  color: #42ffb5;
+}
+
+.scan-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scan-item-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.scan-item.active .scan-item-name {
+  color: #42ffb5;
+}
+
+.scan-item-status {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.scan-item.active .scan-item-status {
+  color: rgba(66, 255, 181, 0.8);
+}
+
+.scan-item-pulse {
+  position: absolute;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background: #42ffb5;
+  border-radius: 50%;
+  animation: itemPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes itemPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .assessment-progress {
+    padding: 16px;
+  }
+  
+  .progress-header {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .scanning-indicator {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .scan-pulse {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .progress-icon {
+    font-size: 16px;
+  }
+  
+  .main-text {
+    font-size: 14px;
+  }
+  
+  .sub-text {
+    font-size: 12px;
+  }
+  
+  .scan-item {
+    padding: 10px 12px;
+  }
+  
+  .scan-item-icon {
+    font-size: 14px;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .scan-item-name {
+    font-size: 13px;
+  }
+  
+  .scan-item-status {
+    font-size: 11px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .scan-pulse {
+    animation: none;
+  }
+  
+  .progress-fill::after {
+    animation: none;
+  }
+  
+  .scan-dots span {
+    animation: none;
+  }
+  
+  .scan-item-pulse {
+    animation: none;
+  }
+  
+  .result-action-btn {
+    transition: none;
+  }
+  
+  .result-action-btn:hover {
+    transform: none;
+  }
+}
+
+/* Result Actions - Fix overlapping buttons */
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-action-btn {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid rgba(66, 255, 181, 0.3);
+  border-radius: 8px;
+  background: rgba(66, 255, 181, 0.1);
+  color: #42ffb5;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  outline: none;
+}
+
+.result-action-btn:hover {
+  background: rgba(66, 255, 181, 0.2);
+  border-color: rgba(66, 255, 181, 0.5);
+  transform: translateY(-1px);
+}
+
+.result-action-btn.primary {
+  background: linear-gradient(135deg, #42ffb5, #25d19a);
+  border-color: #42ffb5;
+  color: #000;
+}
+
+.result-action-btn.primary:hover {
+  background: linear-gradient(135deg, #25d19a, #42ffb5);
+}
+
+.result-action-btn.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.result-action-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.action-icon {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile responsiveness for action buttons */
+@media (max-width: 768px) {
+  .result-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .result-action-btn {
+    min-width: auto;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  
+  .action-icon {
+    font-size: 12px;
+  }
+}
+
+.tool-controls .tool-control-btn.minimize-btn,
+.tool-controls .tool-control-btn.close-btn {
+  display: none !important;
+}
+
+.chat-tool-header .tool-controls > button,
+.chat-tool-header .tool-controls > .tool-control-btn,
+.chat-tool-header [class*='minimize-btn'],
+.chat-tool-header [class*='close-btn'] {
+  display: none !important;
+}

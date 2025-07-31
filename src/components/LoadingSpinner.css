@@ -1,0 +1,37 @@
+.cleandata-loading-spinner {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 99999 !important;
+    background: transparent !important;
+}
+
+.cleandata-loading-spinner .spinner-svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+
+.cleandata-loading-spinner .spinner-circle {
+    stroke-dasharray: 150, 200;
+    stroke-dashoffset: -10;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124;
+    }
+}

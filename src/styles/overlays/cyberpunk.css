@@ -1,0 +1,42 @@
+/* Cyberpunk Theme */
+.cyberpunk-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: 
+        linear-gradient(45deg, #000000 0%, #1a0033 100%),
+        repeating-linear-gradient(45deg, rgba(255, 0, 255, 0.05) 0px, rgba(255, 0, 255, 0.05) 2px, transparent 2px, transparent 4px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 9999 !important;
+    overflow: hidden !important;
+}
+
+.cyberpunk-container {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 2px solid #ff00ff !important;
+    box-shadow: 
+        0 0 20px #ff00ff,
+        inset 0 0 20px rgba(255, 0, 255, 0.3) !important;
+}
+
+.cyberpunk-shield {
+    background: linear-gradient(135deg, #ff00ff, #00ffff) !important;
+    border: 3px solid #ff00ff !important;
+    box-shadow: 
+        0 0 30px #ff00ff,
+        inset 0 0 20px rgba(255, 0, 255, 0.5) !important;
+}
+
+.cyberpunk-progress {
+    background: linear-gradient(90deg, #ff00ff, #00ffff) !important;
+    box-shadow: 0 0 20px #ff00ff !important;
+}
+
+.cyberpunk-text {
+    color: #ff00ff !important;
+    text-shadow: 0 0 10px #ff00ff !important;
+} 

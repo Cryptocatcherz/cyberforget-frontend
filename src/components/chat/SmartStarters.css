@@ -1,0 +1,232 @@
+/* Smart Starters Component */
+.smart-starters {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.starters-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.starters-header h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.category-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 25px;
+    background: white;
+    color: #64748b;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-tab:hover {
+    background: #f8fafc;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-tab.active {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.suggestion-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.suggestion-card:hover {
+    border-color: #cbd5e0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background: #fafafa;
+}
+
+.suggestion-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.suggestion-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.suggestion-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.suggestion-category {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.urgency-indicator {
+    font-size: 0.6rem;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.suggestion-text {
+    font-size: 1rem;
+    color: #2d3748;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 500;
+}
+
+.suggestion-arrow {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    color: #cbd5e0;
+    transition: all 0.3s ease;
+}
+
+.suggestion-card:hover .suggestion-arrow {
+    color: #667eea;
+    transform: translateX(3px);
+}
+
+.starters-footer {
+    text-align: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.starters-footer p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.starters-footer strong {
+    color: #4a5568;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .smart-starters {
+        padding: 0 0.5rem;
+    }
+    
+    .suggestions-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .suggestion-card {
+        padding: 1rem;
+    }
+    
+    .category-tabs {
+        gap: 0.25rem;
+    }
+    
+    .category-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .category-tab span {
+        display: none;
+    }
+    
+    .starters-header h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .starters-header h3 {
+        color: #e2e8f0;
+    }
+    
+    .category-tab {
+        background: #2d3748;
+        color: #cbd5e0;
+        border-color: #4a5568;
+    }
+    
+    .category-tab:hover {
+        background: #4a5568;
+    }
+    
+    .suggestion-card {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .suggestion-card:hover {
+        background: #4a5568;
+        border-color: #718096;
+    }
+    
+    .suggestion-text {
+        color: #e2e8f0;
+    }
+    
+    .starters-footer {
+        background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        border-color: #4a5568;
+    }
+    
+    .starters-footer p,
+    .starters-footer strong {
+        color: #cbd5e0;
+    }
+}

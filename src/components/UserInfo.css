@@ -1,0 +1,81 @@
+/* User Info Container */
+.user-info {
+    background-color: #2a2a2a;
+    border-radius: 16px;
+    padding: 20px;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-info-header {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #D8FF60;
+    letter-spacing: -0.01em;
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.info-label {
+    color: #888;
+    font-size: 14px;
+    min-width: 100px;
+}
+
+.info-value {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.user-email {
+    color: #D8FF60;
+    font-weight: 500;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(216, 255, 96, 0.1);
+    color: #D8FF60;
+    text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+    .user-info {
+        padding: 16px;
+        margin: 10px;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .info-label {
+        min-width: auto;
+    }
+}

@@ -1,0 +1,207 @@
+/* Root Container */
+.doorstep-protection-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Page Header */
+.protection-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(66, 255, 181, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(66, 255, 181, 0.3);
+    box-shadow: 0 4px 15px rgba(66, 255, 181, 0.05);
+}
+
+/* Shield Icon */
+.shield-icon {
+    font-size: 2.5rem;
+    color: #42ffb5;
+    filter: drop-shadow(0 0 6px rgba(66, 255, 181, 0.3));
+}
+
+/* Question Section */
+.question-section {
+    background: rgba(28, 28, 28, 0.95);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(66, 255, 181, 0.2);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.question-section h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #42ffb5;
+    margin-bottom: 20px;
+}
+
+/* Options Grid for Q&A Buttons */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.option-button {
+    padding: 15px 20px;
+    background: rgba(66, 255, 181, 0.1);
+    border: 1px solid rgba(66, 255, 181, 0.3);
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.option-button:hover {
+    background: rgba(66, 255, 181, 0.2);
+    transform: translateY(-2px);
+    border-color: #42ffb5;
+}
+
+/* Final Analysis / Results Container */
+.analysis-section {
+    background: rgba(28, 28, 28, 0.95);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+    border: 1px solid rgba(66, 255, 181, 0.2);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-section h2 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.local-analysis,
+.gemini-advice {
+    margin-bottom: 20px;
+}
+
+/* Risk Level Box */
+.risk-level {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+/* Colors for different risk categories */
+.risk-level.high {
+    background: rgba(255, 71, 87, 0.1);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+.risk-level.medium {
+    background: rgba(255, 196, 0, 0.1);
+    border: 1px solid rgba(255, 196, 0, 0.3);
+}
+
+.risk-level.low {
+    background: rgba(66, 255, 181, 0.1);
+    border: 1px solid rgba(66, 255, 181, 0.3);
+}
+
+/* Price Guide Section */
+.price-guide {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(66, 255, 181, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(66, 255, 181, 0.1);
+}
+
+.price-guide h4 {
+    margin-bottom: 10px;
+    color: #42ffb5;
+}
+
+/* Recommendations List */
+.recommendations {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(66, 255, 181, 0.05);
+    border-radius: 8px;
+    border: 1px dashed rgba(66, 255, 181, 0.2);
+}
+
+.recommendations ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.recommendations li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.recommendations li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #42ffb5;
+    font-size: 1.3rem;
+    line-height: 1.2;
+}
+
+/* "Thinking..." or Loading State */
+.thinking-stage {
+    background: rgba(66, 255, 181, 0.1);
+    color: #42ffb5;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Subtle pulse animation for the thinking stage */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+        box-shadow: 0 0 5px rgba(66,255,181,0.1);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(66,255,181,0.2);
+    }
+    100% {
+        opacity: 0.6;
+        box-shadow: 0 0 5px rgba(66,255,181,0.1);
+    }
+}
+
+/* Basic Media Query for Responsiveness */
+@media (max-width: 600px) {
+    .options-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .option-button {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .price-guide, .analysis-section {
+        padding: 20px 15px;
+    }
+}

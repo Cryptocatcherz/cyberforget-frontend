@@ -1,0 +1,122 @@
+:root {
+  --primary-color: #00D4FF;
+  --primary-dark: #0096FF;
+  --primary-light: #33E1FF;
+  --accent-color: #42FFB5;
+  --accent-dark: #2EE69E;
+  --background-dark: #0A0B1E;
+  --background-light: #161729;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --border-color: rgba(0, 212, 255, 0.3);
+  --border-accent: rgba(66, 255, 181, 0.2);
+  --hover-bg: rgba(0, 212, 255, 0.1);
+  --active-bg: rgba(0, 212, 255, 0.2);
+  --shadow-color: rgba(0, 212, 255, 0.15);
+  --glass-bg: rgba(16, 23, 42, 0.8);
+  --glass-border: rgba(0, 212, 255, 0.2);
+  --transition-speed: 0.2s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Utility Classes */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.bg-hover {
+  background: var(--hover-bg);
+}
+
+.border-primary {
+  border: 1px solid var(--border-color);
+}
+
+.rounded {
+  border-radius: 6px;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.m-4 {
+  margin: 1rem;
+} 

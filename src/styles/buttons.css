@@ -1,0 +1,73 @@
+/* Primary Button - Green gradient style */
+.primary-button {
+    background: linear-gradient(45deg, #D8FF60, #A3FF00);
+    color: #111;
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(216, 255, 96, 0.2);
+}
+
+.primary-button:hover {
+    background: linear-gradient(45deg, #B8FF50, #8AFF20);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 255, 80, 0.4);
+}
+
+.primary-button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+/* Secondary Button - Transparent style */
+.secondary-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
+}
+
+.secondary-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* CTA Button - Special emphasis */
+.cta-button {
+    background: linear-gradient(45deg, #D8FF60, #A3FF00);
+    color: #111;
+    padding: 15px 40px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(216, 255, 96, 0.3);
+    width: auto;
+    min-width: 200px;
+}
+
+.cta-button:hover {
+    background: linear-gradient(45deg, #B8FF50, #8AFF20);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 255, 80, 0.5);
+} 

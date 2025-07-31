@@ -1,0 +1,107 @@
+/* Carousel Container */
+.carousel-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.6);
+    border: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Review Card */
+.review-card {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    min-height: 180px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Custom Arrow Styling */
+.custom-arrow {
+    background-color: #00ff85;
+    border-radius: 50%;
+    padding: 10px;
+    color: #000;
+    font-size: 1.5em;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+/* Align the arrows within the container */
+.custom-prev {
+    left: 10px;
+}
+
+.custom-next {
+    right: 10px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .carousel-container {
+        padding: 10px;
+        width: 100%; /* Use full width */
+        margin: 0 auto; /* Center the carousel */
+    }
+
+    .review-card {
+        padding: 10px; /* Reduce padding for mobile */
+        min-height: 150px; /* Adjust height for smaller screens */
+    }
+
+    .custom-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    .custom-prev {
+        left: 5px; /* Keep arrows close to the edges */
+    }
+
+    .custom-next {
+        right: 5px; /* Keep arrows close to the edges */
+    }
+
+    /* Fine-tuning the box to fit within the mobile layout */
+    .location-stats, .review-section {
+        width: 100%;
+        padding: 15px;
+        max-width: 100%;
+        box-sizing: border-box; /* Ensure padding doesn't overflow */
+    }
+
+    .location-container {
+        padding: 15px; /* Reduce padding */
+        max-width: 100%; /* Ensure container fits mobile width */
+    }
+
+    .location-stats {
+        margin-bottom: 20px; /* Add some space at the bottom */
+    }
+
+    .carousel-container {
+        max-width: 100%; /* Ensure full width */
+        padding: 0; /* Adjust padding to fit within the screen */
+    }
+}

@@ -1,0 +1,103 @@
+.model-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.model-selector-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #0A0B1E 0%, #00D4FF 100%);
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 10px 22px 10px 18px;
+  box-shadow: 0 2px 12px rgba(0,212,255,0.10);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+  position: relative;
+}
+.model-selector-btn:hover, .model-selector-btn:focus {
+  background: linear-gradient(135deg, #00D4FF 0%, #42FFB5 100%);
+  box-shadow: 0 4px 24px rgba(0,212,255,0.18);
+}
+.model-selector-label {
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+.chevron {
+  font-size: 1.1em;
+  color: #42FFB5;
+  margin-left: 6px;
+  transition: transform 0.2s;
+}
+.chevron.open {
+  transform: rotate(180deg);
+}
+.model-selector-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  background: linear-gradient(135deg, #0A0B1E 0%, #00D4FF 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,212,255,0.18);
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 100;
+  border: 1.5px solid #00D4FF;
+  animation: fadeIn 0.18s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.model-selector-option {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  text-align: left;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.model-selector-option.selected, .model-selector-option:hover {
+  background: linear-gradient(90deg, #00D4FF 0%, #42FFB5 100%);
+  color: #0A0B1E;
+}
+.model-selector-new {
+  background: #fff;
+  color: #00D4FF;
+  font-size: 0.85em;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 2px 8px;
+  margin-left: 10px;
+  box-shadow: 0 1px 4px rgba(0,212,255,0.10);
+}
+@media (max-width: 600px) {
+  .model-selector-btn, .model-selector-dropdown {
+    font-size: 0.98rem;
+    min-width: 160px;
+    padding: 8px 12px;
+  }
+  .model-selector-option {
+    padding: 10px 14px;
+  }
+} 

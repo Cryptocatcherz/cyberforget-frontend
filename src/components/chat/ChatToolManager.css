@@ -1,0 +1,270 @@
+/* Chat Tool Manager Styles */
+
+.chat-tool-manager {
+  margin: 16px 0;
+}
+
+.active-tool-container {
+  margin: 16px 0;
+}
+
+/* Quick Access Panel */
+.quick-access-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(66, 255, 181, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.quick-access-panel h4 {
+  color: #42ffb5;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-access-panel h4::before {
+  content: '🛠️';
+  font-size: 18px;
+}
+
+/* Quick Tools Grid */
+.quick-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.quick-tool-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  min-height: 70px;
+}
+
+.quick-tool-btn:hover {
+  background: rgba(66, 255, 181, 0.08);
+  border-color: rgba(66, 255, 181, 0.2);
+  transform: translateY(-1px);
+}
+
+.quick-tool-btn .tool-icon {
+  font-size: 20px;
+}
+
+.quick-tool-btn .tool-name {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Recent Tools */
+.recent-tools {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+}
+
+.recent-tools h5 {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.recent-tools-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.recent-tool-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.recent-tool-btn:hover {
+  background: rgba(66, 255, 181, 0.1);
+  border-color: rgba(66, 255, 181, 0.2);
+  color: #42ffb5;
+}
+
+.recent-tool-btn .tool-icon {
+  font-size: 14px;
+}
+
+/* Tool Suggestion */
+.tool-suggestion {
+  background: rgba(66, 255, 181, 0.05);
+  border: 1px solid rgba(66, 255, 181, 0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.suggestion-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.suggestion-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(66, 255, 181, 0.1);
+  border-radius: 6px;
+}
+
+.suggestion-text {
+  flex: 1;
+}
+
+.suggestion-text strong {
+  color: #42ffb5;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.suggestion-text p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.suggestion-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.accept-btn {
+  background: rgba(66, 255, 181, 0.2);
+  border: 1px solid rgba(66, 255, 181, 0.3);
+  color: #42ffb5;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.accept-btn:hover {
+  background: rgba(66, 255, 181, 0.3);
+  border-color: rgba(66, 255, 181, 0.5);
+}
+
+.dismiss-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.dismiss-btn:hover {
+  background: rgba(255, 59, 59, 0.1);
+  border-color: rgba(255, 59, 59, 0.2);
+  color: #ff3b3b;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .quick-access-panel {
+    padding: 16px;
+    margin: 12px 0;
+  }
+  
+  .quick-tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  
+  .quick-tool-btn {
+    padding: 10px 6px;
+    min-height: 60px;
+  }
+  
+  .quick-tool-btn .tool-icon {
+    font-size: 18px;
+  }
+  
+  .quick-tool-btn .tool-name {
+    font-size: 10px;
+  }
+  
+  .tool-suggestion {
+    padding: 10px 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  
+  .suggestion-content {
+    gap: 10px;
+  }
+  
+  .suggestion-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .suggestion-actions {
+    justify-content: flex-end;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .quick-tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .recent-tools-list {
+    flex-direction: column;
+  }
+  
+  .recent-tool-btn {
+    justify-content: flex-start;
+  }
+}

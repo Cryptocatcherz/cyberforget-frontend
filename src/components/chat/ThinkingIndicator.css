@@ -1,0 +1,303 @@
+/* Enhanced Thinking Indicator Styles */
+.thinking-indicator-container {
+  margin: 16px auto;
+  max-width: 800px;
+  width: 95%;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thinking-indicator-wrapper {
+  background: linear-gradient(135deg, rgba(16, 23, 42, 0.95) 0%, rgba(10, 11, 30, 0.95) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient border effect */
+.thinking-indicator-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 212, 255, 0.4),
+    rgba(66, 255, 181, 0.4),
+    rgba(147, 51, 234, 0.4),
+    rgba(0, 212, 255, 0.4)
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  /* Removed spinning border animation as requested */
+}
+
+.thinking-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ai-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #00D4FF 0%, #42FFB5 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0, 212, 255, 0.3);
+  /* Removed pulse animation to tone down the spinning effects */
+}
+
+.thinking-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #00D4FF;
+  letter-spacing: 0.02em;
+}
+
+.thinking-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.typing-dots-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  height: 20px;
+}
+
+.typing-dots span {
+  width: 8px;
+  height: 8px;
+  background: #42FFB5;
+  border-radius: 50%;
+  display: block;
+  animation: typing 1.4s infinite;
+  box-shadow: 0 0 8px rgba(66, 255, 181, 0.4);
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.thinking-stage {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.thinking-progress {
+  width: 100%;
+  height: 2px;
+  background: rgba(66, 255, 181, 0.1);
+  border-radius: 1px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.thinking-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00D4FF 0%, #42FFB5 100%);
+  border-radius: 1px;
+  animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    width: 95%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+.thinking-insights {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.insight-chip {
+  background: rgba(66, 255, 181, 0.1);
+  border: 1px solid rgba(66, 255, 181, 0.3);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  color: #42FFB5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: chipFadeIn 0.5s ease-out;
+}
+
+@keyframes chipFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.insight-chip-icon {
+  font-size: 0.9rem;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .thinking-indicator-container {
+    margin: 12px auto;
+    width: 98%;
+  }
+  
+  .thinking-indicator-wrapper {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  
+  .thinking-header {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  
+  .ai-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+  
+  .thinking-title {
+    font-size: 0.9rem;
+  }
+  
+  .typing-dots-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .typing-dots span {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .thinking-stage {
+    font-size: 0.85rem;
+  }
+  
+  .thinking-insights {
+    gap: 8px;
+    margin-top: 12px;
+  }
+  
+  .insight-chip {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+}
+
+/* Ultra-small mobile devices */
+@media (max-width: 380px) {
+  .thinking-indicator-wrapper {
+    padding: 12px;
+  }
+  
+  .ai-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+  
+  .thinking-title {
+    font-size: 0.85rem;
+  }
+  
+  .thinking-stage {
+    font-size: 0.8rem;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .thinking-indicator-wrapper {
+    background: linear-gradient(135deg, rgba(10, 11, 30, 0.98) 0%, rgba(16, 23, 42, 0.98) 100%);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .typing-dots span,
+  .thinking-progress-bar {
+    animation: none;
+  }
+  
+  .thinking-indicator-container {
+    animation: none;
+  }
+}

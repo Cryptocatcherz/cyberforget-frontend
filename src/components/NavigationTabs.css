@@ -1,0 +1,115 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+/* Navigation Tabs Container */
+.navigation-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 15px 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    flex-wrap: wrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for the container */
+    border-radius: 12px; /* Round container corners */
+}
+
+/* Individual Tabs */
+.tab {
+    padding: 15px 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    margin: 8px;
+    position: relative;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1d1f2b, #282b3a); /* Dark metallic gradient */
+    border: 2px solid transparent; /* Border for more structure */
+    box-shadow: 0 0 10px rgba(216, 255, 96, 0.2), 0 4px 12px rgba(0, 0, 0, 0.5); /* Neon green outer glow and deep shadow */
+    transition: all 0.4s ease; /* Smoother transition for all effects */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Default width for mobile */
+    height: 50px;
+    max-width: 120px;
+    font-size: 0.9rem; /* Adjust font size for mobile readability */
+    letter-spacing: 0.05rem;
+}
+
+/* Add glow effect and hover animation */
+.tab::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle at center, rgba(216, 255, 96, 0.4), transparent);
+    transition: all 0.5s ease;
+    transform: rotate(-45deg);
+    opacity: 0;
+}
+
+.tab:hover::before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+}
+
+.tab:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #262933, #3c3f54); /* Darker hover background */
+    transform: translateY(-5px); /* Slight lift on hover */
+    border-color: #D8FF60; /* Neon green border on hover */
+    box-shadow: 0 0 25px rgba(216, 255, 96, 0.5), 0 8px 20px rgba(0, 0, 0, 0.6); /* More prominent glow on hover */
+}
+
+/* Underline effect */
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #D8FF60; /* Neon green */
+    transition: width 0.3s ease;
+}
+
+.tab:hover::after {
+    width: 50%;
+}
+
+/* Active Tab Styling */
+.active-tab {
+    color: #fff;
+    background: linear-gradient(135deg, #282a38, #3c3f4f); /* Slightly brighter for active */
+    border-color: #D8FF60; /* Neon green border for active state */
+    box-shadow: 0 0 30px rgba(216, 255, 96, 0.7), 0 6px 15px rgba(0, 0, 0, 0.7); /* Stronger glow for active tab */
+}
+
+.active-tab::after {
+    width: 50%;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .tab {
+        flex: 1 1 30%;
+        padding: 12px 15px;
+        margin: 8px;
+        font-size: 0.8rem;
+        width: auto; /* Adjust to fit mobile screen */
+        height: 45px;
+        max-width: 150px; /* Make sure tabs are not too wide */
+    }
+
+    .navigation-tabs {
+        padding: 10px; /* Reduced padding for mobile */
+        flex-wrap: wrap; /* Ensure tabs wrap on small screens */
+    }
+}

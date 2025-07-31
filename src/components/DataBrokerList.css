@@ -1,0 +1,117 @@
+.data-broker-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.data-broker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.data-broker-title {
+    font-size: 1.5rem;
+    color: #D8FF60;
+    margin: 0;
+}
+
+.data-broker-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.broker-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    transition: all 0.3s ease;
+}
+
+.broker-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(216, 255, 96, 0.1);
+}
+
+.broker-name {
+    font-size: 1.1rem;
+    color: #D8FF60;
+    margin: 0 0 10px 0;
+}
+
+.broker-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: rgba(216, 255, 96, 0.1);
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-queued .status-indicator {
+    background-color: #D8FF60;
+    opacity: 0.5;
+}
+
+.status-in-progress .status-indicator {
+    background-color: #D8FF60;
+    animation: pulse 2s infinite;
+}
+
+.status-completed .status-indicator {
+    background-color: #D8FF60;
+}
+
+.broker-progress {
+    margin-top: 15px;
+}
+
+.progress-bar {
+    height: 4px;
+    background: rgba(216, 255, 96, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #D8FF60;
+    transition: width 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+    .data-broker-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .data-broker-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .data-broker-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+} 

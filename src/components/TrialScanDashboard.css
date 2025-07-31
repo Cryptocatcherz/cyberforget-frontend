@@ -1,0 +1,714 @@
+/* Trial Scan Dashboard Styles */
+.trial-scan-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+    color: #1e293b;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.dashboard-header p {
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.error-message {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.error-message button {
+    background: none;
+    border: none;
+    color: #dc2626;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.dashboard-nav {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 4px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-tab {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    color: #64748b;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-tab:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.nav-tab.active {
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.dashboard-content {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Overview Section */
+.overview-section {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+}
+
+.scan-status-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.scanning-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.progress-section {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    background: #10b981;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.scan-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.threat-count {
+    color: #fbbf24;
+}
+
+.status-pending { color: #fbbf24; }
+.status-running { color: #10b981; }
+.status-completed { color: #34d399; }
+.status-failed { color: #f87171; }
+
+.current-scan {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.scan-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: white;
+    color: #2563eb;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:disabled, .btn-secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.no-scan {
+    text-align: center;
+    padding: 40px;
+}
+
+.no-scan p {
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+/* Threats Summary */
+.threats-summary-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.threats-summary-card h3 {
+    margin: 0 0 20px 0;
+    color: #1e293b;
+    font-size: 1.3rem;
+}
+
+.threat-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+}
+
+.threat-stat {
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    border: 2px solid;
+}
+
+.threat-stat.critical {
+    border-color: #dc2626;
+    background: #fef2f2;
+}
+
+.threat-stat.high {
+    border-color: #ea580c;
+    background: #fff7ed;
+}
+
+.threat-stat.medium {
+    border-color: #d97706;
+    background: #fffbeb;
+}
+
+.threat-stat.low {
+    border-color: #65a30d;
+    background: #f7fee7;
+}
+
+.threat-stat .count {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.threat-stat.critical .count { color: #dc2626; }
+.threat-stat.high .count { color: #ea580c; }
+.threat-stat.medium .count { color: #d97706; }
+.threat-stat.low .count { color: #65a30d; }
+
+.threat-stat .label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #64748b;
+}
+
+/* Threats Section */
+.threats-section {
+    max-width: 100%;
+}
+
+.threats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.threats-header h3 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.5rem;
+}
+
+.no-threats {
+    text-align: center;
+    padding: 60px 20px;
+    color: #64748b;
+}
+
+.threats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.threat-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    background: #fafafa;
+    transition: all 0.2s ease;
+}
+
+.threat-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.threat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.threat-title h4 {
+    margin: 0 0 8px 0;
+    color: #1e293b;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.threat-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.severity-badge, .category-badge, .status-badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.severity-badge {
+    color: white;
+}
+
+.category-badge {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.status-badge {
+    background: #f1f5f9;
+    font-weight: 600;
+}
+
+.threat-description {
+    color: #475569;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.threat-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.info-item {
+    display: flex;
+    gap: 8px;
+}
+
+.info-item .label {
+    font-weight: 500;
+    color: #64748b;
+    min-width: 80px;
+}
+
+.info-item .value {
+    color: #1e293b;
+    font-weight: 500;
+}
+
+.exposed-data {
+    margin-top: 16px;
+}
+
+.exposed-data .label {
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.data-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.data-tag {
+    background: #ddd6fe;
+    color: #6d28d9;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Removal Progress */
+.removal-progress {
+    margin-top: 20px;
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.progress-header span:first-child {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.success-probability {
+    color: #059669;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+}
+
+.step-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.step.completed .step-indicator {
+    background: #10b981;
+}
+
+.step span {
+    font-size: 0.8rem;
+    color: #64748b;
+    text-align: center;
+    max-width: 80px;
+}
+
+.step.completed span {
+    color: #1e293b;
+    font-weight: 500;
+}
+
+.estimated-completion {
+    font-size: 0.9rem;
+    color: #64748b;
+    text-align: center;
+}
+
+/* Removal Section */
+.removal-section {
+    max-width: 100%;
+}
+
+.removal-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.active-removals, .completed-removals {
+    margin-bottom: 30px;
+}
+
+.active-removals h3, .completed-removals h3 {
+    color: #1e293b;
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+.removal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.removal-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    transition: all 0.2s ease;
+}
+
+.removal-item:hover {
+    background: #f1f5f9;
+}
+
+.removal-item.completed {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.removal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.site-name {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.removal-status {
+    color: #2563eb;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.completion-date {
+    color: #059669;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.removal-details {
+    display: flex;
+    gap: 16px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.auth-required {
+    text-align: center;
+    padding: 60px 20px;
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trial-scan-dashboard {
+        padding: 16px;
+    }
+    
+    .dashboard-header h1 {
+        font-size: 2rem;
+    }
+    
+    .dashboard-nav {
+        flex-direction: column;
+    }
+    
+    .scan-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .threat-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .threat-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .threat-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-steps {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .progress-steps::before {
+        display: none;
+    }
+    
+    .removal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .removal-details {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .threat-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .removal-stats {
+        grid-template-columns: 1fr;
+    }
+}

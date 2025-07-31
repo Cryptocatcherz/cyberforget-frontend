@@ -1,0 +1,209 @@
+/* --- Clean, seamless modal redesign --- */
+.premium-modal {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 99999 !important;
+    margin: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 95%;
+    max-width: 420px;
+    max-height: none;
+    background: #181a2f;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.premium-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99998;
+}
+
+.modal-header.compact {
+    text-align: center;
+    padding: 32px 24px 12px 24px;
+    border-bottom: none;
+}
+.feature-main-icon {
+    font-size: 2.2rem;
+    color: #FFD700;
+    margin-bottom: 8px;
+}
+.modal-header.compact h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px 0;
+}
+.modal-header.compact p {
+    color: #bfc7e0;
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+}
+
+.modal-features {
+    padding: 0 24px 0 24px;
+    margin-bottom: 8px;
+}
+.modal-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.modal-features li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #bfc7e0;
+    font-size: 0.98rem;
+    margin-bottom: 4px;
+}
+.modal-features li svg {
+    color: #42FFB5;
+    font-size: 1rem;
+}
+
+.modal-pricing-grid {
+    display: flex;
+    gap: 14px;
+    padding: 12px 24px 24px 24px;
+    justify-content: center;
+    align-items: stretch;
+}
+.modal-price-card {
+    background: #23243a;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 18px 14px 14px 14px;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #23243a;
+    max-width: 220px;
+    min-height: 340px;
+    height: 100%;
+    justify-content: flex-start;
+}
+.modal-price-title {
+    color: #FFD700;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.modal-price-main {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin-bottom: 2px;
+}
+.modal-price-amount {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+}
+.modal-price-period {
+    color: #bfc7e0;
+    font-size: 0.95rem;
+    margin-left: 2px;
+}
+.modal-price-desc {
+    color: #bfc7e0;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+.modal-upgrade-btn {
+    width: 100% !important;
+    padding: 12px 0 !important;
+    border: 2px solid #00D4FF !important;
+    border-radius: 8px !important;
+    font-size: 1.08rem !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    background: linear-gradient(90deg, #00D4FF 0%, #42FFB5 100%) !important;
+    color: #181a2f !important;
+    box-shadow: 0 2px 8px rgba(0,212,255,0.18) !important;
+    margin-top: auto !important;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s !important;
+    letter-spacing: 0.01em !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.modal-upgrade-btn:hover, .modal-upgrade-btn:focus {
+    background: linear-gradient(90deg, #42FFB5 0%, #00D4FF 100%) !important;
+    color: #181a2f !important;
+    box-shadow: 0 4px 16px rgba(0,212,255,0.28) !important;
+    outline: none !important;
+}
+.modal-upgrade-btn:disabled {
+    opacity: 0.7 !important;
+    cursor: not-allowed !important;
+}
+.modal-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    margin-top: 2px;
+    text-align: center;
+}
+.modal-badge.trial {
+    background: linear-gradient(90deg, #00D4FF 0%, #42FFB5 100%);
+    color: #181a2f;
+    margin-bottom: 4px;
+}
+.modal-badge.savings {
+    background: linear-gradient(90deg, #faff00 0%, #b8df40 100%);
+    color: #23243a;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.modal-price-monthly-equivalent {
+    color: #42FFB5;
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 2px;
+    text-align: center;
+}
+.modal-price-title, .modal-price-main, .modal-price-desc, .modal-price-monthly-equivalent {
+    width: 100%;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    .premium-modal {
+        width: 99%;
+        max-width: none;
+        border-radius: 10px;
+    }
+    .modal-header.compact, .modal-features, .modal-pricing-grid {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .modal-pricing-grid {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 16px;
+    }
+    .modal-price-card {
+        max-width: none;
+        min-height: 220px;
+    }
+}

@@ -1,0 +1,81 @@
+.admin-settings {
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.settings-card {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(216, 255, 96, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+.settings-title {
+    color: #D8FF60 !important;
+    margin-bottom: 20px !important;
+    font-size: 1.2rem !important;
+}
+
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.setting-description {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.9rem !important;
+}
+
+/* Material-UI component overrides */
+.settings-card .MuiSwitch-root {
+    margin-right: 8px;
+}
+
+.settings-card .MuiFormControlLabel-label {
+    color: #fff;
+}
+
+.settings-card .MuiOutlinedInput-root {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.settings-card .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(216, 255, 96, 0.1);
+}
+
+.settings-card .MuiInputLabel-root {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.settings-card .MuiOutlinedInput-input {
+    color: #fff;
+}
+
+.settings-card .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(216, 255, 96, 0.2);
+}
+
+.settings-card .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #D8FF60;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .admin-settings {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .settings-title {
+        font-size: 1.1rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .admin-settings {
+        padding: 8px;
+        gap: 8px;
+    }
+} 

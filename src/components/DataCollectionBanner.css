@@ -1,0 +1,421 @@
+/* Data Collection Banner Styles - Dashboard Integration */
+.data-collection-banner {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.banner-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(74, 144, 226, 0.03) 0%, 
+        rgba(255, 140, 0, 0.02) 100%);
+    opacity: 0.5;
+}
+
+.banner-content {
+    position: relative;
+    padding: 20px;
+    z-index: 1;
+}
+
+.banner-dismiss {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.banner-dismiss:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.banner-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.alert-icon {
+    font-size: 1.2rem;
+    color: #ff8c00;
+    flex-shrink: 0;
+    background: rgba(255, 140, 0, 0.1);
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.header-text h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.header-text p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.header-text p strong,
+.action-text p strong {
+    color: #ff8c00;
+    font-weight: 600;
+}
+
+.banner-stats {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stat-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.stat-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 140, 0, 0.3);
+}
+
+.stat-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ff8c00;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.banner-action {
+    margin-bottom: 16px;
+}
+
+.action-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    min-height: 60px;
+}
+
+.action-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.action-text h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-text h4 svg {
+    color: #4A90E2;
+    font-size: 0.9rem;
+}
+
+.action-text p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255, 140, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, #ff6b00 0%, #ff4500 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.arrow-icon {
+    transition: transform 0.2s ease;
+}
+
+.cta-button:hover .arrow-icon {
+    transform: translateX(2px);
+}
+
+.banner-features {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.feature-item svg {
+    color: #4A90E2;
+    font-size: 0.8rem;
+}
+
+.progress-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4A90E2 0%, #00d4ff 100%);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Desktop and Medium Screen Fixes */
+@media (max-width: 1200px) {
+    .action-content {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    
+    .cta-button {
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 992px) {
+    .action-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    
+    .cta-button {
+        align-self: flex-end;
+        min-width: auto;
+        width: auto;
+    }
+}
+
+/* Mobile Responsive - Dashboard Integration */
+@media (max-width: 768px) {
+    .data-collection-banner {
+        margin-bottom: 16px;
+        border-radius: 10px;
+    }
+
+    .banner-content {
+        padding: 16px;
+    }
+    
+    .banner-header {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 14px;
+        gap: 8px;
+    }
+    
+    .alert-icon {
+        align-self: center;
+        font-size: 1rem;
+        padding: 6px;
+    }
+    
+    .header-text h3 {
+        font-size: 1rem;
+        margin-bottom: 4px;
+    }
+    
+    .header-text p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .banner-stats {
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+    
+    .stat-item {
+        padding: 10px 6px;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .action-content {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .action-text h4 {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    
+    .action-text p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+    
+    .cta-button {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+    
+    .banner-features {
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 12px;
+        padding-top: 12px;
+    }
+    
+    .feature-item {
+        flex: 1;
+        min-width: 100px;
+        justify-content: center;
+        font-size: 0.75rem;
+    }
+    
+    .progress-indicator {
+        gap: 8px;
+    }
+    
+    .progress-text {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-content {
+        padding: 14px;
+    }
+    
+    .banner-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .stat-item {
+        flex: none;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .banner-features {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .feature-item {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 375px) {
+    .banner-content {
+        padding: 12px;
+    }
+    
+    .header-text h3 {
+        font-size: 0.95rem;
+    }
+    
+    .action-text p {
+        max-width: 240px;
+        font-size: 0.75rem;
+    }
+}

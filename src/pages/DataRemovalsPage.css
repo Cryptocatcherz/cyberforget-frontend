@@ -1,0 +1,542 @@
+/* General Page Styles */
+.data-leak-page {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    color: #ffffff;
+    display: flex;
+    position: relative;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 40px;
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .data-leak-page {
+        padding-bottom: 80px;
+    }
+    
+    .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px 15px 40px 15px;
+        box-sizing: border-box;
+    }
+}
+
+/* Header Section */
+.data-leak-header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 20px;
+}
+
+.data-leak-header h1 {
+    font-size: 2.5rem;
+    color: #D8FF60;
+    margin-bottom: 15px;
+}
+
+.header-description {
+    font-size: 1.2rem;
+    color: #fff;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    color: #cccccc;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .data-leak-header {
+        padding: 20px 15px;
+    }
+
+    .data-leak-header h1 {
+        font-size: 2rem;
+    }
+
+    .header-description {
+        font-size: 1rem;
+    }
+
+    .data-points-section {
+        padding: 15px;
+    }
+
+    .removal-images-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding: 15px 10px 30px 10px;
+    }
+    
+    .data-leak-header {
+        padding: 15px 5px;
+        margin-bottom: 10px;
+    }
+
+    .data-leak-header h1 {
+        font-size: 1.75rem;
+        margin-bottom: 10px;
+    }
+    
+    .header-description {
+        font-size: 0.9rem;
+    }
+
+    .data-points-section {
+        padding: 5px;
+    }
+
+    .removal-images-container {
+        gap: 12px;
+        grid-template-columns: 1fr;
+    }
+    
+    .image-preview {
+        min-height: 180px;
+    }
+}
+
+/* Data Points Section */
+.data-points-section {
+    padding: 20px;
+}
+
+.data-points-section h2 {
+    font-size: 1.8rem;
+    color: #D8FF60;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(216, 255, 96, 0.3);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Removal Images Container */
+.removal-images-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Image Preview Styling */
+.image-preview {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: rgba(18, 18, 18, 0.9);
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    transition: all 0.3s ease;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-preview:hover {
+    transform: translateY(-5px);
+    border-color: rgba(216, 255, 96, 0.3);
+    box-shadow: 
+        0 8px 30px rgba(216, 255, 96, 0.15),
+        0 0 0 1px rgba(216, 255, 96, 0.2);
+}
+
+.image-preview:hover img {
+    transform: scale(1.05);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #D8FF60;
+    font-size: 2rem;
+    animation: spin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Image Overlay */
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.site-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+/* Flashing Live Icon */
+.live-icon {
+    font-size: 0.6rem;
+    color: #FF4B4B;
+    animation: pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 75, 75, 0.5));
+}
+
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Add glowing effect for loading state */
+.loading-state {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.cyber-spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid transparent;
+    border-top-color: #D8FF60;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Image transition */
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.preview-image.hidden {
+    opacity: 0;
+}
+
+/* Add new styles */
+.live-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 6px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.recording-dot {
+    width: 8px;
+    height: 8px;
+    background: #ff4b4b;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.live-indicator span {
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.cyber-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, 
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.7) 50%,
+        transparent 100%
+    );
+}
+
+.site-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.site-name {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Add error state styling */
+.image-preview.error {
+    border-color: rgba(255, 75, 75, 0.3);
+}
+
+.error-message {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 75, 75, 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+/* Add hover card effect */
+.image-preview {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* Add skeleton loading animation */
+.image-preview.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05) 25%,
+        rgba(216, 255, 96, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    z-index: 1;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: -200% 0%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .content-wrapper {
+        padding: 80px 20px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .content-wrapper {
+        padding: 60px 20px;
+    }
+
+    .data-leak-header {
+        width: 100%;
+        padding: 30px 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px 15px 40px 15px;
+        box-sizing: border-box;
+    }
+
+    .sidebar {
+        display: none;
+    }
+    
+    .data-leak-header {
+        padding: 20px 10px;
+        margin-bottom: 15px;
+    }
+    
+    .removal-images-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .image-preview {
+        min-height: 200px;
+        width: 100%;
+    }
+}
+
+/* Add these new styles */
+.custom-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(216, 255, 96, 0.2);
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 95vh;
+  object-fit: contain;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.lightbox-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    transparent 100%
+  );
+}
+
+.lightbox-header h3 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.lightbox-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Update existing preview styles for better transitions */
+.image-preview {
+  cursor: zoom-in;
+}
+
+.image-preview:hover .preview-image {
+  transform: scale(1.05);
+}
+
+.preview-image {
+  transition: transform 0.3s ease;
+}

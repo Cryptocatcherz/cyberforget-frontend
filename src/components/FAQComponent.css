@@ -1,0 +1,146 @@
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #121212;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff6f00;
+}
+
+.faq-section {
+    border-top: 1px solid #444;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ff6f00;
+}
+
+.faq-header span {
+    font-size: 1.5rem;
+}
+
+.faq-content {
+    padding: 10px 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.faq-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.faq-content li {
+    margin-bottom: 10px;
+}
+
+.faq-content strong {
+    color: #d4ff00;
+}
+
+.faq-content a {
+    color: #ff6f00;
+    text-decoration: none;
+    font-weight: bold;
+}.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #121212;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff6f00;
+}
+
+.faq-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.faq-section {
+    border-top: 1px solid #444;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.faq-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ff6f00;
+}
+
+.faq-header span {
+    font-size: 1.5rem;
+}
+
+.faq-content {
+    padding: 15px 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.faq-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.faq-content li {
+    margin-bottom: 10px;
+}
+
+.faq-content strong {
+    color: #d4ff00;
+}
+
+.faq-content a {
+    color: #ff6f00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.faq-content a:hover {
+    text-decoration: underline;
+}
+
+
+.faq-content a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,1690 @@
+/* General Styling */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Main container improvements */
+.scanning-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0B1E 0%, #0F1019 50%, #161729 100%);
+    color: #FFFFFF;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 40px 20px;
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Header section redesign */
+.scanning-header {
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(16, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+}
+
+.scanning-header h1 {
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+}
+
+.scanning-header h2 {
+    font-size: 3.2rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #00D4FF 50%, #42FFB5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.scanning-header p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 0;
+}
+
+/* Progress section redesign */
+.progress-section {
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(216, 255, 96, 0.8),
+        #D8FF60
+    );
+    border-radius: 6px;
+    transition: width 0.3s ease;
+}
+
+.scanning-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-item {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-label {
+    color: #999;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    color: #D8FF60;
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+/* Threats section redesign */
+.threats-section {
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(216, 255, 96, 0.2);
+}
+
+.threats-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #D8FF60;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.threat-item {
+    background: rgba(255, 77, 77, 0.1);
+    border-left: 4px solid #ff4d4d;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: slideInThreat 0.3s ease-out;
+}
+
+.threat-icon {
+    color: #ff4d4d;
+    font-size: 1.2rem;
+}
+
+/* Screenshot section improvements */
+.screenshot-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(16, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+}
+
+.screenshot-container {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.screenshot {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+}
+
+.screenshot.loaded {
+    opacity: 1;
+}
+
+.screenshot-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    gap: 10px;
+}
+
+.cyber-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 255, 255, 0.1);
+    border-top-color: #0ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.screenshot-section h3 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.screenshot-section h3 svg {
+    color: #00D4FF;
+    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+}
+
+.screenshot-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(16, 23, 42, 0.8);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.image-preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.preview-content {
+    width: 100%;
+    height: 100%;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.preview-image.hidden {
+    display: none;
+}
+
+.loading-state {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Inter', sans-serif;
+}
+
+.cyber-spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid transparent;
+    border-top-color: #D8FF60;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.cyber-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.recording-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00D4FF;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.screenshot-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 30, 30, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: #D8FF60;
+    text-align: center;
+    padding: 20px;
+}
+
+.screenshot-placeholder .spinner-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #D8FF60;
+}
+
+.screenshot-placeholder p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+/* Error Message Styling */
+.error-message {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+}
+
+.error-message button {
+    background: #D8FF60;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.error-message button:hover {
+    background: #c2e654;
+}
+
+/* Scanning Status Box */
+.scanning-status {
+    width: 100%;
+    max-width: 900px; /* Increased max-width for better content accommodation */
+    padding: 50px; /* Increased padding */
+    background-color: #2a2a2a;
+    border-radius: 20px; /* More rounded corners */
+    text-align: center;
+    margin-bottom: 50px; /* Increased margin */
+    position: relative;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+}
+
+.scanning-status:hover {
+    box-shadow: 0px 6px 25px rgba(216, 255, 96, 0.4); /* Enhanced hover effect */
+}
+
+.scanning-count {
+    font-size: 1.8rem; /* Increased font size */
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.match-counter {
+    font-size: 1.5rem; /* Increased font size */
+    margin-top: 25px;
+    color: #D8FF60; /* Neon green */
+    font-weight: 500;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 25px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 12.5px;
+    margin: 25px 0;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(216, 255, 96, 0.3);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(216, 255, 96, 0.8) 0%,
+        rgba(216, 255, 96, 1) 50%,
+        rgba(216, 255, 96, 0.8) 100%
+    );
+    border-radius: 12.5px;
+    width: 0%;
+    transition: width 0.05s linear;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+    );
+    animation: progressShine 1.5s linear infinite;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(50%); }
+}
+
+/* Scanning Visualization */
+.scan-visualization {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    width: 100%;
+    max-width: 900px;
+}
+
+.scan-icon-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.scan-icon {
+    font-size: 2.8rem;
+    color: #D8FF60;
+    position: relative;
+    filter: drop-shadow(0 0 10px rgba(216, 255, 96, 0.3));
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.scan-message-container {
+    text-align: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.scan-message {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+    opacity: 0.9;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* Progress section styling */
+.progress-section {
+    width: 100%;
+    margin: 30px 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(216, 255, 96, 0.7),
+        #D8FF60
+    );
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.scanning-count {
+    font-size: 1rem;
+    color: #999;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.match-counter {
+    font-size: 1.2rem;
+    color: #D8FF60;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Threats list redesign */
+.threats-list {
+    width: 100%;
+    margin: 20px 0;
+    max-height: 250px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    padding: 20px;
+}
+
+.threat-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(255, 77, 77, 0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 3px solid #ff4d4d;
+}
+
+/* Screenshot section redesign */
+.screenshot-display {
+    width: 100%;
+    margin: 30px 0;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    padding: 20px;
+}
+
+.screenshot-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.threat-message {
+    position: relative;
+    width: 100%;
+    background: rgba(255, 77, 77, 0.9);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Fix screenshot display */
+.screenshot {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.screenshot.loaded {
+    opacity: 1;
+}
+
+.generic-scan-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(42, 42, 42, 0.8) 25%, 
+        rgba(58, 58, 58, 0.9) 50%, 
+        rgba(42, 42, 42, 0.8) 75%
+    );
+    background-size: 200% 100%;
+    animation: gradientScan 2s linear infinite;
+    border-radius: 15px;
+    z-index: 0;
+}
+
+/* Improve threat message display */
+.threat-message {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 77, 77, 0.9);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    z-index: 3;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Improve scan overlay animation */
+.scan-overlay-animation {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(216, 255, 96, 0.2),
+        transparent
+    );
+    animation: scanOverlayMove 3s linear infinite;
+    z-index: 2;
+}
+
+@keyframes scanOverlayMove {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+/* Add loading indicator */
+.loading-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: #D8FF60;
+    font-size: 1.2rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-indicator svg {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Information Box at the Bottom */
+.info-box-bottom {
+    display: flex;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(16, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    padding: 25px 35px;
+    border-radius: 20px;
+    margin-top: 60px;
+    text-align: left;
+    transition: all 0.3s ease;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.info-box-bottom:hover {
+    box-shadow: 0px 10px 40px rgba(0, 212, 255, 0.2);
+    border-color: rgba(0, 212, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.info-icon-bottom {
+    color: #00D4FF;
+    font-size: 2rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+    margin-top: 5px;
+    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+}
+
+.info-box-bottom p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.info-box-bottom p strong {
+    color: #00D4FF;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .scanning-page {
+        padding: 60px 15px;
+    }
+
+    .scanning-header h1 {
+        font-size: 2.8rem;
+    }
+
+    .scanning-header h2 {
+        font-size: 2.3rem;
+    }
+
+    .scanning-header p {
+        font-size: 1.2rem;
+    }
+
+    .scanning-status {
+        padding: 40px;
+    }
+
+    .scanning-count {
+        font-size: 1.6rem;
+    }
+
+    .match-counter {
+        font-size: 1.3rem;
+    }
+
+    .progress-bar {
+        height: 22px;
+    }
+
+    .progress {
+        height: 100%;
+    }
+
+    .scan-icon {
+        font-size: 3.5rem;
+    }
+
+    .scan-message {
+        font-size: 1.3rem;
+    }
+
+    .screenshot-display p.threat-message {
+        font-size: 1.6rem;
+        padding: 12px 18px;
+    }
+
+    .screenshot {
+        max-width: 650px;
+    }
+
+    .generic-scan-animation {
+        max-width: 650px;
+        height: 400px;
+    }
+
+    .threats-list {
+        max-height: 180px;
+    }
+
+    .info-box-bottom {
+        padding: 18px 25px;
+        margin-top: 50px;
+    }
+
+    .info-icon-bottom {
+        font-size: 1.8rem;
+    }
+
+    .info-box-bottom p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .scanning-page {
+        padding: 80px 10px;
+    }
+
+    .scanning-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .scanning-header h2 {
+        font-size: 2rem;
+    }
+
+    .scanning-header p {
+        font-size: 1rem;
+    }
+
+    .scanning-status {
+        padding: 35px;
+    }
+
+    .scanning-count {
+        font-size: 1.4rem;
+    }
+
+    .match-counter {
+        font-size: 1.1rem;
+    }
+
+    .progress-bar {
+        height: 20px;
+    }
+
+    .scan-icon {
+        font-size: 3rem;
+    }
+
+    .scan-message {
+        font-size: 1.2rem;
+    }
+
+    .screenshot-display p.threat-message {
+        font-size: 1.4rem;
+        padding: 10px 16px;
+    }
+
+    .screenshot {
+        max-width: 600px;
+    }
+
+    .generic-scan-animation {
+        max-width: 600px;
+        height: 350px;
+    }
+
+    .threats-list {
+        max-height: 160px;
+    }
+
+    .info-box-bottom {
+        padding: 15px 20px;
+        margin-top: 40px;
+    }
+
+    .info-icon-bottom {
+        font-size: 1.6rem;
+    }
+
+    .info-box-bottom p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scanning-page {
+        padding: 60px 10px;
+    }
+
+    .scanning-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .scanning-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .scanning-header p {
+        font-size: 0.95rem;
+    }
+
+    .scanning-status {
+        padding: 30px;
+    }
+
+    .scanning-count {
+        font-size: 1.3rem;
+    }
+
+    .match-counter {
+        font-size: 1rem;
+    }
+
+    .progress-bar {
+        height: 18px;
+    }
+
+    .scan-icon {
+        font-size: 2.8rem;
+    }
+
+    .scan-message {
+        font-size: 1.1rem;
+    }
+
+    .screenshot-display p.threat-message {
+        font-size: 1.2rem;
+        padding: 8px 14px;
+    }
+
+    .screenshot {
+        max-width: 100%;
+    }
+
+    .generic-scan-animation {
+        max-width: 100%;
+        height: 250px;
+    }
+
+    .threats-list {
+        max-height: 140px;
+    }
+
+    .info-box-bottom {
+        padding: 12px 15px;
+        margin-top: 30px;
+    }
+
+    .info-icon-bottom {
+        font-size: 1.4rem;
+    }
+
+    .info-box-bottom p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Scan Details Panel */
+.scan-details-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(216, 255, 96, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+}
+
+.scan-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.scan-metric:hover {
+    transform: translateY(-2px);
+    background: rgba(216, 255, 96, 0.1);
+}
+
+.scan-metric label {
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.scan-metric value {
+    color: #D8FF60;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .scan-details-panel {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .scan-metric {
+        padding: 12px;
+    }
+
+    .scan-metric value {
+        font-size: 1.2rem;
+    }
+}
+
+/* Status display improvements */
+.scan-status-display {
+    width: 100%;
+    max-width: 1000px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(16, 23, 42, 0.9) 100%);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    text-align: center;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+}
+
+.current-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stage-icon {
+    font-size: 2.5rem;
+    color: #00D4FF;
+    animation: pulseIcon 2s infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+}
+
+.stage-message {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+.current-action {
+    color: #00D4FF;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.9;
+    font-family: 'Inter', sans-serif;
+}
+
+@keyframes pulseIcon {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(216, 255, 96, 0.5));
+    }
+    50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 15px rgba(216, 255, 96, 0.8));
+    }
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(216, 255, 96, 0.5));
+    }
+}
+
+/* Threat item improvements */
+.threat-item {
+    background: rgba(255, 77, 77, 0.1);
+    border-left: 4px solid #ff4d4d;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: slideInThreat 0.3s ease-out;
+}
+
+@keyframes slideInThreat {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.current-site {
+    background: rgba(216, 255, 96, 0.1);
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border: 1px solid rgba(216, 255, 96, 0.2);
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.site-name {
+    color: #D8FF60;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.current-threat {
+    background: rgba(255, 77, 77, 0.1);
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 4px solid #ff4d4d;
+    font-size: 1.1rem;
+    color: #fff;
+    animation: slideInThreat 0.3s ease-out;
+}
+
+/* Update the threats section */
+.threats-section {
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.threats-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #D8FF60;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.threats-section h3 span {
+    background: rgba(255, 77, 77, 0.2);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 1rem;
+    color: #ff4d4d;
+}
+
+.threats-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.threats-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.threats-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.threats-list::-webkit-scrollbar-thumb {
+    background: rgba(216, 255, 96, 0.3);
+    border-radius: 4px;
+}
+
+/* Enhanced threat display */
+.threats-section {
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid rgba(216, 255, 96, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.threats-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.threat-count {
+    background: rgba(255, 77, 77, 0.2);
+    color: #ff4d4d;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+.threats-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.threat-item {
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 77, 77, 0.2);
+    margin-bottom: 10px;
+}
+
+.threat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.1);
+    border-color: rgba(255, 77, 77, 0.4);
+}
+
+.threat-icon {
+    font-size: 24px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(216, 255, 96, 0.1);
+    border-radius: 50%;
+}
+
+.threat-content {
+    flex: 1;
+}
+
+.threat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.site-name {
+    color: #D8FF60;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.threat-category {
+    background: rgba(216, 255, 96, 0.1);
+    color: #D8FF60;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.threat-details {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Scrollbar styling */
+.threats-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.threats-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.threats-list::-webkit-scrollbar-thumb {
+    background: rgba(216, 255, 96, 0.3);
+    border-radius: 4px;
+}
+
+/* Progress indicator improvements */
+.progress-section {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid rgba(216, 255, 96, 0.2);
+}
+
+.progress-bar {
+    height: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(216, 255, 96, 0.8),
+        #D8FF60
+    );
+    border-radius: 6px;
+    position: relative;
+    transition: width 0.3s ease;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(90deg,
+        rgba(216, 255, 96, 0) 0%,
+        rgba(216, 255, 96, 0.8) 50%,
+        rgba(216, 255, 96, 0) 100%
+    );
+    animation: progressPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Loader for Screenshot */
+.screenshot-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 30, 30, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.spinner-icon {
+    font-size: 2rem;
+    color: #D8FF60;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.current-scan {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+}
+
+.scan-message {
+    font-size: 1.1rem;
+    color: #00D4FF;
+    margin: 0;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.scan-stats {
+    font-size: 0.9rem;
+    color: #999;
+    margin: 5px 0 0 0;
+}
+
+.scan-icon {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+.exposure-item {
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 15px;
+    align-items: start;
+    margin-bottom: 15px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    transition: all 0.3s ease;
+}
+
+.exposure-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 10px;
+    color: #D8FF60;
+}
+
+.exposure-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.site-name {
+    color: #00D4FF;
+    font-size: 1.1rem;
+    font-weight: 600;
+    word-break: break-word;
+    font-family: 'Inter', sans-serif;
+}
+
+.exposure-category {
+    display: inline-block;
+    background: rgba(216, 255, 96, 0.1);
+    color: #D8FF60;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    align-self: flex-start;
+}
+
+.exposure-details {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.location-indicator {
+    color: #42FFB5;
+    font-size: 0.9rem;
+    margin-left: 5px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* Threats list container */
+.threats-list {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(16, 23, 42, 0.3);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .exposure-item {
+        padding: 15px;
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+    }
+
+    .exposure-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .site-name {
+        font-size: 1rem;
+    }
+
+    .exposure-category {
+        font-size: 0.8rem;
+        padding: 3px 10px;
+    }
+
+    .exposure-details {
+        font-size: 0.9rem;
+    }
+}
+
+.cyber-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 212, 255, 0.1);
+    border-top: 3px solid #00D4FF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.screenshot {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+}
+
+.screenshot.loaded {
+    opacity: 1;
+}
+
+.screenshot:not(.loaded) {
+    opacity: 0;
+}
+
+.input-container {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+}
+
+/* Add this new class for input fields */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+}
+
+input, 
+textarea {
+    -webkit-user-select: text;
+    user-select: text;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 100;
+    background-color: transparent;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* Container for all threats */
+.threats-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Individual threat card */
+.exposure-item {
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid rgba(216, 255, 96, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+/* Icon container */
+.app-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(30, 30, 30, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+/* Content styling */
+.exposure-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.site-name {
+    color: #00D4FF;
+    font-size: 1.1rem;
+    font-weight: 600;
+    word-break: break-word;
+    font-family: 'Inter', sans-serif;
+}
+
+.exposure-category {
+    display: inline-block;
+    background: rgba(216, 255, 96, 0.1);
+    color: #D8FF60;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    align-self: flex-start;
+}
+
+.exposure-details {
+    color: #999;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Icon colors */
+.globe-icon { color: #ff4b4b; }
+.search-icon { color: #4b9eff; }
+.social-icon { color: #ff6b4b; }
+.contact-icon { color: #4bff9f; }
+.document-icon { color: #ffb74b; }
+.database-icon { color: #D8FF60; }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .threats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .exposure-item {
+        padding: 15px;
+    }
+
+    .site-name {
+        font-size: 1rem;
+    }
+}
+
+/* Add these styles to your existing CSS */
+.threats-container {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 100px; /* Add padding at bottom for better scrolling */
+}
+
+/* Prevent unwanted touch behaviors */
+* {
+    touch-action: pan-y pinch-zoom;
+}

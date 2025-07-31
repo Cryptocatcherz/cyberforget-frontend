@@ -1,0 +1,149 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+/* Container */
+.datapoints-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 30px;
+    background-color: rgba(42, 42, 42, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(216, 255, 96, 0.2);
+    backdrop-filter: blur(10px);
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.datapoints-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(216, 255, 96, 0.2), transparent);
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.datapoints-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Alert banner */
+.alert-banner {
+    background-color: #8f2a2b;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Description */
+.description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #ccc;
+    text-align: center;
+}
+
+/* Remove link */
+.remove-link {
+    color: #d4ff00;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Data point tags container */
+.data-point-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Data point */
+.data-point {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.data-point:hover {
+    background-color: #444;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.data-point .icon {
+    margin-right: 5px;
+    font-size: 1.2rem;
+}
+
+/* Special data points */
+.data-point.special {
+    background-color: #ff8599;
+    color: #000;
+}
+
+.data-point.special:hover {
+    background-color: #ff99aa;
+}
+
+/* Data point text */
+.data-point span {
+    margin-left: 5px;
+}
+
+/* Toggle button */
+.toggle-button {
+    background-color: #8f2a2b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.toggle-button:hover {
+    background-color: #a94442;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .datapoints-container {
+        padding: 20px;
+    }
+
+    .data-point-tags {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .datapoints-container {
+        padding: 15px;
+    }
+
+    .data-point {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+}

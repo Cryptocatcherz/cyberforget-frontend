@@ -1,0 +1,19 @@
+:root {
+    --primary-color: #00D4FF;
+    --primary-dark: #0096FF;
+    --primary-light: #33E1FF;
+    --accent-color: #42FFB5;
+    --accent-dark: #2EE69E;
+    --secondary-color: #0A0B1E;
+    --background-dark: #0F1019;
+    --background-light: #161729;
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-primary: rgba(0, 212, 255, 0.3);
+    --border-secondary: rgba(66, 255, 181, 0.2);
+    --glass-bg: rgba(16, 23, 42, 0.8);
+    --glass-border: rgba(0, 212, 255, 0.2);
+    --mobile-breakpoint: 1100px;
+    --navbar-height: 80px;
+}

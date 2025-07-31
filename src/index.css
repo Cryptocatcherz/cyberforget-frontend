@@ -1,0 +1,62 @@
+/* index.css */
+
+:root {
+    --navbar-height: 60px;
+    --mobile-navbar-height: 48px;
+    --text-color: #FFFFFF;
+}
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+#root {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Global fix for navbar overlap - applies to all pages */
+.page-container,
+.app-container,
+.main-content {
+    padding-top: var(--navbar-height);
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Mobile navbar spacing */
+@media screen and (max-width: 768px) {
+    .page-container,
+    .app-container,
+    .main-content {
+        padding-top: 0;
+        padding-bottom: var(--mobile-navbar-height);
+    }
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.dashboard-container {
+    padding: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-buttons button {
+    margin-left: 10px;
+}
+
+.dashboard-main {
+    margin-top: 20px;
+}

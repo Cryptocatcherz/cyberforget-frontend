@@ -1,0 +1,294 @@
+/* Simplified CyberForget Login Page - Clean & Focused */
+.cyberforget-login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0A0B1E 0%, #161729 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 80px 20px 20px; /* Add top padding for navbar */
+    box-sizing: border-box;
+}
+
+.cyberforget-auth-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cyberforget-auth-content {
+    background: linear-gradient(135deg, rgba(16, 23, 42, 0.95) 0%, rgba(10, 11, 30, 0.98) 100%);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.1);
+    padding: 40px 32px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/* Header Section */
+.cyberforget-auth-header {
+    margin-bottom: 32px;
+}
+
+.cyberforget-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00D4FF;
+    font-size: 20px;
+}
+
+.cyberforget-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #00D4FF 0%, #42FFB5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cyberforget-auth-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 8px 0;
+}
+
+.cyberforget-auth-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Clerk Container */
+.cyberforget-clerk-container {
+    margin-bottom: 24px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Auth Toggle */
+.cyberforget-auth-toggle {
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.cyberforget-toggle-link {
+    background: none;
+    border: none;
+    color: #00D4FF;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.cyberforget-toggle-link:hover {
+    color: #42FFB5;
+    text-decoration: underline;
+}
+
+/* Legal Links */
+.cyberforget-legal-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.75rem;
+}
+
+.legal-link {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+    color: #00D4FF;
+}
+
+.legal-separator {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Clerk Component Overrides - Minimal */
+.cyberforget-clerk-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.cyberforget-clerk-header-title,
+.cyberforget-clerk-header-subtitle {
+    display: none !important;
+}
+
+.cyberforget-clerk-input {
+    background: rgba(16, 23, 42, 0.8) !important;
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
+    border-radius: 8px !important;
+    color: #FFFFFF !important;
+    padding: 12px 16px !important;
+}
+
+.cyberforget-clerk-input:focus {
+    border-color: #00D4FF !important;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1) !important;
+}
+
+.cyberforget-clerk-primary-button {
+    background: linear-gradient(135deg, #00D4FF 0%, #42FFB5 100%) !important;
+    color: #0A0B1E !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    margin-top: 8px !important;
+}
+
+.cyberforget-clerk-primary-button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3) !important;
+}
+
+.cyberforget-clerk-social-button {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: #1a1a1a !important;
+    padding: 12px 16px !important;
+    width: 100% !important;
+    margin: 8px 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.cyberforget-clerk-social-button:hover {
+    background: #ffffff !important;
+    border-color: #00D4FF !important;
+}
+
+.cyberforget-clerk-label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+    text-align: left !important;
+}
+
+.cyberforget-clerk-divider {
+    background: rgba(0, 212, 255, 0.2) !important;
+    margin: 16px 0 !important;
+}
+
+.cyberforget-clerk-divider-text {
+    color: rgba(255, 255, 255, 0.6) !important;
+    background: linear-gradient(135deg, rgba(16, 23, 42, 0.95) 0%, rgba(10, 11, 30, 0.98) 100%) !important;
+    padding: 0 12px !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .cyberforget-login-page {
+        padding: 120px 16px 16px; /* More top padding for mobile navbar */
+    }
+}
+
+@media (max-width: 480px) {
+    .cyberforget-login-page {
+        padding: 120px 12px 12px;
+    }
+    
+    .cyberforget-auth-content {
+        padding: 32px 24px;
+        border-radius: 16px;
+    }
+    
+    .cyberforget-brand {
+        font-size: 1.3rem;
+    }
+    
+    .cyberforget-auth-title {
+        font-size: 1.4rem;
+    }
+    
+    .cyberforget-auth-subtitle {
+        font-size: 0.85rem;
+    }
+}
+
+/* Hide Clerk Footer */
+.cl-footer,
+.cl-footerText,
+.cl-footerAction {
+    display: none !important;
+}
+
+/* Clean form layout */
+.cl-form {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.cl-formFieldRow {
+    margin-bottom: 12px !important;
+    width: 100% !important;
+}
+
+.cl-socialButtons {
+    margin: 12px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.cl-socialButtonsBlockButton {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+}
+
+.cl-divider {
+    margin: 16px 0 !important;
+}
+
+/* Fix Clerk component overflow */
+.cl-rootBox,
+.cl-card,
+.cl-signIn-root,
+.cl-signUp-root {
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Ensure all Clerk buttons fit */
+.cl-formButtonPrimary,
+.cl-socialButtonsBlockButton__apple,
+.cl-socialButtonsBlockButton__google,
+.cl-socialButtonsBlockButton__facebook {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}

@@ -1,0 +1,309 @@
+/* SignUp Trigger Component - CyberForget Chat Theme */
+.signup-trigger {
+  background: linear-gradient(135deg, 
+    rgba(66, 255, 181, 0.08) 0%, 
+    rgba(147, 51, 234, 0.05) 50%,
+    rgba(66, 255, 181, 0.03) 100%);
+  border: 1.5px solid rgba(66, 255, 181, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px 0;
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 32px rgba(66, 255, 181, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.signup-trigger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(66, 255, 181, 0.6) 50%, 
+    transparent 100%);
+}
+
+.signup-trigger:hover {
+  border-color: rgba(66, 255, 181, 0.5);
+  box-shadow: 
+    0 12px 40px rgba(66, 255, 181, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.trigger-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.trigger-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.trigger-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(66, 255, 181, 0.15);
+  border: 1px solid rgba(66, 255, 181, 0.3);
+  border-radius: 12px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(66, 255, 181, 0.2));
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.trigger-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.trigger-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  text-shadow: 0 0 10px rgba(66, 255, 181, 0.3);
+}
+
+.trigger-message {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.trigger-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  color: #000000;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(66, 255, 181, 0.3);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.trigger-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.trigger-button:hover::before {
+  left: 100%;
+}
+
+.trigger-button:hover {
+  box-shadow: 0 6px 20px rgba(66, 255, 181, 0.4);
+}
+
+.button-arrow {
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.trigger-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(66, 255, 181, 0.1);
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.benefit-icon {
+  color: #42ffb5;
+  font-size: 0.9rem;
+  font-weight: bold;
+  filter: drop-shadow(0 0 4px rgba(66, 255, 181, 0.4));
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .signup-trigger {
+    padding: 16px;
+    margin: 12px 0;
+    border-radius: 14px;
+  }
+
+  .trigger-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .trigger-header {
+    gap: 12px;
+  }
+
+  .trigger-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+    border-radius: 10px;
+  }
+
+  .trigger-title {
+    font-size: 1rem;
+  }
+
+  .trigger-message {
+    font-size: 0.9rem;
+  }
+
+  .trigger-button {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  .trigger-benefits {
+    gap: 12px;
+    padding-top: 10px;
+  }
+
+  .benefit-item {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-trigger {
+    padding: 14px;
+  }
+
+  .trigger-header {
+    gap: 10px;
+  }
+
+  .trigger-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
+
+  .trigger-title {
+    font-size: 0.95rem;
+  }
+
+  .trigger-message {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .trigger-button {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .trigger-benefits {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .benefit-item {
+    font-size: 0.75rem;
+  }
+}
+
+/* Special trigger variants */
+.signup-trigger.premium-variant {
+  border-color: rgba(66, 255, 181, 0.4);
+  background: linear-gradient(135deg, 
+    rgba(66, 255, 181, 0.12) 0%, 
+    rgba(0, 212, 170, 0.08) 100%);
+}
+
+.signup-trigger.data-removal-variant {
+  border-color: rgba(147, 51, 234, 0.4);
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.12) 0%, 
+    rgba(192, 132, 252, 0.08) 100%);
+}
+
+.signup-trigger.data-removal-variant .trigger-icon {
+  background: rgba(147, 51, 234, 0.15);
+  border-color: rgba(147, 51, 234, 0.3);
+}
+
+.signup-trigger.scan-limits-variant {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: linear-gradient(135deg, 
+    rgba(245, 158, 11, 0.12) 0%, 
+    rgba(251, 191, 36, 0.08) 100%);
+}
+
+.signup-trigger.scan-limits-variant .trigger-icon {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.signup-trigger.vpn-variant {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.12) 0%, 
+    rgba(96, 165, 250, 0.08) 100%);
+}
+
+.signup-trigger.vpn-variant .trigger-icon {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.signup-trigger.monitoring-variant {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, 
+    rgba(239, 68, 68, 0.12) 0%, 
+    rgba(248, 113, 113, 0.08) 100%);
+}
+
+.signup-trigger.monitoring-variant .trigger-icon {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+}

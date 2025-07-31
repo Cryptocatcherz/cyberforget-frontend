@@ -1,0 +1,116 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* CSS Variables */
+:root {
+    --sidebar-width: 240px;
+    --navbar-height: 60px;
+    --mobile-navbar-height: 60px;
+    --mobile-breakpoint: 768px;
+    --primary-color: #D8FF60;
+    --background-dark: #121212;
+    --background-darker: #0A0A0A;
+}
+
+/* App Layout */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--background-darker) 0%, var(--background-dark) 100%);
+    position: relative;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    min-height: 100vh;
+    padding: 2rem;
+    margin-left: var(--sidebar-width);
+    padding-top: calc(var(--navbar-height) + 1rem);
+    position: relative;
+    overflow-y: auto;
+    background: linear-gradient(135deg, var(--background-darker) 0%, var(--background-dark) 100%);
+}
+
+/* Autocomplete Dropdown Styles */
+.MuiAutocomplete-popper {
+    background-color: #1E1E1E !important;
+    border: 1px solid rgba(216, 255, 96, 0.1) !important;
+    border-radius: 8px !important;
+}
+
+.MuiAutocomplete-paper {
+    background-color: #1E1E1E !important;
+    color: #fff !important;
+}
+
+.MuiAutocomplete-option {
+    color: #fff !important;
+    &:hover {
+        background-color: rgba(216, 255, 96, 0.1) !important;
+    }
+    &[aria-selected="true"] {
+        background-color: rgba(216, 255, 96, 0.2) !important;
+    }
+}
+
+/* Loading Spinner */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(216, 255, 96, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 200px;
+    }
+    
+    .main-content {
+        margin-left: var(--sidebar-width);
+        padding: 1.5rem;
+        padding-top: calc(var(--navbar-height) + 1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .app-layout {
+        flex-direction: column;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+        padding-top: calc(var(--mobile-navbar-height) + 1rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 0.5rem;
+    }
+} 

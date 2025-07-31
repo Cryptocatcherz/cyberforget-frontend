@@ -1,0 +1,145 @@
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem;
+}
+
+.payment-form {
+    background: #1a1a1a; /* Dark background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 100%;
+    color: #fff; /* White text */
+    margin-top: 20px; /* Add some margin to the top */
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #444; /* Darker border */
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* White text */
+    font-size: 14px;
+}
+
+.short-input {
+    width: 100%; /* Adjust width for shorter input fields */
+}
+
+.payment-methods {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.payment-method {
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #333; /* Darker background */
+    color: #fff; /* White text */
+}
+
+.payment-method.selected {
+    background-color: #d4ff00; /* Highlight selected */
+    color: #000; /* Dark text */
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.total-amount {
+    text-align: left; /* Align text to the left */
+    margin-top: 20px;
+    font-size: 18px; /* Make the total amount text larger */
+    font-weight: bold;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align checkboxes to the right */
+    margin-top: 15px;
+}
+
+.checkbox-row label {
+    flex-grow: 1; /* Make the label take up remaining space */
+    font-size: 14px; /* Make text more readable */
+    line-height: 1.5; /* Better readability */
+}
+
+.checkbox-row input {
+    margin-left: 10px;
+    transform: scale(1.2); /* Make the checkboxes larger */
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #d4ff00; /* Bright button color */
+    color: #000; /* Dark text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.submit-button:hover {
+    background-color: #c3e000; /* Slightly darker on hover */
+    color: #000;
+}
+
+.stripe-elements-container {
+    background-color: #333; /* Dark background for inputs */
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 15px;
+    color: #fff; /* White text */
+}
+
+.stripe-element {
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* White text */
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading-spinner p {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Loading animation */
+.loading-spinner::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 3px solid #f3f3f3;
+    border-top-color: #3498db;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
