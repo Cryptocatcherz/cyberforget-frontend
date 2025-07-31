@@ -45,13 +45,14 @@ body {
     width: 100%;
     box-sizing: border-box;
     margin-left: 0;
-    padding-top: 60px;
+    padding-top: 0; /* Remove top padding */
 }
 
 /* When sidebar is present */
 .main-content.with-sidebar {
     margin-left: 280px;
     width: calc(100% - 280px);
+    padding-left: 0; /* Remove any additional left padding */
 }
 
 /* Full screen main content (no sidebar) */

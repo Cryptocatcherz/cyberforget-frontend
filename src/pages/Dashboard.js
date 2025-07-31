@@ -581,16 +581,14 @@ const Dashboard = () => {
                                 </div>
                             )}
                             
-                            {/* Main Dashboard Content - Trial and Premium users get full access */}
-                            {(isTrial || isPremium || daysRemaining > 0 || isDevelopment) ? (
-                                <div className="dashboard-content-wrapper">
-                                    {/* Modern Protection Grid */}
+                            {/* Conditional Dashboard Content */}
+                            {(isTrial || isPremium || daysRemaining > 0) ? (
+                                // PREMIUM/TRIAL DASHBOARD
+                                <div className="dashboard-content-wrapper premium-dashboard">
+                                    {/* Premium Protection Grid */}
                                     <div className="protection-grid">
-                                        {/* Automated Hourly Scans Card */}
-                                        <div className="protection-card">
-                                            <div className="protection-icon">
-                                                🔄
-                                            </div>
+                                        <div className="protection-card active">
+                                            <div className="protection-icon">🔄</div>
                                             <h3 className="protection-title">Automated Hourly Scans</h3>
                                             <p className="protection-status">
                                                 {hourlyIsActive ? 
@@ -600,137 +598,307 @@ const Dashboard = () => {
                                             </p>
                                         </div>
                                         
-                                        {/* Active Protection Card */}
-                                        <div className="protection-card">
-                                            <div className="protection-icon">
-                                                🛡️
-                                            </div>
+                                        <div className="protection-card active">
+                                            <div className="protection-icon">🛡️</div>
                                             <h3 className="protection-title">Active Protection</h3>
-                                            <p className="protection-status">
-                                                Monitoring 400+ data brokers continuously
-                                            </p>
+                                            <p className="protection-status">Monitoring 400+ data brokers continuously</p>
                                         </div>
                                     </div>
                                     
                             <div className="dashboard-grid">
-                                <ErrorBoundary>
-                                    <MemoizedDashboardStats 
-                                        stats={{
-                                            ...dashboardData.stats,
-                                            // Integrate hourly scan data
-                                            isScanning: hourlyIsActive || dashboardData.stats.isScanning,
-                                            progress: hourlyIsActive ? hourlyProgress : dashboardData.stats.progress,
-                                            currentSite: hourlyCurrentSite || dashboardData.stats.currentSite,
-                                            currentStage: hourlyCurrentStage || dashboardData.stats.currentStage,
-                                            // Use hourly metrics if available, otherwise fall back to dashboard stats
-                                            sitesScanned: hourlyMetrics?.sitesScanned || formatScanProgress(dashboardData.stats.progress || 0),
-                                            profilesFound: hourlyMetrics?.threatsFound || dashboardData.stats.profilesFound || dashboardData.stats.totalMatches || 0,
-                                            potentialThreats: hourlyMetrics?.threatsFound || dashboardData.stats.potentialThreats || 0,
-                                            totalMatches: hourlyMetrics?.totalMatches || dashboardData.stats.totalMatches || 0,
-                                            lastScanTime: hourlyMetrics?.lastScanTime || dashboardData.stats.lastScanTime,
-                                            nextScanTime: hourlyMetrics?.nextScanTime || dashboardData.stats.nextScanTime,
-                                            // Pass stage-specific data
-                                            stageIcon: hourlyMetrics?.stageIcon,
-                                            stageDescription: hourlyMetrics?.stageDescription,
-                                            stageDuration: hourlyMetrics?.stageDuration,
-                                            timeRemaining: hourlyMetrics?.timeRemaining,
-                                            siteIndex: hourlyMetrics?.siteIndex,
-                                            totalSites: hourlyMetrics?.totalSites,
-                                            scanType: isManualScan ? 'Manual scan' : 'Hourly scan'
-                                        }}
-                                    />
-                                </ErrorBoundary>
-
-                                <ErrorBoundary>
-                                    <MemoizedDataBrokerList 
-                                        isScanning={dashboardData.stats.isScanning}
-                                        currentSite={dashboardData.stats.currentSite}
-                                        progress={Number(dashboardData.stats.progress || 0)}
-                                        sitesScanned={dashboardData.stats.sitesScanned || 0}
-                                        profilesFound={dashboardData.stats.totalMatches || 0}
-                                        threatsFound={dashboardData.stats.potentialThreats || 0}
-                                        currentStageFromProps={dashboardData.stats.currentStage}
-                                        message={dashboardData.stats.message || dashboardData.stats.status}
-                                        lastScanTime={dashboardData.stats.lastScanTime}
-                                        nextScanTime={dashboardData.stats.nextScanTime}
-                                        threats={[]} // You can add actual threats data here if available
-                                        scanType={dashboardData.stats.scanType}
-                                    />
-                                </ErrorBoundary>
-
-                                <ErrorBoundary>
-                                    <MemoizedUserInfo 
-                                        user={user}
-                                    />
-                                </ErrorBoundary>
-
-                                {shouldShowComponent('featureToggles') && (
+                                {/* Main Content - Left Column */}
+                                <div className="dashboard-main-content">
+                                    {/* Stats Section - 2x2 Grid */}
                                     <ErrorBoundary>
-                                        <MemoizedFeatureToggles 
-                                            toggles={dashboardData.featureToggles || {
-                                                multi_factor_auth: false,
-                                                role_based_access: false,
-                                                monitoring_verification: false,
-                                                data_leak_notification: false
+                                        <MemoizedDashboardStats 
+                                            stats={{
+                                                ...dashboardData.stats,
+                                                // Integrate hourly scan data
+                                                isScanning: hourlyIsActive || dashboardData.stats.isScanning,
+                                                progress: hourlyIsActive ? hourlyProgress : dashboardData.stats.progress,
+                                                currentSite: hourlyCurrentSite || dashboardData.stats.currentSite,
+                                                currentStage: hourlyCurrentStage || dashboardData.stats.currentStage,
+                                                // Use hourly metrics if available, otherwise fall back to dashboard stats
+                                                sitesScanned: hourlyMetrics?.sitesScanned || formatScanProgress(dashboardData.stats.progress || 0),
+                                                profilesFound: hourlyMetrics?.threatsFound || dashboardData.stats.profilesFound || dashboardData.stats.totalMatches || 0,
+                                                potentialThreats: hourlyMetrics?.threatsFound || dashboardData.stats.potentialThreats || 0,
+                                                totalMatches: hourlyMetrics?.totalMatches || dashboardData.stats.totalMatches || 0,
+                                                lastScanTime: hourlyMetrics?.lastScanTime || dashboardData.stats.lastScanTime,
+                                                nextScanTime: hourlyMetrics?.nextScanTime || dashboardData.stats.nextScanTime,
+                                                // Pass stage-specific data
+                                                stageIcon: hourlyMetrics?.stageIcon,
+                                                stageDescription: hourlyMetrics?.stageDescription,
+                                                stageDuration: hourlyMetrics?.stageDuration,
+                                                timeRemaining: hourlyMetrics?.timeRemaining,
+                                                siteIndex: hourlyMetrics?.siteIndex,
+                                                totalSites: hourlyMetrics?.totalSites,
+                                                scanType: isManualScan ? 'Manual scan' : 'Hourly scan'
                                             }}
                                         />
                                     </ErrorBoundary>
-                                )}
 
+                                    {/* Data Broker Scan Progress */}
+                                    <div className="dashboard-data-broker">
+                                        <ErrorBoundary>
+                                            <MemoizedDataBrokerList 
+                                                isScanning={dashboardData.stats.isScanning}
+                                                currentSite={dashboardData.stats.currentSite}
+                                                progress={Number(dashboardData.stats.progress || 0)}
+                                                sitesScanned={dashboardData.stats.sitesScanned || 0}
+                                                profilesFound={dashboardData.stats.totalMatches || 0}
+                                                threatsFound={dashboardData.stats.potentialThreats || 0}
+                                                currentStageFromProps={dashboardData.stats.currentStage}
+                                                message={dashboardData.stats.message || dashboardData.stats.status}
+                                                lastScanTime={dashboardData.stats.lastScanTime}
+                                                nextScanTime={dashboardData.stats.nextScanTime}
+                                                threats={[]} // You can add actual threats data here if available
+                                                scanType={dashboardData.stats.scanType}
+                                            />
+                                        </ErrorBoundary>
+                                    </div>
+                                </div>
 
-                                {shouldShowComponent('hourlyScansTest') && (
+                                {/* Sidebar - Right Column */}
+                                <div className="dashboard-sidebar">
                                     <ErrorBoundary>
-                                        <HourlyScansTest />
+                                        <MemoizedUserInfo 
+                                            user={user}
+                                        />
                                     </ErrorBoundary>
-                                )}
 
-                                <div className="live-search-section">
-                                    <h3>
-                                        Live Search
-                                        <div className="live-indicator">
-                                            <div className="live-dot"></div>
-                                            <span>LIVE</span>
-                                        </div>
-                                    </h3>
-                                    <div className="live-search-images">
-                                        {liveSearchItems.length > 0 ? (
-                                            liveSearchItems.map(item => (
-                                            <div 
-                                                key={item.url}
-                                                    className="image-preview-container"
-                                                onClick={() => window.open(item.url, '_blank')}
-                                            >
-                                                    <ImagePreview 
-                                                        item={item} 
-                                                        onImageClick={(url) => window.open(url, '_blank')} 
-                                                    />
-                                                </div>
-                                            ))
-                                        ) : (
-                                            <div className="live-search-placeholder">
-                                                <p>Loading search previews...</p>
+                                    {shouldShowComponent('featureToggles') && (
+                                        <ErrorBoundary>
+                                            <MemoizedFeatureToggles 
+                                                toggles={dashboardData.featureToggles || {
+                                                    multi_factor_auth: false,
+                                                    role_based_access: false,
+                                                    monitoring_verification: false,
+                                                    data_leak_notification: false
+                                                }}
+                                            />
+                                        </ErrorBoundary>
+                                    )}
+
+                                    {shouldShowComponent('hourlyScansTest') && (
+                                        <ErrorBoundary>
+                                            <HourlyScansTest />
+                                        </ErrorBoundary>
+                                    )}
+
+                                    <div className="live-search-section">
+                                        <h3>
+                                            Live Search
+                                            <div className="live-indicator">
+                                                <div className="live-dot"></div>
+                                                <span>LIVE</span>
                                             </div>
-                                        )}
+                                        </h3>
+                                        <div className="live-search-images">
+                                            {liveSearchItems.length > 0 ? (
+                                                liveSearchItems.map(item => (
+                                                <div 
+                                                    key={item.url}
+                                                        className="image-preview-container"
+                                                    onClick={() => window.open(item.url, '_blank')}
+                                                >
+                                                        <ImagePreview 
+                                                            item={item} 
+                                                            onImageClick={(url) => window.open(url, '_blank')} 
+                                                        />
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <div className="live-search-placeholder">
+                                                    <p>Loading search previews...</p>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                                 </div>
                             ) : (
-                                // Free users see paywall
-                                <PaywallOverlay
-                                    feature="LIVE_MONITORING"
-                                    title="Premium Dashboard Access"
-                                    description={getUpgradeMessage()}
-                                    showBlur={false}
-                                    variant="inline"
-                                >
-                                    <div className="free-user-dashboard">
-                                        <div className="free-dashboard-message">
-                                            <h3>Start Your Free Trial</h3>
-                                            <p>Get 5 days of premium dashboard access and advanced security features.</p>
+                                // FREE USER PRESALE DASHBOARD
+                                <div className="dashboard-content-wrapper free-user-presale">
+                                    {/* Hero Section */}
+                                    <div className="presale-hero">
+                                        <div className="hero-content">
+                                            <h2>🚀 Start Your 5-Day FREE Trial</h2>
+                                            <p className="hero-subtitle">Get full access to our premium cyber security suite and protect your digital identity today</p>
+                                            <button 
+                                                className="cta-button primary large"
+                                                onClick={() => navigate('/pricing')}
+                                            >
+                                                Start Free Trial - No Credit Card Required
+                                            </button>
                                         </div>
                                     </div>
-                                </PaywallOverlay>
+
+                                    {/* Premium Features Grid */}
+                                    <div className="premium-features-grid">
+                                        <h3 className="features-title">🔓 Unlock Premium Features</h3>
+                                        
+                                        {/* Data Broker Removal */}
+                                        <div className="feature-card locked">
+                                            <div className="feature-header">
+                                                <div className="feature-icon">🕵️</div>
+                                                <div className="lock-badge">🔒 PREMIUM</div>
+                                            </div>
+                                            <h4>Automated Data Broker Removal</h4>
+                                            <p>Scan 500+ data broker sites and automatically remove your personal information</p>
+                                            <ul className="feature-benefits">
+                                                <li>✓ Hourly automated scans</li>
+                                                <li>✓ Remove from 400+ databases</li>
+                                                <li>✓ Continuous monitoring</li>
+                                            </ul>
+                                        </div>
+
+                                        {/* VPN */}
+                                        <div className="feature-card locked">
+                                            <div className="feature-header">
+                                                <div className="feature-icon">🔐</div>
+                                                <div className="lock-badge">🔒 PREMIUM</div>
+                                            </div>
+                                            <h4>Military-Grade VPN</h4>
+                                            <p>Secure your internet connection with our lightning-fast VPN service</p>
+                                            <ul className="feature-benefits">
+                                                <li>✓ 50+ global server locations</li>
+                                                <li>✓ AES-256 encryption</li>
+                                                <li>✓ No-logs policy</li>
+                                            </ul>
+                                        </div>
+
+                                        {/* Password Manager */}
+                                        <div className="feature-card locked">
+                                            <div className="feature-header">
+                                                <div className="feature-icon">🔑</div>
+                                                <div className="lock-badge">🔒 PREMIUM</div>
+                                            </div>
+                                            <h4>Advanced Password Manager</h4>
+                                            <p>Generate, store, and manage unlimited secure passwords</p>
+                                            <ul className="feature-benefits">
+                                                <li>✓ Unlimited password storage</li>
+                                                <li>✓ Auto-fill and sync</li>
+                                                <li>✓ Breach monitoring</li>
+                                            </ul>
+                                        </div>
+
+                                        {/* Identity Monitoring */}
+                                        <div className="feature-card locked">
+                                            <div className="feature-header">
+                                                <div className="feature-icon">🛡️</div>
+                                                <div className="lock-badge">🔒 PREMIUM</div>
+                                            </div>
+                                            <h4>24/7 Identity Monitoring</h4>
+                                            <p>Real-time alerts for identity theft and data breaches</p>
+                                            <ul className="feature-benefits">
+                                                <li>✓ Dark web monitoring</li>
+                                                <li>✓ Instant breach alerts</li>
+                                                <li>✓ Credit monitoring</li>
+                                            </ul>
+                                        </div>
+
+                                        {/* Live Reports */}
+                                        <div className="feature-card locked">
+                                            <div className="feature-header">
+                                                <div className="feature-icon">📊</div>
+                                                <div className="lock-badge">🔒 PREMIUM</div>
+                                            </div>
+                                            <h4>Live Security Reports</h4>
+                                            <p>Detailed analytics and real-time threat intelligence</p>
+                                            <ul className="feature-benefits">
+                                                <li>✓ Weekly security reports</li>
+                                                <li>✓ Threat analysis</li>
+                                                <li>✓ Risk assessments</li>
+                                            </ul>
+                                        </div>
+
+                                        {/* Ad Blocker */}
+                                        <div className="feature-card locked">
+                                            <div className="feature-header">
+                                                <div className="feature-icon">🚫</div>
+                                                <div className="lock-badge">🔒 PREMIUM</div>
+                                            </div>
+                                            <h4>Advanced Ad & Tracker Blocker</h4>
+                                            <p>Block ads, trackers, and malicious websites across all devices</p>
+                                            <ul className="feature-benefits">
+                                                <li>✓ Block 2M+ trackers</li>
+                                                <li>✓ Malware protection</li>
+                                                <li>✓ Faster browsing</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    {/* Value Proposition */}
+                                    <div className="value-proposition">
+                                        <div className="value-content">
+                                            <h3>💎 Premium Value - $180+/month worth of security tools</h3>
+                                            <div className="pricing-breakdown">
+                                                <div className="price-item">
+                                                    <span>Data Broker Removal Service</span>
+                                                    <span>$99/month</span>
+                                                </div>
+                                                <div className="price-item">
+                                                    <span>Premium VPN Service (ExpressVPN)</span>
+                                                    <span>$12.95/month</span>
+                                                </div>
+                                                <div className="price-item">
+                                                    <span>Password Manager (1Password)</span>
+                                                    <span>$7.99/month</span>
+                                                </div>
+                                                <div className="price-item">
+                                                    <span>Identity Monitoring (LifeLock)</span>
+                                                    <span>$29.99/month</span>
+                                                </div>
+                                                <div className="price-item">
+                                                    <span>Advanced Ad Blocker (AdGuard)</span>
+                                                    <span>$5.99/month</span>
+                                                </div>
+                                                <div className="price-item">
+                                                    <span>Security Reports & Analytics</span>
+                                                    <span>$39.99/month</span>
+                                                </div>
+                                                <div className="price-item total">
+                                                    <span><strong>Total Competitor Value</strong></span>
+                                                    <span><strong>$195.91/month</strong></span>
+                                                </div>
+                                                <div className="price-item our-price">
+                                                    <span><strong>🔥 CyberForget All-in-One</strong></span>
+                                                    <span><strong>Only $15/month</strong></span>
+                                                </div>
+                                                <div className="price-item annual-deal">
+                                                    <span><strong>💰 Annual Deal</strong></span>
+                                                    <span><strong>Only $10/month*</strong></span>
+                                                </div>
+                                            </div>
+                                            <p className="savings-text">🎉 You save $180+/month with CyberForget!</p>
+                                            <p className="annual-note">*$127 billed annually - Save $53!</p>
+                                        </div>
+                                    </div>
+
+                                    {/* CTA Section */}
+                                    <div className="final-cta">
+                                        <div className="cta-content">
+                                            <h3>🔥 Limited Time: 5 Days FREE</h3>
+                                            <p>Join 2.3M+ users protecting their digital identity</p>
+                                            <div className="cta-buttons">
+                                                <button 
+                                                    className="cta-button primary extra-large"
+                                                    onClick={() => navigate('/pricing')}
+                                                >
+                                                    Start Free Trial Now
+                                                </button>
+                                                <button 
+                                                    className="cta-button secondary"
+                                                    onClick={() => navigate('/chat')}
+                                                >
+                                                    Try Free Scan First
+                                                </button>
+                                            </div>
+                                            <p className="guarantee-text">💯 30-day money-back guarantee • Cancel anytime</p>
+                                        </div>
+                                    </div>
+                                </div>
                             )}
                         </div>
                     </div>

@@ -7,6 +7,7 @@ import { ClerkProvider, useAuth as useClerkAuth } from '@clerk/clerk-react';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Dashboard from './pages/Dashboard';
+import NewDashboard from './pages/NewDashboard';
 import EditInfoPage from './pages/EditInfoPage';
 import SuccessPage from './pages/SuccessPage';
 import DataRemovalsPage from './pages/DataRemovalsPage';
@@ -228,6 +229,14 @@ const AppContent = React.memo(() => {
                     {/* Protected Routes */}
                     <Route
                         path="/dashboard"
+                        element={
+                            <PrivateRoute>
+                                <NewDashboard />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/dashboard-old"
                         element={
                             <PrivateRoute>
                                 <Dashboard />
