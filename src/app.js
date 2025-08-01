@@ -691,7 +691,7 @@ const AppContent = React.memo(() => {
                                             content="Access your premium dashboard with advanced security features and real-time monitoring."
                                         />
                                     </Helmet>
-                                    <DebugPremiumDashboard />
+                                    <PremiumDashboard />
                                 </>
                             </PrivateRoute>
                         }

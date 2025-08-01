@@ -1,0 +1,112 @@
+.subscription-status-banner {
+  position: fixed;
+  top: 60px; /* Below navbar */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.subscription-status-banner.error {
+  background: linear-gradient(135deg, #ff5252 0%, #ff1744 100%);
+  color: white;
+}
+
+.subscription-status-banner.warning {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  color: white;
+}
+
+.subscription-status-banner.info {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+}
+
+.banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.banner-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.banner-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 200px;
+}
+
+.banner-text strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.banner-text span {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.banner-action {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.banner-action:hover {
+  background: white;
+  color: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .subscription-status-banner {
+    top: 48px; /* Adjust for mobile navbar */
+    padding: 10px 16px;
+  }
+  
+  .banner-content {
+    gap: 12px;
+  }
+  
+  .banner-icon {
+    font-size: 20px;
+  }
+  
+  .banner-text {
+    flex: 1 1 100%;
+    order: 2;
+  }
+  
+  .banner-action {
+    order: 3;
+    width: 100%;
+    margin-top: 8px;
+  }
+}

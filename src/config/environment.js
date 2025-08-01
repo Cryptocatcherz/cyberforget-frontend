@@ -4,7 +4,8 @@
 // Environment detection - more reliable detection for production
 const isProduction = process.env.REACT_APP_PRODUCTION_MODE === 'true' || 
                      process.env.NODE_ENV === 'production' ||
-                     window.location.hostname === 'app.cyberforget.com' ||
+                     window.location.hostname === 'cyberforget.com' ||
+                     window.location.hostname === 'www.cyberforget.com' ||
                      window.location.hostname.includes('netlify.app');
 const isDevelopment = !isProduction;
 
@@ -12,9 +13,9 @@ const isDevelopment = !isProduction;
 const isNetlify = process.env.NETLIFY === 'true' || window.location.hostname.includes('netlify.app');
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-// API URL configuration - Unified system for Netlify + Heroku deployment
+// API URL configuration - Updated for cyberforget.com domain
 const getBaseApiUrl = () => {
-  // Production: Netlify frontend -> Heroku backend
+  // Production: cyberforget.com frontend -> Heroku backend
   if (isProduction) {
     return process.env.REACT_APP_HEROKU_API_URL || process.env.REACT_APP_API_BASE_URL || 'https://cyberforget-api-961214fcb16c.herokuapp.com';
   }

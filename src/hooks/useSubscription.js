@@ -14,7 +14,9 @@ const SUBSCRIPTION_PLANS = {
   PREMIUM: 'premium',
   ACTIVE: 'active',
   PAST_DUE: 'past_due',
-  CANCELLED: 'cancelled'
+  CANCELLED: 'cancelled',
+  UNPAID: 'unpaid',
+  INCOMPLETE: 'incomplete'
 };
 
 // Feature definitions with required subscription levels
@@ -78,7 +80,17 @@ export const useSubscription = () => {
     }
     
     const isPremium = status === SUBSCRIPTION_PLANS.PREMIUM || status === SUBSCRIPTION_PLANS.ACTIVE;
-    const isExpired = status === SUBSCRIPTION_PLANS.PAST_DUE || status === SUBSCRIPTION_PLANS.CANCELLED;
+    const isExpired = status === SUBSCRIPTION_PLANS.PAST_DUE || 
+                     status === SUBSCRIPTION_PLANS.CANCELLED ||
+                     status === SUBSCRIPTION_PLANS.UNPAID;
+    const isPastDue = status === SUBSCRIPTION_PLANS.PAST_DUE || status === SUBSCRIPTION_PLANS.UNPAID;
+    const isCancelled = status === SUBSCRIPTION_PLANS.CANCELLED;
+    
+    // Check if trial is cancelled (still in trial but will end)
+    const isTrialCancelled = isTrial && (user.publicMetadata?.trialCancelled || user.publicMetadata?.cancelAtPeriodEnd);
+    
+    // Check if trial ended without payment
+    const isTrialEndedUnpaid = !isTrial && !isPremium && daysSinceMember > TRIAL_CONFIG.DURATION_DAYS;
     
     // Calculate trial end date and remaining days only for actual trials
     let trialEndsAt = null;
@@ -103,9 +115,16 @@ export const useSubscription = () => {
       isPremium,
       isTrial,
       isExpired,
+      isPastDue,
+      isCancelled,
+      isTrialEndedUnpaid,
+      isTrialCancelled,
       daysRemaining,
       trialEndsAt,
-      daysSinceMember
+      daysSinceMember,
+      cancelAtPeriodEnd: user.publicMetadata?.cancelAtPeriodEnd || false,
+      paymentFailed: user.publicMetadata?.paymentFailed || false,
+      trialCancelledAt: user.publicMetadata?.trialCancelledAt ? new Date(user.publicMetadata.trialCancelledAt) : null
     };
   }, [user]);
 
@@ -160,6 +179,27 @@ export const useSubscription = () => {
 
   // Get upgrade prompt message based on context
   const getUpgradeMessage = (feature) => {
+    // Payment failed - urgent message
+    if (subscriptionInfo.isPastDue) {
+      return '⚠️ Your payment failed. Please update your payment method to continue using premium features.';
+    }
+    
+    // Trial cancelled but still active
+    if (subscriptionInfo.isTrialCancelled) {
+      return `⚠️ Your trial is cancelled. You have ${subscriptionInfo.daysRemaining} day(s) remaining to reactivate.`;
+    }
+    
+    // Subscription cancelled but still active
+    if (subscriptionInfo.isCancelled && subscriptionInfo.cancelAtPeriodEnd) {
+      return 'Your subscription is cancelled and will end at the end of your billing period.';
+    }
+    
+    // Trial ended without payment
+    if (subscriptionInfo.isTrialEndedUnpaid) {
+      return '❌ Your free trial has ended. Subscribe to continue using premium features.';
+    }
+    
+    // Active trial
     if (subscriptionInfo.isTrial) {
       if (subscriptionInfo.daysRemaining > 0) {
         return `Your free trial expires in ${subscriptionInfo.daysRemaining} day(s). Upgrade to continue using premium features.`;

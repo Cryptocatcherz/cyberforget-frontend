@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../hooks/useAuthUtils";
 import useSubscription from '../hooks/useSubscription';
+import api from '../services/apiService';
 import './PremiumDashboard.css';
 
 const PremiumDashboard = () => {
@@ -13,6 +14,7 @@ const PremiumDashboard = () => {
     const [showVpnModal, setShowVpnModal] = useState(false);
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [selectedPlatform, setSelectedPlatform] = useState('');
+    const [loading, setLoading] = useState(true);
     const [dashboardStats, setDashboardStats] = useState({
         threatsBlocked: 1247,
         dataRemovalRequests: 23,
@@ -24,6 +26,17 @@ const PremiumDashboard = () => {
 
     // Premium features with real functionality
     const features = [
+        {
+            id: 'data-removal',
+            title: 'Data Removal Service',
+            description: 'Remove your data from 400+ broker sites',
+            icon: '🗑️',
+            enabled: false,
+            status: 'Inactive',
+            inProgress: 0,
+            completed: 0,
+            route: '/data-removal'
+        },
         {
             id: 'dark-web',
             title: 'Dark Web Protection',
@@ -58,17 +71,6 @@ const PremiumDashboard = () => {
             route: '/password-manager'
         },
         {
-            id: 'data-removal',
-            title: 'Data Removal Service',
-            description: 'Remove your data from 400+ broker sites',
-            icon: '🗑️',
-            enabled: false,
-            status: 'Inactive',
-            inProgress: 0,
-            completed: 0,
-            route: '/data-removal'
-        },
-        {
             id: 'identity-monitoring',
             title: '24/7 Identity Monitoring',
             description: 'Monitor your identity across the web',
@@ -91,6 +93,27 @@ const PremiumDashboard = () => {
             route: '/ad-blocker'
         }
     ];
+
+    // Load saved feature toggles on component mount
+    useEffect(() => {
+        const loadFeatureToggles = async () => {
+            if (!user || loading === false) return; // Prevent re-runs
+            
+            try {
+                const response = await api.get('/user-preferences/feature-toggles');
+                if (response.data.success && response.data.featureToggles) {
+                    setActiveFeatures(response.data.featureToggles);
+                }
+            } catch (error) {
+                console.error('Error loading feature toggles:', error);
+                // Don't retry on error to prevent infinite loops
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadFeatureToggles();
+    }, [user]); // Remove loading from dependencies
 
     // Terminal command sequences for different features
     const getTerminalCommands = (featureId, isEnabling) => {
@@ -239,16 +262,48 @@ const PremiumDashboard = () => {
         setNotifications(prev => prev.filter(n => n.id !== id));
     };
 
-    const handleToggleFeature = (featureId) => {
+    const handleToggleFeature = async (featureId) => {
         const isCurrentlyEnabled = activeFeatures[featureId] || false;
+        const newState = !isCurrentlyEnabled;
         
+        // Update local state immediately for responsive UI
         setActiveFeatures(prev => ({
             ...prev,
-            [featureId]: !isCurrentlyEnabled
+            [featureId]: newState
         }));
 
         // Show terminal notification
-        addTerminalNotification(featureId, !isCurrentlyEnabled);
+        addTerminalNotification(featureId, newState);
+        
+        // Save to backend
+        try {
+            await api.put(`/user-preferences/feature-toggles/${featureId}`, {
+                enabled: newState
+            });
+            console.log(`Feature ${featureId} saved as ${newState ? 'enabled' : 'disabled'}`);
+        } catch (error) {
+            console.error('Error saving feature toggle:', error);
+            // Revert local state on error
+            setActiveFeatures(prev => ({
+                ...prev,
+                [featureId]: isCurrentlyEnabled
+            }));
+            
+            // Show error notification
+            const errorId = Date.now();
+            const errorNotification = {
+                id: errorId,
+                type: 'terminal',
+                title: 'Error',
+                commands: [
+                    { prompt: 'ERROR', command: `Failed to save ${featureId} state`, delay: 0, error: true }
+                ]
+            };
+            setNotifications(prev => [errorNotification, ...prev]);
+            setTimeout(() => {
+                setNotifications(prev => prev.filter(n => n.id !== errorId));
+            }, 5000);
+        }
     };
 
     // Platform Download Functions
@@ -450,6 +505,24 @@ const PremiumDashboard = () => {
             </div>
         );
     };
+
+    if (loading) {
+        return (
+            <div className="premium-dashboard">
+                <div className="dashboard-container">
+                    <div style={{ 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        alignItems: 'center', 
+                        height: '100vh',
+                        color: '#42ffb5'
+                    }}>
+                        <div>Loading your preferences...</div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="premium-dashboard">

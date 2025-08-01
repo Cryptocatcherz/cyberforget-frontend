@@ -1,4 +1,4 @@
-/* Premium Dashboard - Professional Design */
+/* Premium Dashboard - Professional Design - Updated */
 .premium-dashboard {
     min-height: 100vh;
     background: linear-gradient(135deg, #0A0B1E 0%, #1a1d35 50%, #0A0B1E 100%);
@@ -15,7 +15,7 @@
 .dashboard-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 20px 20px 40px 20px;
+    padding: 15px 20px 30px 20px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -470,54 +470,63 @@
 
 /* Header Section */
 .premium-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    padding: 25px 30px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(66, 255, 181, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    min-height: 100px;
-    box-sizing: border-box;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 15px !important;
+    padding: 10px 15px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(66, 255, 181, 0.1) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(20px) !important;
+    min-height: 50px !important;
+    box-sizing: border-box !important;
+    gap: 20px !important;
 }
 
 /* Desktop adjustments for sidebar layout */
 @media (min-width: 769px) {
     .premium-header {
-        padding: 20px 25px;
-        margin-bottom: 30px;
+        padding: 15px 20px;
+        margin-bottom: 25px;
     }
     
     .header-content h1 {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
 }
 
+.header-content {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
 .header-content h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    background: linear-gradient(135deg, #42ffb5, #00d4aa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 2px !important;
+    background: linear-gradient(135deg, #42ffb5, #00d4aa) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    line-height: 1.1 !important;
 }
 
 .header-content p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
+    font-size: 0.8rem !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
 }
 
 .subscription-badge {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 6px 12px !important;
+    border-radius: 10px !important;
+    backdrop-filter: blur(10px) !important;
+    flex-shrink: 0 !important;
 }
 
 .subscription-badge.premium {
@@ -531,24 +540,27 @@
 }
 
 .badge-icon {
-    font-size: 2rem;
-    line-height: 1;
+    font-size: 1.2rem !important;
+    line-height: 1 !important;
 }
 
 .badge-content {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .badge-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1px !important;
 }
 
 .badge-subtitle {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    line-height: 1.1 !important;
 }
 
 /* Security Stats Overview */
