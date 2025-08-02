@@ -626,18 +626,16 @@ const AppContent = React.memo(() => {
                     <Route
                         path="/vpn"
                         element={
-                            <PrivateRoute>
-                                <>
-                                    <Helmet>
-                                        <title>CyberForget VPN - Secure Your Digital Privacy</title>
-                                        <meta
-                                            name="description"
-                                            content="Download CyberForget VPN for Chrome, Mac, or Windows. Military-grade encryption, zero-logs policy, and lightning-fast speeds."
-                                        />
-                                    </Helmet>
-                                    <VPNPage />
-                                </>
-                            </PrivateRoute>
+                            <>
+                                <Helmet>
+                                    <title>CyberForget VPN - Secure Your Digital Privacy</title>
+                                    <meta
+                                        name="description"
+                                        content="Download CyberForget VPN for Chrome, Mac, or Windows. Military-grade encryption, zero-logs policy, and lightning-fast speeds."
+                                    />
+                                </Helmet>
+                                <VPNPage />
+                            </>
                         }
                     />
 
@@ -645,18 +643,16 @@ const AppContent = React.memo(() => {
                     <Route
                         path="/data-removal"
                         element={
-                            <PrivateRoute>
-                                <>
-                                    <Helmet>
-                                        <title>CyberForget Data Removal - Take Back Your Privacy</title>
-                                        <meta
-                                            name="description"
-                                            content="Remove your personal information from 500+ data broker sites. Automated removal service with 24/7 monitoring included with CyberForget Pro."
-                                        />
-                                    </Helmet>
-                                    <DataRemovalPage />
-                                </>
-                            </PrivateRoute>
+                            <>
+                                <Helmet>
+                                    <title>CyberForget Data Removal - Take Back Your Privacy</title>
+                                    <meta
+                                        name="description"
+                                        content="Remove your personal information from 500+ data broker sites. Automated removal service with 24/7 monitoring included with CyberForget Pro."
+                                    />
+                                </Helmet>
+                                <DataRemovalPage />
+                            </>
                         }
                     />
 
