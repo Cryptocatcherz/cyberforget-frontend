@@ -35,6 +35,7 @@ import "slick-carousel/slick/slick-theme.css";
 // Using Clerk directly instead of custom AuthProvider
 import LoadingSpinner from './components/LoadingSpinner';
 import LoadingScreen from './components/LoadingScreen';
+import SimpleLoader from './components/SimpleLoader';
 import DeleteAccountPage from './pages/DeleteAccountPage';
 import DeleteAccountMainPage from './pages/DeleteAccountMainPage';
 import { initGA, logPageView } from './utils/analytics';
@@ -109,7 +110,7 @@ const AppContent = React.memo(() => {
     }, [location.pathname, location.search]);
 
     if (!isLoaded) {
-        return <div>Loading...</div>;
+        return <SimpleLoader />;
     }
 
     // Only show sidebar on dashboard and other authenticated pages
@@ -769,7 +770,7 @@ function App() {
             <ClerkProvider 
                 publishableKey={clerkPubKey}
             >
-                <React.Suspense fallback={<div>Loading...</div>}>
+                <React.Suspense fallback={<SimpleLoader />}>
                     <AuthNavigationHandler />
                     <AppContent />
                 </React.Suspense>
