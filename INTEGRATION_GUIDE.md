@@ -161,7 +161,7 @@ The frontend automatically detects and switches between development and producti
 
 1. `process.env.REACT_APP_PRODUCTION_MODE`
 2. `process.env.NODE_ENV`
-3. `window.location.hostname` (app.cyberforget.ai for production)
+3. `window.location.hostname` (app.cyberforget.com for production)
 
 ### Development Mode Features
 - API calls to `http://localhost:5002`

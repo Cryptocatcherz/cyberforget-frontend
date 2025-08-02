@@ -621,4 +621,4 @@ git push origin main
 *Security Tools: 11 Total (Temp Email now fully active)*  
 *Mobile Optimization: Complete*  
 *Development Setup: Automated with start-dev.sh*  
-*Deployment: Netlify (app.cyberforget.ai)*
+*Deployment: Netlify (app.cyberforget.com)*
