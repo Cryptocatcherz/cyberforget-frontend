@@ -152,7 +152,7 @@ const AreaCodeMainPage = () => {
 
         <div className="hero-section">
           <FaShieldAlt className="hero-icon pulse" />
-          <h1>Suspicious Phone Call? Check the Area Code</h1>
+          <h1>Suspicious Phone Call? Check the <span className="highlight">Area Code</span></h1>
           <p className="hero-subtitle">
             Don't fall victim to phone scams. Instantly lookup any US area code to check for 
             known scam activity, verify legitimate locations, and protect your personal information.
@@ -251,7 +251,13 @@ const AreaCodeMainPage = () => {
 
         <section className="all-area-codes">
           <div className="section-header">
-            <h2>{searchTerm ? 'Search Results' : showAll ? 'Complete US Area Code Directory' : 'High-Risk Area Codes'}</h2>
+            <h2>
+              {searchTerm ? 'Search Results' : showAll ? (
+                <>Complete US <span className="highlight">Area Code</span> Directory</>
+              ) : (
+                <><span className="highlight">High-Risk</span> Area Codes</>
+              )}
+            </h2>
             <p>
               {searchTerm 
                 ? `Found ${filteredCodes.length} matching area codes` 

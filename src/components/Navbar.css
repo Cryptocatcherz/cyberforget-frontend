@@ -520,10 +520,10 @@ svg[data-icon="shield-alt"],
 }
 
 .pro-tools-dropdown {
-    background: linear-gradient(135deg, rgba(16, 23, 42, 0.98) 0%, rgba(10, 11, 30, 0.98) 100%);
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    width: 320px !important;
-    min-width: 320px !important;
+    background: rgba(16, 23, 42, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 300px !important;
+    min-width: 300px !important;
     max-width: none !important;
     right: 0 !important;
     left: auto !important;
@@ -534,19 +534,56 @@ svg[data-icon="shield-alt"],
 .pro-tools-dropdown button {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     width: 100%;
     position: relative;
-    padding: 12px 60px 12px 16px;
+    padding: 16px 60px 16px 20px;
     justify-content: flex-start;
     text-align: left;
     white-space: normal;
     word-wrap: break-word;
     overflow: visible;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.15s ease;
+    min-height: 52px;
+}
+
+.pro-tools-dropdown li:last-child button {
+    border-bottom: none;
+}
+
+.pro-tools-dropdown button:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
 }
 
 .pro-icon {
+    color: rgba(255, 215, 0, 0.8);
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.pro-tools-dropdown button:hover .pro-icon {
     color: #FFD700;
+}
+
+/* Ensure all icons in pro tools dropdown are centered */
+.pro-tools-dropdown button svg {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0;
+    display: block;
+    margin: 0 auto;
 }
 
 .pro-badge {
@@ -554,15 +591,16 @@ svg[data-icon="shield-alt"],
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: #000;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
+    background: rgba(255, 215, 0, 0.12);
+    color: rgba(255, 215, 0, 0.9);
+    font-size: 0.55rem;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 2px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
 }
 
 .pro-tools-dropdown button span {
@@ -572,51 +610,67 @@ svg[data-icon="shield-alt"],
     word-wrap: break-word;
     overflow: visible;
     display: block;
-    max-width: calc(100% - 80px);
+    line-height: 1.4;
+    max-width: calc(100% - 100px);
+    align-self: center;
 }
 
 .dropdown-toggle {
-    background: rgba(0, 212, 255, 0.05);
+    background: transparent;
     color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    padding: 8px 16px;
-    gap: 8px;
-    font-size: 14px;
+    border: none;
+    padding: 16px 20px;
+    gap: 6px;
+    font-size: 1rem;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
-    letter-spacing: 0.3px;
-    border-radius: 6px;
+    letter-spacing: 0.2px;
+    border-radius: 0;
     transition: all 0.2s ease;
     cursor: pointer;
     display: flex;
     align-items: center;
-    min-width: 130px;
-    backdrop-filter: blur(10px);
+    min-width: 120px;
+    position: relative;
 }
 
 .dropdown-toggle:hover {
-    color: #00D4FF;
-    border-color: rgba(0, 212, 255, 0.4);
-    background: rgba(0, 212, 255, 0.1);
-    transform: translateY(-1px);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.dropdown-toggle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-toggle:hover::after {
+    transform: scaleX(1);
 }
 
 .dropdown {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 8px);
     right: 0;
-    width: 280px;
+    width: 300px;
     max-width: none;
-    background: linear-gradient(135deg, rgba(16, 23, 42, 0.98) 0%, rgba(10, 11, 30, 0.98) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.3);
-    border-radius: 16px;
-    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.15);
-    padding: 12px;
+    background: rgba(16, 23, 42, 0.96);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    padding: 0;
     z-index: 1200;
     display: flex;
     flex-direction: column;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .dropdown li {
@@ -630,27 +684,32 @@ svg[data-icon="shield-alt"],
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 12px 16px;
+    gap: 12px;
+    padding: 14px 16px;
     background: transparent;
     border: none;
-    color: var(--text-color);
-    font-size: 0.95rem;
-    font-weight: 500;
-    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 0;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.15s ease;
     white-space: normal;
-    min-height: 44px;
+    min-height: 40px;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dropdown li:last-child button {
+    border-bottom: none;
 }
 
 .dropdown li button svg {
-    width: 20px;
-    height: 20px;
-    color: var(--primary-color);
+    width: 16px;
+    height: 16px;
+    color: rgba(0, 212, 255, 0.8);
     flex-shrink: 0;
-    filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.3));
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .dropdown li button span {
@@ -659,22 +718,14 @@ svg[data-icon="shield-alt"],
 }
 
 .dropdown li button:hover {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(66, 255, 181, 0.05) 100%);
-    border-radius: 8px;
-    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
 }
 
 .dropdown li button:hover svg {
-    color: var(--accent-color);
-    filter: drop-shadow(0 0 8px rgba(66, 255, 181, 0.4));
-    transform: scale(1.1);
+    color: #00D4FF;
 }
 
-.dropdown li:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    margin-bottom: 4px;
-    padding-bottom: 4px;
-}
 
 .dropdown li button::after {
     display: none;

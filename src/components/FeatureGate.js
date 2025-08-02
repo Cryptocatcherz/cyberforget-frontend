@@ -3,6 +3,8 @@ import { useAuth } from '../hooks/useAuthUtils';
 import api from '../services/apiService';
 import PremiumModal from './PremiumModal';
 import LoadingSpinner from './LoadingSpinner';
+import Navbar from './Navbar';
+import MobileNavbar from './MobileNavbar';
 import './FeatureGate.css';
 
 const FeatureGate = ({ 
@@ -10,17 +12,30 @@ const FeatureGate = ({
   feature, 
   fallback, 
   showUpgradeModal = true,
-  customUpgradeContent = null 
+  customUpgradeContent = null,
+  showNavbar = true
 }) => {
   const { user } = useAuth();
   const [planData, setPlanData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (user) {
       checkFeatureAccess();
+    } else {
+      setLoading(false);
     }
   }, [user, feature]);
 
@@ -64,7 +79,7 @@ const FeatureGate = ({
   }
 
   if (!user) {
-    return (
+    const loginContent = (
       <div className="feature-gate-login">
         <div className="feature-gate-content">
           <h3>Sign In Required</h3>
@@ -78,12 +93,19 @@ const FeatureGate = ({
         </div>
       </div>
     );
+
+    return showNavbar ? (
+      <div className="page-container">
+        {isMobile ? <MobileNavbar /> : <Navbar />}
+        {loginContent}
+      </div>
+    ) : loginContent;
   }
 
   if (!hasAccess) {
     // Check if user needs to complete profile
     if (planData?.accessControl?.redirectToEditInfo) {
-      return (
+      const profileContent = (
         <div className="feature-gate-profile">
           <div className="feature-gate-content">
             <h3>Complete Your Profile</h3>
@@ -97,6 +119,13 @@ const FeatureGate = ({
           </div>
         </div>
       );
+
+      return showNavbar ? (
+        <div className="page-container">
+          {isMobile ? <MobileNavbar /> : <Navbar />}
+          {profileContent}
+        </div>
+      ) : profileContent;
     }
 
     // Show upgrade prompt
@@ -104,7 +133,7 @@ const FeatureGate = ({
       return fallback;
     }
 
-    return (
+    const upgradeContent = (
       <div className="feature-gate-upgrade">
         <div className="feature-gate-content">
           {customUpgradeContent || (
@@ -178,6 +207,13 @@ const FeatureGate = ({
         )}
       </div>
     );
+
+    return showNavbar ? (
+      <div className="page-container">
+        {isMobile ? <MobileNavbar /> : <Navbar />}
+        {upgradeContent}
+      </div>
+    ) : upgradeContent;
   }
 
   // User has access, render children

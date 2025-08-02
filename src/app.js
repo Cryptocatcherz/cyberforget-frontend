@@ -113,9 +113,7 @@ const AppContent = React.memo(() => {
     // Only show sidebar on dashboard and other authenticated pages
     const showSidebarPages = [
         '/dashboard',
-        '/premium-dashboard',
-        '/data-removal',
-        '/vpn'
+        '/premium-dashboard'
     ];
     
     const shouldShowSidebar = showSidebarPages.some(page => 

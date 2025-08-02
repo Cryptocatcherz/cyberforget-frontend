@@ -385,22 +385,39 @@
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 1.05rem;
     font-weight: 500;
     display: block;
-    padding: 12px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    background: rgba(0, 212, 255, 0.05);
-    border: 1px solid rgba(0, 212, 255, 0.1);
+    padding: 18px 24px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 212, 255, 0.15);
     letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.menu-item a:hover::before {
+    left: 100%;
 }
 
 .menu-item a:hover {
-    background: rgba(0, 212, 255, 0.1);
+    background: rgba(0, 212, 255, 0.08);
     color: #00D4FF;
-    transform: translateX(5px);
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+    transform: translateY(-1px);
+    border-color: rgba(0, 212, 255, 0.3);
 }
 
 /* Dropdown Menu */
@@ -444,150 +461,229 @@
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
 }
 
-/* Pro Tools Button */
-.pro-tools-button {
+/* Legacy styles - keeping for compatibility but overridden by new design */
+
+/* Professional Mobile Navigation Design */
+.tools-item {
+    margin: 0;
+}
+
+.tools-button {
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.1) 100%);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 8px;
-    color: #FFD700;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
+    font-weight: 500;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     cursor: pointer;
-    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    position: relative;
+    text-align: left;
+}
+
+.tools-button:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.chevron-icon {
+    color: rgba(255, 255, 255, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    transition: transform 0.2s ease;
+    transform-origin: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
 }
 
-.pro-tools-button:hover {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
-    border-color: #FFD700;
-    transform: translateY(-2px);
+.chevron-icon svg {
+    width: 8px;
+    height: 8px;
+    display: block;
 }
 
-.pro-star-icon {
-    color: #FFD700;
-    font-size: 1rem;
+/* Tools Dropdown Container */
+.tools-dropdown {
+    background: rgba(16, 23, 42, 0.6);
+    border-radius: 8px;
+    margin: 8px 0 16px 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
 }
 
-.pro-tools-menu {
-    background: linear-gradient(135deg, rgba(16, 23, 42, 0.98) 0%, rgba(10, 11, 30, 0.98) 100%);
-    border: 1px solid rgba(255, 215, 0, 0.2);
+/* Tools Sections */
+.tools-section {
+    padding: 0;
 }
 
-.pro-tool-item {
+.tools-section:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section-label {
+    padding: 12px 16px 8px 16px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section-label span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.free-indicator {
+    width: 4px;
+    height: 4px;
+    background: #42FFB5;
+    border-radius: 50%;
+    margin-left: auto;
+}
+
+.pro-star {
+    color: rgba(255, 215, 0, 0.7);
+    font-size: 8px;
+    margin-left: auto;
+}
+
+/* Tools List */
+.tools-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+}
+
+/* Tool Links - Free Tools */
+.tool-link {
     display: flex;
     align-items: center;
-    gap: 12px;
-    position: relative;
-    padding: 12px 20px;
+    padding: 14px 16px;
     text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.15s ease;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.tool-link:last-child {
+    border-bottom: none;
+}
+
+.tool-link:hover {
     color: #fff;
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.04);
 }
 
-.pro-tool-item:hover {
-    background: rgba(255, 215, 0, 0.1);
-    color: #FFD700;
+.tool-text {
+    flex: 1;
+    line-height: 1.4;
 }
 
-.pro-tool-icon {
-    color: #FFD700;
-    font-size: 1rem;
+/* Pro Tool Links */
+.pro-link {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.15s ease;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.pro-badge-mobile {
-    position: absolute;
-    right: 12px;
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: #000;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
+.pro-link:last-child {
+    border-bottom: none;
+}
+
+.pro-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.tool-icon {
+    font-size: 14px;
+    color: rgba(255, 215, 0, 0.8);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.pro-badge {
+    background: rgba(255, 215, 0, 0.12);
+    color: rgba(255, 215, 0, 0.9);
+    font-size: 0.55rem;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 2px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin-left: auto;
+    flex-shrink: 0;
 }
 
-/* Free Tools Button */
-.free-tools-button {
-    width: 100%;
-    background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(66, 255, 181, 0.1));
-    color: #00D4FF;
-    padding: 15px 30px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-    border: 1px solid rgba(0, 212, 255, 0.3);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);
-    transition: all 0.3s ease;
+/* Sign In/Out Button - Professional Design */
+.sign-in {
+    margin-top: 24px;
+    padding: 0 20px 20px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 20px;
 }
 
-/* Remove transitions and transforms since Framer Motion will handle them */
-.dropdown-menu,
-.dropdown-menu li,
-.dropdown-menu.active,
-.slide-menu.open .dropdown-menu,
-.slide-menu.open .dropdown-menu li {
-    transition: none;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Sign In/Out Button */
 .sign-in a,
 .sign-in button {
     width: 100%;
-    background: transparent;
+    background: rgba(0, 212, 255, 0.08);
     color: #00D4FF;
-    padding: 15px 30px;
+    padding: 14px 20px;
     border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 0.95rem;
     font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 1px solid #00D4FF;
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
-    position: relative;
-    overflow: hidden;
+    text-transform: none;
+    letter-spacing: 0.2px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: block;
     text-align: center;
     text-decoration: none;
 }
 
 .sign-in button {
-    width: 100%;
-    background: transparent;
+    background: rgba(255, 75, 75, 0.08);
     color: #FF4B4B;
-    border-color: #FF4B4B;
-    box-shadow: 0 0 15px rgba(255, 75, 75, 0.2);
+    border-color: rgba(255, 75, 75, 0.2);
 }
 
 .sign-in a:hover {
-    background: rgba(0, 212, 255, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    background: rgba(0, 212, 255, 0.12);
+    border-color: rgba(0, 212, 255, 0.3);
 }
 
 .sign-in button:hover {
-    background: rgba(255, 75, 75, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(255, 75, 75, 0.3);
+    background: rgba(255, 75, 75, 0.12);
+    border-color: rgba(255, 75, 75, 0.3);
 }
 
 /* Animations */
@@ -771,18 +867,34 @@ body.menu-open {
     display: block;
     width: 100%;
     padding: 18px 24px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
     background: none;
     border: none;
     text-align: left;
-    border-radius: 10px;
-    transition: background 0.2s, color 0.2s;
+    border-radius: 0;
+    transition: all 0.2s ease;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+}
+.menu-item a::after, .menu-item button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.menu-item a:hover::after, .menu-item button:hover::after {
+    transform: scaleX(1);
 }
 .menu-item a:hover, .menu-item button:hover {
-    background: linear-gradient(90deg, #00D4FF22 0%, #42FFB522 100%);
-    color: #00D4FF;
+    color: #fff;
+    background: none;
 }
 
 /* Dashboard Link Mobile Styling */

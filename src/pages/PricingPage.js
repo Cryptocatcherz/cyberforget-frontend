@@ -165,7 +165,14 @@ const PricingPage = () => {
       });
     }
     
-    window.location.href = isAnnual 
+    // Return the payment URL for the anchor tag
+    return isAnnual 
+      ? "https://buy.stripe.com/14kcNQafGcpE9HOaEE"
+      : "https://buy.stripe.com/fZeg02fA0exMaLS8wA";
+  };
+
+  const getPaymentUrl = () => {
+    return isAnnual 
       ? "https://buy.stripe.com/14kcNQafGcpE9HOaEE"
       : "https://buy.stripe.com/fZeg02fA0exMaLS8wA";
   };
@@ -236,14 +243,17 @@ const PricingPage = () => {
         >
           <h2>Start Protecting Your Privacy Today</h2>
           <p>Try CyberForget risk-free for 5 days. Cancel anytime.</p>
-          <motion.button
+          <motion.a
+            href={getPaymentUrl()}
+            data-rewardful
             className="start-trial-button"
             whileHover={{ scale: 1.05, backgroundColor: hoverColor }}
             whileTap={{ scale: 0.95 }}
             onClick={handleStartTrial}
+            style={{ textDecoration: 'none', display: 'inline-block' }}
           >
             Start My Free Trial
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         <div className="pricing-cards-container">
@@ -288,7 +298,9 @@ const PricingPage = () => {
               {/* <span className={`slider-knob${isAnnual ? ' right' : ''}`}></span> */}
             </div>
 
-                    <motion.button
+                    <motion.a
+              href={getPaymentUrl()}
+              data-rewardful
               className="start-trial-button"
                         whileHover={{
                             scale: 1.05,
@@ -296,9 +308,10 @@ const PricingPage = () => {
                         }}
                         whileTap={{ scale: 0.95 }}
               onClick={handleStartTrial}
+              style={{ textDecoration: 'none', display: 'inline-block' }}
                     >
               Start My Free Trial
-                    </motion.button>
+                    </motion.a>
 
             <ul className="feature-list">
               {features.map((feature, index) => (
@@ -363,7 +376,9 @@ const PricingPage = () => {
                         ))}
                     </ul>
 
-                    <motion.button
+                    <motion.a
+              href={getPaymentUrl()}
+              data-rewardful
               className="start-trial-button"
                         whileHover={{
                             scale: 1.05,
@@ -371,9 +386,10 @@ const PricingPage = () => {
                         }}
                         whileTap={{ scale: 0.95 }}
               onClick={handleStartTrial}
+              style={{ textDecoration: 'none', display: 'inline-block' }}
                     >
               Start My Free Trial
-                    </motion.button>
+                    </motion.a>
 
             <div className="testimonial">
               <p>"I was getting 10+ spam calls daily. After using CyberForget for 2 months, I barely get any. My information was everywhere and now it's not. Worth every penny!"</p>

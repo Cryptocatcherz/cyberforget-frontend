@@ -76,7 +76,7 @@ const Navbar = () => {
         { name: "Data Removals", link: '/data-removal', icon: FaDatabase },
         { name: "Site Scanner", link: '/pricing', icon: FaGlobe },
         { name: "Ad Blocker", link: '/pricing', icon: FaBan },
-        { name: "Chat AI Pro", link: '/pricing', icon: FaComments }
+        { name: "Chat AI Pro", link: '/scamai', icon: FaComments }
     ];
 
     if (width <= 768) return null;

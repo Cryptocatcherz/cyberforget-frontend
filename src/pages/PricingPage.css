@@ -202,53 +202,55 @@
 .billing-toggle {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    background: #23242a;
+    justify-content: space-between;
+    background: #1a1a1a;
     border-radius: 100px;
-    border: 1px solid rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.2);
     overflow: hidden;
     margin: 32px 0 24px 0;
     width: 100%;
     max-width: 340px;
     min-width: 220px;
-    box-shadow: 0 2px 16px #0006;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    height: 50px;
+    padding: 4px;
+    position: relative;
 }
 
 .billing-toggle span {
-    flex: 1 1 50%;
+    flex: 1;
     text-align: center;
     font-size: 1rem;
     font-weight: 600;
-    padding: 14px 0;
+    padding: 12px 16px;
     cursor: pointer;
     background: transparent;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.6);
     border-radius: 100px;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.3s ease;
     z-index: 2;
+    position: relative;
 }
 
 .billing-toggle span.active {
-    background: #4A90E2;
-    color: #000;
-    font-weight: 900;
-    box-shadow: 0 2px 12px rgba(74, 144, 226, 0.8);
+    background: linear-gradient(135deg, #4A90E2 0%, #5BA4F2 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 12px rgba(74, 144, 226, 0.4) !important;
+    transform: scale(1.02);
 }
 
-.toggle-slider {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    background: #4A90E2;
-    border-radius: 50%;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
-    left: 16px;
+.billing-toggle span:not(.active) {
+    color: rgba(255, 255, 255, 0.5);
+    background: transparent;
 }
 
-.toggle-slider.annually {
-    transform: translateX(100%);
+.billing-toggle span:not(.active):hover {
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.05);
 }
+
+/* Old toggle slider removed - now using button-based design */
 
 /* Feature List */
 .feature-list {
@@ -479,32 +481,47 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: #23242a;
+        background: #1a1a1a;
         border-radius: 100px;
-        border: 1px solid rgba(74, 144, 226, 0.1);
+        border: 1px solid rgba(74, 144, 226, 0.2);
         overflow: hidden;
         position: relative;
-        height: 48px;
+        height: 50px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .billing-toggle span {
         flex: 1;
-        font-size: 0.9rem;
-        padding: 10px 16px;
+        font-size: 0.95rem;
+        padding: 12px 16px;
         text-align: center;
         z-index: 2;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
         font-weight: 600;
         border-radius: 100px;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
         white-space: nowrap;
+        color: rgba(255, 255, 255, 0.6);
+        position: relative;
     }
 
     .billing-toggle span.active {
-        color: #000;
-        background: #4A90E2;
-        box-shadow: 0 2px 8px rgba(234, 255, 96, 0.3);
+        color: #ffffff !important;
+        background: linear-gradient(135deg, #4A90E2 0%, #5BA4F2 100%) !important;
+        box-shadow: 0 2px 12px rgba(74, 144, 226, 0.4) !important;
+        font-weight: 700 !important;
+        transform: scale(1.02);
+    }
+
+    .billing-toggle span:not(.active) {
+        color: rgba(255, 255, 255, 0.5);
+        background: transparent;
+    }
+
+    .billing-toggle span:not(.active):hover {
+        color: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.05);
     }
 }
 
@@ -681,8 +698,11 @@
 }
 
 .billing-toggle-ios .label.active {
-    color: #23242a;
-    font-weight: 900;
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #4A90E2 0%, #5BA4F2 100%) !important;
+    font-weight: 900 !important;
+    box-shadow: 0 2px 12px rgba(74, 144, 226, 0.4) !important;
+    border-radius: 100px !important;
 }
 
 .billing-toggle-ios .slider-knob {

@@ -272,6 +272,7 @@ const PremiumModal = ({ isOpen, onClose, requestedFeature, onStartTrial }) => {
                                 <a
                                     className="modal-upgrade-btn"
                                     href="https://buy.stripe.com/14kcNQafGcpE9HOaEE"
+                                    data-rewardful
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -289,6 +290,7 @@ const PremiumModal = ({ isOpen, onClose, requestedFeature, onStartTrial }) => {
                                 <a
                                     className="modal-upgrade-btn"
                                     href="https://buy.stripe.com/fZeg02fA0exMaLS8wA"
+                                    data-rewardful
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >

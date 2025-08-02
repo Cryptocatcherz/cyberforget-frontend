@@ -136,25 +136,33 @@ const MobileNavbar = () => {
                             </Link>
                         </li>
                     )}
-                    {/* Free Tools Button with Dropdown */}
-                    <li className="menu-item">
+                    {/* Tools Dropdown */}
+                    <li className="menu-item tools-item">
                         <motion.button 
-                            className="free-tools-button"
+                            className="tools-button"
                             onClick={toggleDropdown}
                             whileTap={{ scale: 0.98 }}
-                            whileHover={{ y: -2 }}
                         >
-                            Free Tools
+                            <span>Tools</span>
+                            <motion.div 
+                                className="chevron-icon"
+                                animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1L6 6L11 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                            </motion.div>
                         </motion.button>
+                        
                         <AnimatePresence>
                             {isDropdownOpen && (
-                                <motion.ul
-                                    className="dropdown-menu"
-                                    initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                                <motion.div
+                                    className="tools-dropdown"
+                                    initial={{ opacity: 0, height: 0 }}
                                     animate={{ 
                                         opacity: 1, 
-                                        y: 0, 
-                                        scale: 1,
+                                        height: "auto",
                                         transition: {
                                             duration: 0.3,
                                             ease: [0.4, 0, 0.2, 1]
@@ -162,120 +170,93 @@ const MobileNavbar = () => {
                                     }}
                                     exit={{ 
                                         opacity: 0, 
-                                        y: -20, 
-                                        scale: 0.95,
+                                        height: 0,
                                         transition: {
-                                            duration: 0.2,
-                                            ease: [0.4, 0, 1, 1]
+                                            duration: 0.2
                                         }
                                     }}
                                 >
-                                    {[
-                                        { to: "/scamai", text: "CyberForget AI" },
-                                        { to: "/location", text: "Free Broker Scan", className: "data-broker-item" },
-                                        { to: "/data-leak", text: "Check Your Email" },
-                                        { to: "/password-check", text: "Password Checker" },
-                                        { to: "/area-codes", text: "Phone Number Checker" },
-                                        { to: "/delete-account", text: "Account Deleter" },
-                                        { to: "/password-analyzer", text: "Password Analyzer" },
-                                        { to: "/file-scan", text: "Virus Scanner" },
-                                        { to: "/temp-email", text: "ForgetMail" }
-                                    ].map((item, index) => (
-                                        <motion.li
-                                            key={item.to}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ 
-                                                opacity: 1, 
-                                                x: 0,
-                                                transition: {
-                                                    duration: 0.3,
-                                                    delay: index * 0.05,
-                                                    ease: [0.4, 0, 0.2, 1]
-                                                }
-                                            }}
-                                        >
-                                            <Link 
-                                                to={item.to} 
-                                                onClick={() => { setMenuOpen(false); setDropdownOpen(false); }}
-                                                className={item.className}
-                                            >
-                                                {item.text}
-                                            </Link>
-                                        </motion.li>
-                                    ))}
-                                </motion.ul>
-                            )}
-                        </AnimatePresence>
-                    </li>
-                    
-                    {/* Pro Tools Button with Dropdown */}
-                    <li className="menu-item">
-                        <motion.button 
-                            className="pro-tools-button"
-                            onClick={toggleProTools}
-                            whileTap={{ scale: 0.98 }}
-                            whileHover={{ y: -2 }}
-                        >
-                            <FaStar className="pro-star-icon" />
-                            Pro Tools
-                        </motion.button>
-                        <AnimatePresence>
-                            {isProToolsOpen && (
-                                <motion.ul
-                                    className="dropdown-menu pro-tools-menu"
-                                    initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                                    animate={{ 
-                                        opacity: 1, 
-                                        y: 0, 
-                                        scale: 1,
-                                        transition: {
-                                            duration: 0.3,
-                                            ease: [0.4, 0, 0.2, 1]
-                                        }
-                                    }}
-                                    exit={{ 
-                                        opacity: 0, 
-                                        y: -20, 
-                                        scale: 0.95,
-                                        transition: {
-                                            duration: 0.2,
-                                            ease: [0.4, 0, 1, 1]
-                                        }
-                                    }}
-                                >
-                                    {[
-                                        { to: "/pricing", text: "VPN", icon: FaWifi },
-                                        { to: "/pricing", text: "Password Manager", icon: FaKey },
-                                        { to: "/pricing", text: "Data Removals", icon: FaDatabase },
-                                        { to: "/pricing", text: "Site Scanner", icon: FaGlobe },
-                                        { to: "/pricing", text: "Ad Blocker", icon: FaBan },
-                                        { to: "/pricing", text: "Chat AI Pro", icon: FaComments }
-                                    ].map((item, index) => (
-                                        <motion.li
-                                            key={item.text}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ 
-                                                opacity: 1, 
-                                                x: 0,
-                                                transition: {
-                                                    duration: 0.3,
-                                                    delay: index * 0.05,
-                                                    ease: [0.4, 0, 0.2, 1]
-                                                }
-                                            }}
-                                        >
-                                            <Link 
-                                                to={item.to} 
-                                                onClick={() => { setMenuOpen(false); setProToolsOpen(false); }}
-                                                className="pro-tool-item"
-                                            >
-                                                <item.icon className="pro-tool-icon" />
-                                                <span>{item.text}</span>
-                                                <span className="pro-badge-mobile">PRO</span>
-                                            </Link>
-                                        </motion.li>
-                                    ))}
-                                </motion.ul>
+                                    {/* Free Tools Section */}
+                                    <div className="tools-section">
+                                        <div className="section-label">
+                                            <span>Free Tools</span>
+                                            <span className="free-indicator"></span>
+                                        </div>
+                                        <div className="tools-list">
+                                            {[
+                                                { to: "/scamai", text: "AI Assistant" },
+                                                { to: "/location", text: "Data Broker Scan" },
+                                                { to: "/data-leak", text: "Email Breach Check" },
+                                                { to: "/password-check", text: "Password Checker" },
+                                                { to: "/temp-email", text: "Temporary Email" },
+                                                { to: "/area-codes", text: "Phone Number Check" },
+                                                { to: "/delete-account", text: "Account Deleter" },
+                                                { to: "/password-analyzer", text: "Password Analyzer" },
+                                                { to: "/file-scan", text: "Virus Scanner" }
+                                            ].map((item, index) => (
+                                                <motion.div
+                                                    key={item.to}
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ 
+                                                        opacity: 1,
+                                                        transition: {
+                                                            duration: 0.2,
+                                                            delay: index * 0.02
+                                                        }
+                                                    }}
+                                                >
+                                                    <Link 
+                                                        to={item.to} 
+                                                        onClick={() => { setMenuOpen(false); setDropdownOpen(false); }}
+                                                        className="tool-link"
+                                                    >
+                                                        <span className="tool-text">{item.text}</span>
+                                                    </Link>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Pro Tools Section */}
+                                    <div className="tools-section pro-section">
+                                        <div className="section-label">
+                                            <span>Pro Tools</span>
+                                            <FaStar className="pro-star" />
+                                        </div>
+                                        <div className="tools-list">
+                                            {[
+                                                { to: "/vpn", text: "VPN", icon: FaWifi },
+                                                { to: "/password-managers", text: "Password Manager", icon: FaKey },
+                                                { to: "/data-removal", text: "Data Removal", icon: FaDatabase },
+                                                { to: "/pricing", text: "Website Scanner", icon: FaGlobe },
+                                                { to: "/pricing", text: "Ad Blocker", icon: FaBan },
+                                                { to: "/scamai", text: "AI Pro", icon: FaComments }
+                                            ].map((item, index) => (
+                                                <motion.div
+                                                    key={item.to + item.text}
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ 
+                                                        opacity: 1,
+                                                        transition: {
+                                                            duration: 0.2,
+                                                            delay: index * 0.02 + 0.05
+                                                        }
+                                                    }}
+                                                >
+                                                    <Link 
+                                                        to={item.to} 
+                                                        onClick={() => { setMenuOpen(false); setDropdownOpen(false); }}
+                                                        className="tool-link pro-link"
+                                                    >
+                                                        <item.icon className="tool-icon" />
+                                                        <span className="tool-text">{item.text}</span>
+                                                        <span className="pro-badge">PRO</span>
+                                                    </Link>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </motion.div>
                             )}
                         </AnimatePresence>
                     </li>

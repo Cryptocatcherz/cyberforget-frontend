@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import FeatureGate from '../components/FeatureGate';
+import Navbar from '../components/Navbar';
+import MobileNavbar from '../components/MobileNavbar';
+import { useAuth } from '../hooks/useAuthUtils';
 import { FaChrome, FaApple, FaWindows } from 'react-icons/fa';
 import './VPNPage.css';
 
 const VPNPage = () => {
+  const { user } = useAuth();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [downloadCounts, setDownloadCounts] = useState({
     chrome: 15234,
     mac: 8942,
     windows: 12657
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     // Simulate live download counter updates
@@ -316,10 +330,15 @@ const VPNPage = () => {
       </div>
   );
 
-  return isDevelopment ? vpnContent : (
-    <FeatureGate feature="vpn">
-      {vpnContent}
-    </FeatureGate>
+  return (
+    <div className="page-container">
+      {isMobile ? <MobileNavbar /> : <Navbar />}
+      {isDevelopment ? vpnContent : (
+        <FeatureGate feature="vpn" showNavbar={false}>
+          {vpnContent}
+        </FeatureGate>
+      )}
+    </div>
   );
 };
 

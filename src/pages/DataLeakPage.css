@@ -336,6 +336,10 @@
     display: block;
     /* Removed glow animation for cleaner look */
     filter: drop-shadow(0 2px 4px rgba(74, 144, 226, 0.2)) !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 /* Removed shieldGlow animation for cleaner look */
@@ -345,10 +349,14 @@
 .enhanced-data-leak-page .hero-section svg,
 .enhanced-data-leak-page .hero-content .hero-icon,
 .enhanced-data-leak-page .fa-shield-alt,
-.enhanced-data-leak-page .hero-section .fa-shield-alt {
+.enhanced-data-leak-page .hero-section .fa-shield-alt,
+.enhanced-data-leak-page .fa-envelope {
     color: #4A90E2 !important;
     fill: #4A90E2 !important;
     background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /* Override any FontAwesome defaults with maximum specificity */
