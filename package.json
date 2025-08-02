@@ -15,7 +15,7 @@
         "build:prod": "REACT_APP_PRODUCTION_MODE=true npm run build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "postbuild": "react-snap",
+        "postbuild": "echo 'Skipping react-snap for deployment'",
         "analyze": "source-map-explorer 'build/static/js/*.js'",
         "heroku-postbuild": "npm run build:prod",
         "mode:prod": "echo '🚀 Switching to PRODUCTION mode' && cp .env.production .env && echo 'Environment: PRODUCTION' && echo 'API: Netlify → Heroku' && echo 'Debug features: DISABLED'",
