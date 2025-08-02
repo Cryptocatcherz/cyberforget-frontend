@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaSpinner, FaCircle } from 'react-icons/fa';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+// Lightbox removed due to React 18 compatibility issues
 import './DataRemovalsPage.css';
 import NavigationTabs from '../components/NavigationTabs';
 import DataPointsComponent from '../components/DataPointsComponent';
@@ -234,16 +233,8 @@ const DataRemovalsPage = () => {
     }
   };
 
-  // Update the Lightbox implementation
-  {fullImageIndex >= 0 && urls[fullImageIndex] && (
-    <Lightbox
-      mainSrc={getScreenshotUrl(urls[fullImageIndex].url, true)}
-      onCloseRequest={() => setFullImageIndex(-1)}
-      imageTitle={`${urls[fullImageIndex].siteName} Scan Results`}
-      enableZoom={true}
-      reactModalStyle={{ overlay: { zIndex: 1400 } }}
-    />
-  )}
+  // Lightbox temporarily removed due to React 18 compatibility issues
+  // TODO: Replace with React 18 compatible image viewer
 
   const LiveIndicator = () => (
     <div className="live-indicator">
