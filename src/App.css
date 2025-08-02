@@ -59,6 +59,20 @@ body {
 .main-content.full-screen {
     margin-left: 0;
     width: 100%;
+    max-width: none !important;
+}
+
+/* Force full width for all pages */
+.main-content.full-screen * {
+    max-width: none !important;
+}
+
+.main-content.full-screen .chat-container,
+.main-content.full-screen .welcome-message,
+.main-content.full-screen .cyberforget-header,
+.main-content.full-screen .input-area-content {
+    max-width: none !important;
+    width: 100% !important;
 }
 
 /* Sidebar layout handled by media queries below */
