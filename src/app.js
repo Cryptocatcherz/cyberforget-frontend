@@ -34,6 +34,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Using Clerk directly instead of custom AuthProvider
 import LoadingSpinner from './components/LoadingSpinner';
+import LoadingScreen from './components/LoadingScreen';
 import DeleteAccountPage from './pages/DeleteAccountPage';
 import DeleteAccountMainPage from './pages/DeleteAccountMainPage';
 import { initGA, logPageView } from './utils/analytics';
@@ -60,6 +61,7 @@ import PremiumFlowTest from './components/PremiumFlowTest';
 import PremiumDashboard from './pages/PremiumDashboard';
 import DebugPremiumDashboard from './pages/DebugPremiumDashboard';
 import NotFoundPage from './pages/NotFoundPage';
+import TempEmailPage from './pages/TempEmailPage';
 
 const PrivateRoute = ({ children }) => {
     const { isLoaded, isSignedIn } = useClerkAuth();
@@ -592,6 +594,23 @@ const AppContent = React.memo(() => {
                                     />
                                 </Helmet>
                                 <PasswordManagerPage />
+                            </>
+                        }
+                    />
+
+                    {/* Temp Email Page */}
+                    <Route
+                        path="/temp-email"
+                        element={
+                            <>
+                                <Helmet>
+                                    <title>ForgetMail - CyberForget | Temporary Email Generator</title>
+                                    <meta
+                                        name="description"
+                                        content="Generate secure temporary email addresses to protect your privacy and avoid spam. Real-time inbox monitoring with AI-powered security."
+                                    />
+                                </Helmet>
+                                <TempEmailPage />
                             </>
                         }
                     />
