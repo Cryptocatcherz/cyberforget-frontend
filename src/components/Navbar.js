@@ -121,7 +121,7 @@ const Navbar = () => {
 
                 <nav className={`nav-links ${isOpen ? 'open' : ''}`}>
                     <a href="https://cyberforget.com" className="nav-link">Home</a>
-                    <a href="https://cyberforget.com/pricing" className="nav-link">Pricing</a>
+                    <Link to="/pricing" className="nav-link">Pricing</Link>
                     
                     {user && (
                         <motion.div
