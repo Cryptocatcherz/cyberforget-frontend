@@ -121,6 +121,12 @@ const AppContent = React.memo(() => {
     const shouldShowSidebar = showSidebarPages.some(page => 
         location.pathname.startsWith(page)
     ) && (isSignedIn || isDevelopment);
+    
+    // Explicitly force no sidebar for chat page and other main pages
+    const noSidebarPages = ['/', '/scamai', '/pricing', '/login', '/signup'];
+    const shouldForceFullScreen = noSidebarPages.includes(location.pathname);
+    
+    const finalShouldShowSidebar = shouldForceFullScreen ? false : shouldShowSidebar;
 
     // Debug logging for sidebar visibility
     if (location.pathname === '/dashboard') {
@@ -150,7 +156,7 @@ const AppContent = React.memo(() => {
         return location.pathname.startsWith(route);
     });
 
-    const shouldHideSidebar = !shouldShowSidebar;
+    const shouldHideSidebar = !finalShouldShowSidebar;
     
     // Show navbar on all pages except where explicitly hidden
     const shouldHideNavbar = false;
