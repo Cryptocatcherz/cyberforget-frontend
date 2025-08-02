@@ -229,8 +229,8 @@
     overflow-y: auto;
     padding: 20px;
     padding-bottom: 120px;
-    max-width: 2000px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     position: relative;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 212, 255, 0.4) transparent;

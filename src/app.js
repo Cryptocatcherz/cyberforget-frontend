@@ -129,15 +129,16 @@ const AppContent = React.memo(() => {
     const finalShouldShowSidebar = shouldForceFullScreen ? false : shouldShowSidebar;
 
     // Debug logging for sidebar visibility
-    if (location.pathname === '/dashboard') {
-        console.log('[App] Sidebar Debug:', {
-            pathname: location.pathname,
-            isSignedIn,
-            isDevelopment,
-            shouldShowSidebar,
-            shouldHideSidebar: !shouldShowSidebar
-        });
-    }
+    console.log('[App] Layout Debug:', {
+        pathname: location.pathname,
+        isSignedIn,
+        isDevelopment,
+        shouldShowSidebar,
+        shouldForceFullScreen,
+        finalShouldShowSidebar,
+        shouldHideSidebar: !finalShouldShowSidebar,
+        appliedClass: !finalShouldShowSidebar ? 'full-screen' : 'with-sidebar'
+    });
 
     // List of all known routes (both public and private)
     const knownRoutes = [
